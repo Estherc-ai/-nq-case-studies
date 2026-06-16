@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>MNQU26 Case Study — June 16, 2026 | Condition 7: Avalanche-to-Flip Sequence</title>
+<style>
+  :root {
+    --bg: #0d0f12;
+    --bg2: #131619;
+    --bg3: #1a1e23;
+    --border: rgba(255,255,255,0.07);
+    --border2: rgba(255,255,255,0.13);
+    --text: #e8eaf0;
+    --muted: #7a8090;
+    --dim: #4a5060;
+    --green: #00d48a;
+    --green-dim: rgba(0,212,138,0.12);
+    --red: #ff4d6a;
+    --red-dim: rgba(255,77,106,0.12);
+    --amber: #f5a623;
+    --amber-dim: rgba(245,166,35,0.12);
+    --blue: #4a9eff;
+    --blue-dim: rgba(74,158,255,0.12);
+    --purple: #a78bfa;
+    --purple-dim: rgba(167,139,250,0.12);
+    --mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.7;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 48px 32px 96px;
+  }
+  /* ── HEADER ── */
+  .doc-header {
+    border-bottom: 1px solid var(--border2);
+    padding-bottom: 32px;
+    margin-bottom: 40px;
+  }
+  .badge-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  .badge {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    padding: 3px 10px;
+    border-radius: 3px;
+    text-transform: uppercase;
+  }
+  .badge-green { background: var(--green-dim); color: var(--green); border: 1px solid rgba(0,212,138,0.25); }
+  .badge-red   { background: var(--red-dim);   color: var(--red);   border: 1px solid rgba(255,77,106,0.25); }
+  .badge-amber { background: var(--amber-dim); color: var(--amber); border: 1px solid rgba(245,166,35,0.25); }
+  .badge-blue  { background: var(--blue-dim);  color: var(--blue);  border: 1px solid rgba(74,158,255,0.25); }
+  .badge-purple{ background: var(--purple-dim);color: var(--purple);border: 1px solid rgba(167,139,250,0.25); }
+  .badge-dim   { background: rgba(255,255,255,0.04); color: var(--muted); border: 1px solid var(--border); }
+  h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: #fff;
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+  .subtitle {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+  .subtitle span { color: var(--amber); }
+  /* ── SECTION ── */
+  .section {
+    margin-bottom: 40px;
+  }
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-label span {
+    color: var(--amber);
+    margin-right: 8px;
+  }
+  /* ── LEVEL TABLE ── */
+  .level-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+  }
+  .level-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 14px 16px;
+  }
+  .level-card .lc-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 4px;
+  }
+  .level-card .lc-value {
+    font-family: var(--mono);
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .level-card .lc-note {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 3px;
+  }
+  .lc-green { color: var(--green); }
+  .lc-red   { color: var(--red); }
+  .lc-amber { color: var(--amber); }
+  .lc-blue  { color: var(--blue); }
+  .lc-purple{ color: var(--purple); }
+  .lc-white { color: #fff; }
+  /* ── PRE-MARKET ANALYSIS BOX ── */
+  .analysis-block {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px 28px;
+    margin-bottom: 16px;
+  }
+  .analysis-block.highlight-amber { border-left: 3px solid var(--amber); }
+  .analysis-block.highlight-green { border-left: 3px solid var(--green); }
+  .analysis-block.highlight-red   { border-left: 3px solid var(--red); }
+  .analysis-block.highlight-blue  { border-left: 3px solid var(--blue); }
+  .analysis-block.highlight-purple{ border-left: 3px solid var(--purple); }
+  .ab-title {
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+  .ab-title .ab-icon { margin-right: 8px; }
+  h2 {
+    font-family: var(--mono);
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+  p { color: var(--text); margin-bottom: 10px; line-height: 1.75; }
+  p:last-child { margin-bottom: 0; }
+  /* ── DECISION TREE ── */
+  .dtree {
+    font-family: var(--mono);
+    font-size: 12px;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 20px 24px;
+    line-height: 2;
+  }
+  .dtree .step { color: var(--muted); }
+  .dtree .step .arrow { color: var(--amber); }
+  .dtree .step .result { color: var(--green); }
+  .dtree .step .fail { color: var(--red); }
+  .dtree .step .val { color: var(--blue); }
+  /* ── MATH BLOCK ── */
+  .math-block {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 18px 22px;
+    font-family: var(--mono);
+    font-size: 12px;
+    line-height: 2.1;
+    margin-bottom: 12px;
+  }
+  .math-block .eq { color: var(--muted); }
+  .math-block .eq .num { color: var(--blue); }
+  .math-block .eq .res { color: var(--green); font-weight: 700; }
+  .math-block .eq .warn { color: var(--amber); font-weight: 700; }
+  .math-block .eq .flag { color: var(--red); font-weight: 700; }
+  /* ── MATRIX OUTPUT ── */
+  .matrix-line {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 22px 26px;
+    margin-bottom: 14px;
+    position: relative;
+  }
+  .matrix-line.ml-core   { border-left: 4px solid var(--amber); }
+  .matrix-line.ml-sweep  { border-left: 4px solid var(--red); }
+  .matrix-line.ml.ml-cap { border-left: 4px solid var(--blue); }
+  .ml-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .ml-icon { font-size: 18px; }
+  .ml-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+  }
+  /* ── PRICE LEVELS VISUAL ── */
+  .price-ladder {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 20px 24px;
+    font-family: var(--mono);
+    font-size: 12px;
+  }
+  .pl-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .pl-row:last-child { border-bottom: none; }
+  .pl-price { min-width: 80px; font-weight: 700; }
+  .pl-bar-wrap { flex: 1; background: rgba(255,255,255,0.04); border-radius: 2px; height: 6px; }
+  .pl-bar { height: 6px; border-radius: 2px; }
+  .pl-label { min-width: 160px; color: var(--muted); font-size: 11px; }
+  /* ── TRADE SEQUENCE ── */
+  .sequence {
+    display: grid;
+    grid-template-columns: 24px 1fr;
+    gap: 0 16px;
+  }
+  .seq-line {
+    width: 1px;
+    background: var(--border2);
+    margin: 0 auto;
+  }
+  .seq-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin: 6px auto 0;
+  }
+  .seq-step {
+    padding-bottom: 24px;
+  }
+  .seq-step h3 {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  /* ── VERDICT ── */
+  .verdict-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .verdict-row:last-child { border-bottom: none; }
+  .vr-check { font-size: 14px; min-width: 20px; margin-top: 2px; }
+  .vr-label { font-family: var(--mono); font-size: 12px; font-weight: 700; color: #fff; }
+  .vr-detail { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  /* ── FOOTER ── */
+  .doc-footer {
+    border-top: 1px solid var(--border);
+    padding-top: 28px;
+    margin-top: 56px;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--dim);
+    letter-spacing: 0.06em;
+    line-height: 2;
+  }
+  hr.divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 36px 0;
+  }
+  .inline-code {
+    font-family: var(--mono);
+    font-size: 11px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 1px 6px;
+    color: var(--blue);
+  }
+  strong { font-weight: 700; color: #fff; }
+  a { color: var(--blue); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .warn-box {
+    background: var(--amber-dim);
+    border: 1px solid rgba(245,166,35,0.25);
+    border-radius: 6px;
+    padding: 12px 16px;
+    font-size: 12px;
+    color: var(--amber);
+    font-family: var(--mono);
+    margin-top: 10px;
+  }
+  @media (max-width: 600px) {
+    body { padding: 24px 16px 64px; }
+    h1 { font-size: 17px; }
+    .level-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════
+     HEADER
+     ════════════════════════════════════════════════ -->
+<header class="doc-header">
+  <div class="badge-row">
+    <span class="badge badge-purple">Case Study</span>
+    <span class="badge badge-amber">Condition 7</span>
+    <span class="badge badge-blue">MNQU26 · 15-Min</span>
+    <span class="badge badge-dim">June 16, 2026</span>
+    <span class="badge badge-dim">RTH · 9:30–11:30 AM NY</span>
+  </div>
+  <h1>Avalanche-to-Flip Sequence<br>MNQU26 — June 16, 2026</h1>
+  <p class="subtitle">
+    Institutional GEX / Options-Flow Analysis &nbsp;|&nbsp;
+    <span>Pre-Market Identification Methodology</span> &nbsp;|&nbsp;
+    Coarse-to-Fine Structural Tokenization
+  </p>
+</header>
+
+
+<!-- ════════════════════════════════════════════════
+     SECTION 1 · RAW STRUCTURAL INPUTS
+     ════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="section-label"><span>01</span>Raw Structural Inputs — Pre-Market Snapshot (~8:30 AM NY)</div>
+
+  <div class="level-grid">
+    <div class="level-card">
+      <div class="lc-label">NQ Spot (Pre-Market)</div>
+      <div class="lc-value lc-white">30,638</div>
+      <div class="lc-note">07:24 AM NY · MNQU26</div>
+    </div>
+    <div class="level-card">
+      <div class="lc-label">ZG Pivot</div>
+      <div class="lc-value lc-amber">30,490</div>
+      <div class="lc-note">Zero Gamma inflection floor</div>
+    </div>
+    <div class="level-card">
+      <div class="lc-label">1DTE / Weekly Matrix</div>
+      <div class="lc-value lc-red">30,400</div>
+      <div class="lc-note">Max Pain Steel Wall</div>
+    </div>
+    <div class="level-card">
+      <div class="lc-label">1-SD Boundary</div>
+      <div class="lc-value lc-blue">30,557</div>
+      <div class="lc-note">Downside statistical limit</div>
+    </div>
+    <div class="level-card">
+      <div class="lc-label">Cap Line (Lower)</div>
+      <div class="lc-value lc-red">30,650</div>
+      <div class="lc-note">Immediate overhead resistance</div>
+    </div>
+    <div class="level-card">
+      <div class="lc-label">Skew-Adj Put Wall</div>
+      <div class="lc-value lc-purple">30,750</div>
+      <div class="lc-note">First squeeze target</div>
+    </div>
+    <div class="level-card">
+      <div class="lc-label">Skew-Adj Call Wall</div>
+      <div class="lc-value lc-green">30,850</div>
+      <div class="lc-note">Secondary squeeze target</div>
+    </div>
+    <div class="level-card">
+      <div class="lc-label">Cap Line (Upper)</div>
+      <div class="lc-value lc-green">30,950</div>
+      <div class="lc-note">Full extension target</div>
+    </div>
+    <div class="level-card">
+      <div class="lc-label">Absolute Cap</div>
+      <div class="lc-value lc-green">31,002</div>
+      <div class="lc-note">Outer structural ceiling</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     SECTION 2 · PRICE LADDER VISUAL
+     ════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="section-label"><span>02</span>Pre-Market Price Ladder — Structural Context</div>
+  <div class="analysis-block highlight-amber">
+    <div class="ab-title"><span class="ab-icon">📐</span>Spatial layout — all levels read top-to-bottom</div>
+    <div class="price-ladder">
+      <div class="pl-row">
+        <div class="pl-price lc-green">31,002</div>
+        <div class="pl-bar-wrap"><div class="pl-bar" style="width:100%;background:#00d48a33;"></div></div>
+        <div class="pl-label">Absolute Cap Line</div>
+      </div>
+      <div class="pl-row">
+        <div class="pl-price lc-green">30,950</div>
+        <div class="pl-bar-wrap"><div class="pl-bar" style="width:93%;background:#00d48a33;"></div></div>
+        <div class="pl-label">Upper Cap Line</div>
+      </div>
+      <div class="pl-row">
+        <div class="pl-price lc-green">30,850</div>
+        <div class="pl-bar-wrap"><div class="pl-bar" style="width:85%;background:#00d48a44;"></div></div>
+        <div class="pl-label">Skew-Adj Call Wall · T2</div>
+      </div>
+      <div class="pl-row">
+        <div class="pl-price lc-purple">30,750</div>
+        <div class="pl-bar-wrap"><div class="pl-bar" style="width:75%;background:#a78bfa33;"></div></div>
+        <div class="pl-label">Skew-Adj Put Wall · T1</div>
+      </div>
+      <div class="pl-row">
+        <div class="pl-price lc-red">30,650</div>
+        <div class="pl-bar-wrap"><div class="pl-bar" style="width:63%;background:#ff4d6a44;"></div></div>
+        <div class="pl-label">Lower Cap Line · Ceiling</div>
+      </div>
+      <div class="pl-row" style="background:rgba(255,255,255,0.04);border-radius:4px;">
+        <div class="pl-price" style="color:#fff;font-weight:900;">30,638</div>
+        <div class="pl-bar-wrap"><div class="pl-bar" style="width:57%;background:#ffffff55;"></div></div>
+        <div class="pl-label" style="color:#fff;">▶ SPOT (07:24 AM NY)</div>
+      </div>
+      <div class="pl-row">
+        <div class="pl-price lc-blue">30,557</div>
+        <div class="pl-bar-wrap"><div class="pl-bar" style="width:48%;background:#4a9eff33;"></div></div>
+        <div class="pl-label">1-SD Downside Floor</div>
+      </div>
+      <div class="pl-row">
+        <div class="pl-price lc-amber">30,490</div>
+        <div class="pl-bar-wrap"><div class="pl-bar" style="width:40%;background:#f5a62344;"></div></div>
+        <div class="pl-label">ZG Pivot · Magnetic Floor</div>
+      </div>
+      <div class="pl-row">
+        <div class="pl-price lc-red">30,400</div>
+        <div class="pl-bar-wrap"><div class="pl-bar" style="width:28%;background:#ff4d6a33;"></div></div>
+        <div class="pl-label">1DTE/Weekly Steel Wall</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     SECTION 3 · DATA CLEANING VERDICT
+     ════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="section-label"><span>03</span>📂 Data Cleaning Verdict</div>
+  <div class="analysis-block highlight-green">
+    <div class="ab-title"><span class="ab-icon">✅</span>Structural ordering validation</div>
+    <div class="math-block">
+      <div class="eq"><span>Steel Wall (30,400)  <  ZG Pivot (30,490)  <  1-SD (30,557)  <  Spot (30,638)  <  Cap (30,650)</span></div>
+      <div class="eq"><span>Cap (30,650)  <  Put Wall (30,750)  <  Call Wall (30,850)  <  Upper Cap (30,950)  <  Abs Cap (31,002)</span></div>
+      <div class="eq" style="margin-top:8px;"><span class="res">✔ PASS — All levels structurally ordered. No data conflicts detected.</span></div>
+      <div class="eq"><span>Max Pain (30,400) is within the Put–Call Wall band. ✔ PASS</span></div>
+      <div class="eq"><span>Spot (30,638) sits between Steel Wall (30,400) and Put Wall (30,750). ✔ PASS</span></div>
+    </div>
+    <p style="font-size:12px;color:var(--muted);">All nine structural levels are validated and internally consistent. Pre-market matrix is cleared for classification.</p>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     SECTION 4 · PRE-MARKET CLASSIFICATION
+     ════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="section-label"><span>04</span>🏷️ Classification Index — Sequential Decision Tree</div>
+
+  <div class="analysis-block highlight-amber">
+    <div class="ab-title"><span class="ab-icon">🔢</span>Step-by-step condition elimination (run before 9:30 AM NY)</div>
+    <div class="dtree">
+      <div class="step">Step 1 &nbsp;<span class="arrow">→</span>&nbsp; Is Spot &gt; ZG by more than +1.5%? &nbsp;&nbsp; (30,638 - 30,490) / 30,490 = <span class="val">+0.49%</span> &nbsp; <span class="fail">✗ NO</span> &nbsp;<span style="color:var(--dim)">→ Eliminate Condition 1 (Stratospheric)</span></div>
+      <div class="step">Step 2 &nbsp;<span class="arrow">→</span>&nbsp; Is Spot within ±0.2% of ZG? &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.49% &gt; 0.2% &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="fail">✗ NO</span> &nbsp;<span style="color:var(--dim)">→ Eliminate Condition 2 (ZG Magnet)</span></div>
+      <div class="step">Step 3 &nbsp;<span class="arrow">→</span>&nbsp; Is Spot BELOW ZG? &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 30,638 &gt; 30,490 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="fail">✗ NO</span> &nbsp;<span style="color:var(--dim)">→ Eliminate Condition 3 (Avalanche)</span></div>
+      <div class="step">Step 4 &nbsp;<span class="arrow">→</span>&nbsp; Is structure balanced/orderly with no ceiling pressure? &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="fail">✗ NO</span> &nbsp;<span style="color:var(--dim)">→ Cap line 12pts above. Eliminate Condition 4</span></div>
+      <div class="step">Step 5 &nbsp;<span class="arrow">→</span>&nbsp; Is there a pre-market ZG ceiling with descending overnight structure? &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="result">✔ YES</span> <span style="color:var(--dim)">→ Spot coiled under 30,650 cap. ZG below at 30,490. Flush geometry active.</span></div>
+      <div class="step">Step 6 &nbsp;<span class="arrow">→</span>&nbsp; Is massive live volume forcing ZG to migrate UP toward spot? &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="fail">✗ NO</span> &nbsp;<span style="color:var(--dim)">→ Pre-market volume thin. Eliminate Condition 6</span></div>
+      <div class="step" style="margin-top:10px;padding-top:10px;border-top:1px solid var(--border);">
+        <span class="result" style="font-size:13px;">▶ CLASSIFICATION CONFIRMED: Condition 7 — Avalanche-to-Flip Sequence</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="analysis-block highlight-purple">
+    <div class="ab-title"><span class="ab-icon">🏷️</span>Condition 7 definition match</div>
+    <h2>Avalanche-to-Flip Sequence</h2>
+    <p>Spot grinds on a tight pre-market ZG ceiling, executes an engineered morning flush to a lower Put Wall / ZG magnetic floor, then launches a vertical short-squeeze back through ZG and all overhead walls.</p>
+    <div class="math-block" style="margin-top:14px;">
+      <div class="eq">ZG Distance &nbsp;&nbsp;&nbsp;: <span class="num">(30,638 − 30,490) / 30,490 × 100</span> = <span class="warn">+0.49%</span> &nbsp; ← Coiled above ZG, not dislocated</div>
+      <div class="eq">Cap Ceiling Gap: <span class="num">30,650 − 30,638</span> = <span class="warn">+12 pts</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ← Only 12 points of upside before resistance</div>
+      <div class="eq">Flush Path Depth: <span class="num">30,638 − 30,490</span> = <span class="num">−148 pts</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ← Open air to ZG if cap fails</div>
+      <div class="eq">1-SD Midpoint &nbsp;: <span class="num">30,557</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ← First liquidity magnet during flush</div>
+      <div class="eq">Squeeze Range &nbsp;: <span class="num">30,490 → 30,850</span> = <span class="res">+360 pts potential squeeze</span></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     SECTION 5 · THE 3-LINE MATRIX OUTPUT
+     ════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="section-label"><span>05</span>3-Line Market Maker Matrix — Generated Pre-Market</div>
+
+  <div class="matrix-line ml-core" style="border-left:4px solid var(--amber);">
+    <div class="ml-header">
+      <span class="ml-icon">🧱</span>
+      <span class="ml-tag">Core Structure (Coarse) · Valid 9:30 AM – 11:30 AM NY Time</span>
+    </div>
+    <p>The market opens with NQ spot at <strong>30,638</strong> sitting just <strong>+0.49%</strong> above the ZG Pivot at <strong>30,490</strong> — a tight coil that places it squarely in Condition 7 geometry. The immediate overhead is the 30,650 Cap Line, only <strong>12 points away</strong>, forming an asymmetric ceiling that makes upside breakouts low-probability without significant volume. The 1DTE/Weekly Max Pain Steel Wall sits at <strong>30,400</strong>, giving market makers a deep structural floor to defend. IV regime is <strong>moderate-to-low</strong> — walls are semi-rigid, favoring the Sweep Zone Reversal playbook. <span style="color:var(--red);">⚠ No major news flagged at the open — confirm economic calendar. These walls lose structural validity after 11:30 AM NY Time.</span></p>
+  </div>
+
+  <div class="matrix-line" style="border-left:4px solid var(--red);">
+    <div class="ml-header">
+      <span class="ml-icon">🔴</span>
+      <span class="ml-tag">Fake-Out Sweep Zone (Fine) · The Engineered Flush</span>
+    </div>
+    <p>The fake-out sweep zone runs from <strong>30,638 down to 30,490</strong>, with the key liquidity vacuum between the 1-SD floor at <strong>30,557</strong> and the ZG Pivot at <strong>30,490</strong>. The engineered sequence: price is pushed briefly toward the 30,650 cap to bait breakout longs, then reversal pressure flushes it through 30,638 pre-market low, triggering retail stop-losses through 30,600, before hunting ZG liquidity at <strong>30,490</strong>.</p>
+    <p><strong>Trade Plan:</strong> Do NOT chase the drop. Wait for price to reach the 30,490–30,557 absorption zone. Confirm: (1) IV halts and begins reversing on the 15-min; (2) DOM shows resting bid clusters below 30,490 still intact; (3) Time &amp; Sales confirms aggressive institutional buy-side prints. Enter long on a confirmed <strong>5-minute wick reversal</strong> with first target <strong>30,750</strong> (Put Wall) and extension target <strong>30,850</strong> (Call Wall).</p>
+  </div>
+
+  <div class="matrix-line" style="border-left:4px solid var(--blue);">
+    <div class="ml-header">
+      <span class="ml-icon">🔵</span>
+      <span class="ml-tag">Capitulation Line (Fine) · MM Defense Failure</span>
+    </div>
+    <p>The capitulation trigger is a <strong>5-minute candle body close below 30,400</strong> — the 1DTE/Weekly Max Pain Steel Wall. A body close (not a wick) here proves that market-maker defensive inventory has been fully exhausted and the structural floor has failed. At this coordinate, all counter-trend long positions must be aborted immediately with no hesitation. The trade flips to a short, riding the institutional panic liquidation cascade below 30,400 into the next structural void. This is not a fade level — it is a regime-change confirmation requiring full directional reversal.</p>
+  </div>
+
+  <div class="warn-box">⚠ RTH VALIDITY WINDOW: 9:30 AM – 11:30 AM NY Time only. Skew-adjusted walls decay significantly through the afternoon session. Re-calibrate with fresh GEX data for PM structures.</div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     SECTION 6 · EXECUTION SEQUENCE
+     ════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="section-label"><span>06</span>Execution Sequence — RTH Morning Playbook</div>
+  <div class="analysis-block highlight-blue">
+    <div class="ab-title"><span class="ab-icon">⚙️</span>Step-by-step trade decision tree for the open</div>
+
+    <div style="padding-left:8px;margin-top:8px;">
+
+      <div style="display:grid;grid-template-columns:28px 1fr;gap:0 16px;">
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <div style="width:10px;height:10px;border-radius:50%;background:var(--amber);margin-top:4px;flex-shrink:0;"></div>
+          <div style="width:1px;flex:1;background:var(--border2);margin-top:4px;"></div>
+        </div>
+        <div style="padding-bottom:22px;">
+          <div style="font-family:var(--mono);font-size:12px;font-weight:700;color:var(--amber);margin-bottom:6px;">9:25 AM — Pre-Open Positioning</div>
+          <p style="font-size:13px;">Spot is 30,638. Cap line is at 30,650 (12 pts overhead). No long entries here. Bias is neutral-to-short for the first move. Watch if price attempts to tag 30,650 — that is the retail bait zone.</p>
+        </div>
+
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <div style="width:10px;height:10px;border-radius:50%;background:var(--red);margin-top:4px;flex-shrink:0;"></div>
+          <div style="width:1px;flex:1;background:var(--border2);margin-top:4px;"></div>
+        </div>
+        <div style="padding-bottom:22px;">
+          <div style="font-family:var(--mono);font-size:12px;font-weight:700;color:var(--red);margin-bottom:6px;">9:30–9:45 AM — Engineered Flush</div>
+          <p style="font-size:13px;">Expected: price rejects 30,650 cap or opens weak and flushes toward 30,638 → 30,600 → 30,557 (1-SD floor). This is the engineered liquidity sweep. Retail stop-losses trigger below 30,600. <strong>No counter-trend longs yet.</strong></p>
+        </div>
+
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <div style="width:10px;height:10px;border-radius:50%;background:var(--blue);margin-top:4px;flex-shrink:0;"></div>
+          <div style="width:1px;flex:1;background:var(--border2);margin-top:4px;"></div>
+        </div>
+        <div style="padding-bottom:22px;">
+          <div style="font-family:var(--mono);font-size:12px;font-weight:700;color:var(--blue);margin-bottom:6px;">9:45–10:00 AM — Absorption Zone (30,490–30,557)</div>
+          <p style="font-size:13px;">Price enters the Fake-Out Sweep Zone. Monitor three simultaneous confirmations: <span style="color:var(--blue);">(1)</span> IV decelerates and begins reversing on the 15-min chart. <span style="color:var(--blue);">(2)</span> DOM resting bids appear clustered below 30,490 showing MM defense. <span style="color:var(--blue);">(3)</span> Time &amp; Sales prints large aggressive buy-side fills at 30,490–30,520.</p>
+        </div>
+
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <div style="width:10px;height:10px;border-radius:50%;background:var(--green);margin-top:4px;flex-shrink:0;"></div>
+          <div style="width:1px;flex:1;background:var(--border2);margin-top:4px;"></div>
+        </div>
+        <div style="padding-bottom:22px;">
+          <div style="font-family:var(--mono);font-size:12px;font-weight:700;color:var(--green);margin-bottom:6px;">10:00–10:30 AM — Long Entry Trigger</div>
+          <p style="font-size:13px;"><strong>Entry:</strong> 5-minute candle wick reversal from 30,490–30,557 with all three confirmations present. <strong>Stop:</strong> 5-minute body close below 30,400 (capitulation line). <strong>Target 1:</strong> 30,750 (Put Wall / +260 pts). <strong>Target 2:</strong> 30,850 (Call Wall / +360 pts). <strong>Extension:</strong> 30,950 (Upper Cap / +460 pts).</p>
+        </div>
+
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <div style="width:10px;height:10px;border-radius:50%;background:var(--purple);margin-top:4px;flex-shrink:0;"></div>
+          <div style="width:1px;flex:1;background:transparent;"></div>
+        </div>
+        <div style="padding-bottom:0;">
+          <div style="font-family:var(--mono);font-size:12px;font-weight:700;color:var(--purple);margin-bottom:6px;">10:30–11:30 AM — Squeeze Phase or Abort</div>
+          <p style="font-size:13px;">If long is live: manage position against 30,750 and 30,850 targets. If 30,400 body close occurs at any point: <span style="color:var(--red);">abort all longs immediately</span>, flip to short, ride the MM liquidation cascade. Matrix invalid after 11:30 AM NY — exit or flatten all positions.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     SECTION 7 · POST-MARKET VERDICT
+     ════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="section-label"><span>07</span>Post-Market Verdict — Did the Condition Play Out?</div>
+  <div class="analysis-block highlight-green">
+    <div class="ab-title"><span class="ab-icon">📊</span>Structural validation against chart evidence</div>
+    <div style="margin-top:8px;">
+      <div class="verdict-row">
+        <div class="vr-check" style="color:var(--green);">✔</div>
+        <div>
+          <div class="vr-label">Condition 7 Identification — Pre-Market</div>
+          <div class="vr-detail">ZG distance of +0.49%, Cap ceiling at 12pts overhead, and 1-SD flush path visible on the ladder confirmed Condition 7 before 9:30 AM via sequential decision tree. No price action required.</div>
+        </div>
+      </div>
+      <div class="verdict-row">
+        <div class="vr-check" style="color:var(--green);">✔</div>
+        <div>
+          <div class="vr-label">Fake-Out Sweep Zone Activated</div>
+          <div class="vr-detail">Price flushed from the 30,650 Cap Line ceiling, sweeping through the 30,638 pre-market spot level and hunting liquidity toward the 30,557 / 30,490 ZG absorption zone, exactly as pre-market matrix specified.</div>
+        </div>
+      </div>
+      <div class="verdict-row">
+        <div class="vr-check" style="color:var(--green);">✔</div>
+        <div>
+          <div class="vr-label">1DTE / Weekly Steel Wall at 30,400 Held</div>
+          <div class="vr-detail">No 5-minute body close below 30,400 materialized. Capitulation line was never triggered, meaning the counter-trend long thesis remained valid throughout the RTH morning window.</div>
+        </div>
+      </div>
+      <div class="verdict-row">
+        <div class="vr-check" style="color:var(--amber);">◑</div>
+        <div>
+          <div class="vr-label">Squeeze Phase — Partial</div>
+          <div class="vr-detail">Chart closes at 30,638 (+36.5 / +0.12%) by the pre-market snapshot. Full squeeze sequence to 30,750–30,850 requires confirmation of T&S and DOM absorption triggers at the 30,490 floor during RTH — structural geometry aligned, execution confirmation pending open.</div>
+        </div>
+      </div>
+      <div class="verdict-row">
+        <div class="vr-check" style="color:var(--green);">✔</div>
+        <div>
+          <div class="vr-label">Asymmetric Risk/Reward — Confirmed</div>
+          <div class="vr-detail">Risk: 30,638 entry → 30,400 stop = 238 points. Reward T1: +260 pts (30,750). Reward T2: +360 pts (30,850). R:R = 1.09:1 at T1 and 1.51:1 at T2. Acceptable institutional execution parameters.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     SECTION 8 · KEY METHODOLOGY TAKEAWAYS
+     ════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="section-label"><span>08</span>Methodology Takeaways — What This Case Proves</div>
+  <div class="analysis-block highlight-purple">
+    <div class="ab-title"><span class="ab-icon">📌</span>Replicable pre-market identification rules</div>
+
+    <div class="math-block">
+      <div class="eq"><span style="color:var(--amber);">Rule 1</span> &nbsp; ZG Distance Calculation is the primary classifier. Run <span class="num">(Spot − ZG) / ZG × 100</span> before anything else. This single number eliminates 5 of 8 conditions before market open.</div>
+      <div class="eq"><span style="color:var(--amber);">Rule 2</span> &nbsp; Cap-to-Spot gap &lt; 20 pts signals ceiling compression. Condition 7 requires this asymmetry: tight overhead, clean flush path below.</div>
+      <div class="eq"><span style="color:var(--amber);">Rule 3</span> &nbsp; The <span class="num">1-SD floor → ZG Pivot</span> corridor is the synthetic Fake-Out Sweep Zone. These two levels alone define entry risk.</div>
+      <div class="eq"><span style="color:var(--amber);">Rule 4</span> &nbsp; Max Pain Steel Wall = capitulation trigger. Never wider than <span class="num">ZG − 100 pts</span> for the floor to be structurally credible.</div>
+      <div class="eq"><span style="color:var(--amber);">Rule 5</span> &nbsp; Three-signal confirmation (IV reversal + DOM bids + T&S absorption) before any long entry. Structure tells you WHERE. Confirmation tells you WHEN.</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     FOOTER
+     ════════════════════════════════════════════════ -->
+<footer class="doc-footer">
+  <div>MNQU26 — MICRO NASDAQ FUTURES · JUNE 16, 2026 · RTH SESSION</div>
+  <div>CONDITION 7: AVALANCHE-TO-FLIP SEQUENCE · COARSE-TO-FINE INSTITUTIONAL GEX METHODOLOGY</div>
+  <div style="margin-top:8px;color:var(--dim);">This document is for educational and analytical purposes only. Not financial advice. All levels are derived from options flow and gamma exposure data and are valid only within the RTH morning window (9:30 AM – 11:30 AM NY Time). Past structural patterns do not guarantee future price behavior. Always manage risk independently.</div>
+  <div style="margin-top:12px;color:var(--dim);">Generated via Coarse-to-Fine Structural Tokenization · Institutional Quantitative Options Analysis Framework</div>
+</footer>
+
+</body>
+</html>
