@@ -23,7 +23,7 @@ ZG Distance = (Spot − ZG Pivot) / ZG Pivot × 100
 This single number eliminates most conditions immediately. The condition determines the trade plan before price moves.
 
 ---
-<img width="723" height="602" alt="Screenshot 2026-06-18 032136" src="https://github.com/user-attachments/assets/12eba0c3-2382-47ec-9541-01700afe37f8" />
+
 
 
 ## The 8 Conditions
