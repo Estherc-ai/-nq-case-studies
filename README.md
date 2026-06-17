@@ -3,7 +3,8 @@
 [README.md](https://github.com/user-attachments/files/29058219/README.md)
 
 # NQ Futures — Pre-Market Structural Analysis
-## 8-Condition Classification Framework
+##  THE 8 STRUCTURAL OPENING REGIMES
+(Classification based on ZG Distance, London/Asian Context, and 1-SD Status)
 
 > **Valid window: 9:30 AM – 11:30 AM New York Time only.**
 > All setups identified pre-market before price action confirms.
@@ -22,6 +23,8 @@ ZG Distance = (Spot − ZG Pivot) / ZG Pivot × 100
 This single number eliminates most conditions immediately. The condition determines the trade plan before price moves.
 
 ---
+<img width="723" height="602" alt="Screenshot 2026-06-18 032136" src="https://github.com/user-attachments/assets/12eba0c3-2382-47ec-9541-01700afe37f8" />
+
 
 ## The 8 Conditions
 
