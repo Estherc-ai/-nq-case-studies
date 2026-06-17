@@ -68,6 +68,11 @@ Price opens at or above the 1-SD upside boundary. The ceiling has already been r
 **1-SD Note:**
 Price opened above the 1-SD boundary. The level that acted as support during the overnight grind becomes resistance on the way back down. Each pullback to 1-SD gets rejected — retail trapped buyers are selling into the bounce trying to exit.
 
+The 1-Standard Deviation (1-SD) baseline plays an absolute pivotal role because it represents the mathematical boundary of normal intraday volatility expected by market-maker pricing algorithms.
+In a Condition 1-B regime, because dealers slowly prepared their inventory overnight, the 1-SD line marks the exact zone where their long futures hedges become fully optimized and fully operational, transforming it into a heavy structural inflection point.
+The 1-SD baseline serves as the ultimate dividing line for the opening trap; in a Condition 1-B setup, market makers use the space between the 1-SD line and the London High as a liquidity vacuum to capture late retail momentum breakout chasers.
+Trade Plan: Do not chase breakouts above the 1-SD line; instead, watch the opening drive spike into this zone, look for IV to halt and flatten as dealer algorithms stop buying futures, and execute your mean-reversion short trade. 
+
 **Identification:**
 - Overnight candles are small and tight
 - Price drifted up steadily over several hours
@@ -83,7 +88,29 @@ Price opened above the 1-SD boundary. The level that acted as support during the
 - Do NOT long — the trap already happened overnight
 
 ---
+## Condition 1 / 1-B:
 
+Overnight price action tape reveals clear structural signatures that differentiate a Condition 1 continuation from a Condition 1-B reversal. 
+
+
+### A Condition 1 regime presents a violent, high-volume vertical breakout that slices straight through the pre-market walls without consolidation, indicating that institutional algorithms are completely unhedged and actively chasing a runaway market.
+Condition 1 is a pure Unhedged Gamma Desert where market makers are caught completely off-guard at the 9:30 AM open with explosive short-call liabilities and zero preparation.
+In Condition 1, dealers have done zero preparation, meaning the unhedged vacuum remains wide open and any opening drive will violently squeeze shorts as market makers panic-buy futures into the open air.
+
+### A Condition 1-B regime exhibits a slow, low-volume grinding upward channel during the Asian and London sessions, showing that market makers are systematically absorbing retail liquidity and building their long hedges in a controlled manner. 
+Condition 1-B is an Institutional Inventory Pre-Hedging Scheme where dealers use the lower-volume London session to slowly buy futures and systematically balance their books before the RTH bell rings.
+In Condition 1-B, because market makers spent the London session slowly preparing and accumulating their long futures hedges, the upside inventory risk is completely spent before the open. This converts the local 1-SD baseline into a hard structural ceiling where you wait for the RTH opening drive to fail, letting IV collapse as you execute a 5-minute wick reversal short. 
+
+The Capitulation Line : The overnight invalidation line for Condition 1-B is established at the London session extreme high coordinate. If the RTH opening print or a subsequent 5-minute candle body closes cleanly above the London High, it proves the overnight exhaustion thesis is invalid and market-maker inventory risk has flared back up. Abort all short mean-reversion setups instantly and follow the trend higher, as the market has mutated from a 1-B reversal back into a pure Condition 1 structural gamma squeeze cascade.
+
+The Fake-Out Sweep Zone : 
+Condition 1-B structure absolutely requires the London session to execute that pre-market upside sweep. This overnight sweep is the exact structural mechanism that exhausts the market-maker's upside inventory risk before the RTH bell rings, shifting the session from an unhedged chase into a controlled, high-altitude compression regime.
+
+The key signature of a Condition 1-B open is the London Pre-Swept Wall where the London session high precisely taps or marginally pierces the Skew-Adjusted Call Wall on declining volume and flattening implied volatility. This overnight exhaustion converts the local 1-SD baseline into a hard supply ceiling; wait for the RTH opening bell to drive up, fail to sustain above the 1-SD line, and verify on Time & Sales that the tape decelerates before executing a 5-minute wick reversal short targeting the uncompleted downside liquidity pocket.
+1-Standard Deviation (1-SD) baseline plays an absolute pivotal role because it represents the mathematical boundary of normal intraday volatility expected by market-maker pricing algorithms.
+
+
+---
 ## Condition 2 — Zero Gamma Magnet
 ### ZG Distance within ±0.2%
 
