@@ -35,6 +35,20 @@ This single number eliminates most conditions immediately. The condition determi
 | 7. Avalanche-to-Flip Sequence                          | ZG ceiling + stacked flush targets                     | Two-phase flush: open drop → bounce trap → real avalanche                | Wait for Phase 2: do not long the Phase 1 bounce. Enter long at Steel Wall absorption.                     |
 | 8. Balanced-to-Compression                             | Orderly open, volume dries by 10:30 AM                 | Premium-burn cage, trapped price                                         | Sit on hands: no edge after 10:30 AM.                                                                      |
 
+## 8 Conditions — ZG Distance Quick Reference
+
+| # | Condition | ZG Distance | Bias |
+|---|---|---|---|
+| 1 | Stratospheric Dislocation | Above +1.5% · sudden gap | Short |
+| 1B | Stratospheric Slow Grind | Above +1.5% · slow overnight drift | Short |
+| 2 | Zero Gamma Magnet | Within ±0.2% | Range |
+| 3 | Negative Gamma Avalanche | Below ZG · negative % | Short bounces |
+| 4 | Balanced Distribution | Moderate above ZG · no walls near | Follow drift |
+| 5 | Structural Wall Flip | Just outside ZG · high volume | Ride the flip |
+| 6 | Dislocation-to-Magnet | Above +1.5% · ZG rising toward price | Neutral |
+| 7 | Avalanche-to-Flip | +0.2% to +1.5% · ceiling close above | Short then long |
+| 8 | Compression Decay | Inside positive gamma · walls converging | Sit on hands |
+
 
 ## The 8 Conditions
 
