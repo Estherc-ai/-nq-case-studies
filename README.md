@@ -23,7 +23,17 @@ ZG Distance = (Spot − ZG Pivot) / ZG Pivot × 100
 This single number eliminates most conditions immediately. The condition determines the trade plan before price moves.
 
 ---
-
+| Regime                                                 | Condition                                              | Market Behavior                                                          | Execution Play                                                                                             |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------- |
+| 1. Stratospheric Dislocation                           | High vol + vertical breakout = Dealer panic (unhedged) | Explosive gap, no stable hedge structure, momentum is expanding          | Short the rip unless Cap breaks. If the Cap Line breaks on a 5-min body close, abort shorts and flip long. |
+| 1-B. Stratospheric Exhaustion / Pre-Hedged Dislocation | Low vol + grind + London sweep = Dealer prep (hedged)  | Slow upward drift, inventory already built, upside risk spent before RTH | Short the failure. Use the Cap Line as invalidation; if price reclaims and holds above it, stop out.       |
+| 2. Zero Gamma Magnet                                   | Spot within ±0.2% of ZG                                | Pinned, premium decay                                                    | Range play: fade Skew Call Wall (resistance) and Skew Put Wall (support).                                  |
+| 3. Negative Gamma Avalanche                            | Spot below ZG near exposed Put Wall                    | Self-amplifying drops (short gamma)                                      | Short momentum: ZG is ceiling. Target 1-SD, then Skew Put, then 1DTE Matrix.                               |
+| 4. Balanced Distribution                               | Inside positive gamma, calm volume                     | Smooth, orderly drift                                                    | Trend follow: low volatility, no engineered moves.                                                         |
+| 5. Structural Wall Flip                                | Spot just outside ZG + high volume                     | Polarity inversion                                                       | Trade the flip: wait for a 5-min body close through ZG, then ride to the next wall.                        |
+| 6. Dislocation-to-Magnet Mutation                      | Wild gap + ZG migrating toward price                   | Gap absorbed, pinned high                                                | Sideways burn: 1DTE Matrix Call = hard cap, ZG = dynamic floor.                                            |
+| 7. Avalanche-to-Flip Sequence                          | ZG ceiling + stacked flush targets                     | Two-phase flush: open drop → bounce trap → real avalanche                | Wait for Phase 2: do not long the Phase 1 bounce. Enter long at Steel Wall absorption.                     |
+| 8. Balanced-to-Compression                             | Orderly open, volume dries by 10:30 AM                 | Premium-burn cage, trapped price                                         | Sit on hands: no edge after 10:30 AM.                                                                      |
 
 
 ## The 8 Conditions
@@ -93,14 +103,17 @@ Trade Plan: Do not chase breakouts above the 1-SD line; instead, watch the openi
 ---
 ## Condition 1 / 1-B:
 
-Overnight price action tape reveals clear structural signatures that differentiate a Condition 1 continuation from a Condition 1-B reversal. 
+Overnight price action tape reveals clear structural signatures that differentiate a Condition 1 continuation / reversal from a Condition 1-B reversal. 
 
 
 ### A Condition 1 regime presents a violent, high-volume vertical breakout that slices straight through the pre-market walls without consolidation, indicating that institutional algorithms are completely unhedged and actively chasing a runaway market.
 Condition 1 is a pure Unhedged Gamma Desert where market makers are caught completely off-guard at the 9:30 AM open with explosive short-call liabilities and zero preparation.
 In Condition 1, dealers have done zero preparation, meaning the unhedged vacuum remains wide open and any opening drive will violently squeeze shorts as market makers panic-buy futures into the open air.
+Condition 1 is the overarching structural template, while "Continuation" and "Reversal" are the two execution paths dictated completely by the Capitulation Line, overnight volume, and tape speed. A slow overnight upward grind is the definitive signature that tips you off to a reversal setup because it proves market makers had the critical asset they need most—time—to quietly accumulate long futures and pre-hedge their liabilities before the RTH bell rings.
+
 
 ### A Condition 1-B regime exhibits a slow, low-volume grinding upward channel during the Asian and London sessions, showing that market makers are systematically absorbing retail liquidity and building their long hedges in a controlled manner. 
+The slow overnight grind is only true for the Reversal path. In a true Continuation chase, the overnight action is a violent, high-volume vertical spike that leaves market makers completely unhedged and panicking. For the Reversal path, because dealers slowly prepared during the London session, the local 1-SD baseline operates as a hard supply ceiling; you simply wait for the RTH open to push up, fail below the London high, and print a 5-minute wick rejection to short the market back down.
 Condition 1-B is an Institutional Inventory Pre-Hedging Scheme where dealers use the lower-volume London session to slowly buy futures and systematically balance their books before the RTH bell rings.
 In Condition 1-B, because market makers spent the London session slowly preparing and accumulating their long futures hedges, the upside inventory risk is completely spent before the open. This converts the local 1-SD baseline into a hard structural ceiling where you wait for the RTH opening drive to fail, letting IV collapse as you execute a 5-minute wick reversal short. 
 
