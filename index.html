@@ -3,329 +3,382 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta property="og:title" content="NQ Futures Pre-Market Structural Analysis">
-<meta property="og:description" content="Institutional GEX / Options-Flow Analysis · VXN Two-Model Architecture · NDX IV Variance Framework">
-<meta property="og:url" content="https://estherc-ai.github.io/-nq-case-studies/">
 <title>NQ Futures — Pre-Market Structural Analysis</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@300;400;500;600&display=swap');
+:root {
+  --bg: #0b0c0f;
+  --bg2: #13151a;
+  --bg3: #1a1d24;
+  --border: #242731;
+  --border2: #2e3240;
+  --text: #e4e2db;
+  --muted: #7a7d8a;
+  --red: #ef4444;
+  --red-bg: rgba(239,68,68,.10);
+  --green: #22c55e;
+  --green-bg: rgba(34,197,94,.10);
+  --amber: #f59e0b;
+  --amber-bg: rgba(245,158,11,.10);
+  --blue: #60a5fa;
+  --blue-bg: rgba(96,165,250,.10);
+  --purple: #a78bfa;
+  --purple-bg: rgba(167,139,250,.10);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:14px;line-height:1.6}
+a{color:inherit;text-decoration:none}
 
-  :root {
-    --bg: #080b10;
-    --surface: #0e1219;
-    --border: #1c2330;
-    --border-bright: #2a3445;
-    --text: #c8d4e8;
-    --text-dim: #5a6a82;
-    --text-muted: #3a4a5e;
-    --accent: #4fc3f7;
-    --accent-dim: #1a4a5e;
-    --green: #4caf82;
-    --green-dim: #0f2a1e;
-    --red: #e05a5a;
-    --red-dim: #2a0f0f;
-    --amber: #f0a840;
-    --amber-dim: #2a1a00;
-    --purple: #9b8aff;
-    --purple-dim: #1a1530;
-    --mono: 'IBM Plex Mono', monospace;
-    --sans: 'Inter', sans-serif;
-  }
+.nav{padding:14px 32px;border-bottom:1px solid var(--border);font-size:12px;color:var(--muted)}
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+.hero{max-width:860px;margin:0 auto;padding:56px 32px 40px}
+.hero h1{font-size:30px;font-weight:700;letter-spacing:-.02em;margin-bottom:8px;line-height:1.2}
+.hero h1 span{color:var(--muted);font-weight:400}
+.hero-sub{font-size:13px;color:var(--muted);margin-bottom:24px;line-height:1.7;max-width:600px}
+.badge-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px}
+.badge{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:3px;border:1px solid}
+.br{color:var(--red);border-color:var(--red);background:var(--red-bg)}
+.bg{color:var(--green);border-color:var(--green);background:var(--green-bg)}
+.ba{color:var(--amber);border-color:var(--amber);background:var(--amber-bg)}
+.bb{color:var(--blue);border-color:var(--blue);background:var(--blue-bg)}
+.bp{color:var(--purple);border-color:var(--purple);background:var(--purple-bg)}
+.bd{color:var(--muted);border-color:var(--border2)}
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--sans);
-    font-size: 14px;
-    line-height: 1.6;
-    min-height: 100vh;
-  }
+.status-row{display:flex;gap:20px;flex-wrap:wrap}
+.status-item{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:14px 20px;min-width:120px}
+.status-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:4px}
+.status-val{font-size:22px;font-weight:700;font-variant-numeric:tabular-nums}
+.status-sub{font-size:11px;color:var(--muted);margin-top:2px}
 
-  /* ── HEADER ── */
-  header {
-    border-bottom: 1px solid var(--border);
-    padding: 32px 40px 28px;
-    position: relative;
-    overflow: hidden;
-  }
+.content{max-width:860px;margin:0 auto;padding:0 32px 64px}
+.section-hdr{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:40px 0 16px;padding-bottom:8px;border-bottom:1px solid var(--border)}
 
-  header::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--accent) 0%, var(--purple) 50%, transparent 100%);
-  }
+.case-card{display:block;background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:20px 24px;margin-bottom:12px;transition:border-color .15s}
+.case-card:hover{border-color:var(--border2)}
+.case-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:10px;flex-wrap:wrap}
+.case-date{font-size:11px;color:var(--muted);font-weight:500;letter-spacing:.02em;padding-top:2px}
+.case-badges{display:flex;flex-wrap:wrap;gap:5px}
+.case-title{font-size:15px;font-weight:600;letter-spacing:-.01em;margin-bottom:7px}
+.case-desc{font-size:12px;color:var(--muted);line-height:1.65;margin-bottom:14px;max-width:680px}
+.case-levels{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.case-level{background:var(--bg3);border:1px solid var(--border);border-radius:4px;padding:5px 10px;font-size:11px;font-variant-numeric:tabular-nums}
+.case-level .lbl{color:var(--muted);margin-right:6px}
+.case-arrow{font-size:11px;color:var(--muted);font-weight:500}
+.case-card:hover .case-arrow{color:var(--text)}
 
-  .header-eyebrow {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.18em;
-    color: var(--accent);
-    text-transform: uppercase;
-    margin-bottom: 12px;
-  }
+.meth-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:10px}
+.meth-item{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:14px 16px}
+.meth-icon{font-size:18px;margin-bottom:6px}
+.meth-title{font-size:12px;font-weight:600;margin-bottom:4px}
+.meth-desc{font-size:11px;color:var(--muted);line-height:1.5}
 
-  header h1 {
-    font-size: 26px;
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    color: #e8f0fc;
-    margin-bottom: 6px;
-    line-height: 1.2;
-  }
+.regime-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.regime-item{background:var(--bg2);border:1px solid var(--border);border-radius:5px;padding:12px 14px}
+.regime-cond{font-size:11px;font-weight:700;color:var(--muted);margin-bottom:3px;letter-spacing:.05em}
+.regime-name{font-size:12px;font-weight:600;margin-bottom:3px}
+.regime-rule{font-size:10px;color:var(--muted)}
 
-  header p {
-    font-size: 13px;
-    color: var(--text-dim);
-    font-weight: 300;
-  }
+footer{border-top:1px solid var(--border);padding:24px 32px;text-align:center;font-size:11px;color:var(--muted);line-height:1.7}
 
-  .header-meta {
-    display: flex;
-    gap: 20px;
-    margin-top: 18px;
-    flex-wrap: wrap;
-  }
-
-  .meta-chip {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    padding: 4px 10px;
-    border-radius: 3px;
-    border: 1px solid var(--border-bright);
-    color: var(--text-dim);
-    background: var(--surface);
-  }
-
-  .meta-chip.accent { border-color: var(--accent-dim); color: var(--accent); }
-  .meta-chip.purple { border-color: var(--purple-dim); color: var(--purple); }
-  .meta-chip.amber  { border-color: var(--amber-dim);  color: var(--amber);  }
-
-  /* ── WARN BOX ── */
-  .warn-box {
-    margin: 0 40px;
-    padding: 10px 16px;
-    background: #120a00;
-    border: 1px solid #3a2000;
-    border-left: 3px solid var(--amber);
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--amber);
-    letter-spacing: 0.04em;
-  }
-
-  /* ── MAIN GRID ── */
-  main {
-    padding: 32px 40px 60px;
-    max-width: 1100px;
-  }
-
-  .section-label {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.16em;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    margin-bottom: 16px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 14px;
-    margin-bottom: 48px;
-  }
-
-  /* ── CARD ── */
-  .card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 20px;
-    text-decoration: none;
-    display: block;
-    transition: border-color 0.15s, background 0.15s;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    opacity: 0;
-    transition: opacity 0.15s;
-  }
-
-  .card:hover {
-    border-color: var(--border-bright);
-    background: #111620;
-  }
-
-  .card:hover::before { opacity: 1; }
-
-  .card.short::before  { background: var(--red); }
-  .card.long::before   { background: var(--green); }
-  .card.mixed::before  { background: linear-gradient(90deg, var(--red), var(--green)); }
-  .card.neutral::before{ background: var(--accent); }
-
-  .card-date {
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--text-muted);
-    letter-spacing: 0.1em;
-    margin-bottom: 8px;
-  }
-
-  .card-condition {
-    font-family: var(--mono);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    margin-bottom: 6px;
-    padding: 3px 8px;
-    border-radius: 2px;
-    display: inline-block;
-  }
-
-  .card-condition.short  { background: var(--red-dim);    color: var(--red);    border: 1px solid #4a1010; }
-  .card-condition.long   { background: var(--green-dim);  color: var(--green);  border: 1px solid #0f3a20; }
-  .card-condition.mixed  { background: var(--purple-dim); color: var(--purple); border: 1px solid #2a2050; }
-  .card-condition.neutral{ background: var(--accent-dim); color: var(--accent); border: 1px solid #1a3a50; }
-
-  .card-title {
-    font-size: 14px;
-    font-weight: 500;
-    color: #d0dcf0;
-    margin: 8px 0 4px;
-    line-height: 1.3;
-  }
-
-  .card-arrow {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--text-muted);
-    margin-top: 12px;
-    transition: color 0.15s;
-  }
-
-  .card:hover .card-arrow { color: var(--accent); }
-
-  /* ── FOOTER ── */
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 20px 40px;
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--text-muted);
-    letter-spacing: 0.08em;
-    display: flex;
-    gap: 24px;
-    flex-wrap: wrap;
-  }
+@media(max-width:600px){
+  .hero,.nav,.content{padding-left:16px;padding-right:16px}
+  .meth-grid{grid-template-columns:1fr 1fr}
+  .regime-grid{grid-template-columns:1fr 1fr}
+  .status-row{gap:10px}
+}
 </style>
 </head>
 <body>
 
-<header>
-  <div class="header-eyebrow">Institutional Research · Educational Use Only</div>
-  <h1>NQ Futures — Pre-Market Structural Analysis</h1>
-  <p>GEX / Options-Flow Analysis &nbsp;·&nbsp; VXN Two-Model Architecture &nbsp;·&nbsp; NDX IV Variance Framework</p>
-  <div class="header-meta">
-    <span class="meta-chip accent">CBOE:VXN · CME:NQ</span>
-    <span class="meta-chip purple">Sticky-Strike Jump Diffusion + Absolute Floor Local Vol</span>
-    <span class="meta-chip amber">Window: 9:30–11:30 AM NY Only</span>
-  </div>
-</header>
+<nav class="nav">Research Portfolio</nav>
 
-<div class="warn-box">
-  ⚠ EDUCATIONAL PURPOSES ONLY · NOT FINANCIAL ADVICE · Valid window 9:30–11:30 AM NY Time
+<div class="hero">
+  <div class="badge-row">
+    <span class="badge bg">Pre-Market ID</span>
+    <span class="badge bd">GEX Framework</span>
+    <span class="badge bd">Options Mechanics</span>
+    <span class="badge bd">RTH Morning Only</span>
+    <span class="badge bd">NQ / MNQ Futures</span>
+  </div>
+  <h1>NQ Futures <span>Pre-Market Structural Analysis</span></h1>
+  <p class="hero-sub">
+    A systematic study of NQ/MNQ futures opening regimes using options gamma exposure mechanics,
+    Max Pain gravitational analysis, and skew-adjusted wall identification.
+    All setups identified pre-market before price action confirms.
+    Valid window: 9:30 AM – 11:30 AM New York Time.
+  </p>
+  <div class="status-row">
+    <div class="status-item">
+      <div class="status-label">Case Studies</div>
+      <div class="status-val">9</div>
+      <div class="status-sub">Published · Growing</div>
+    </div>
+    <div class="status-item">
+      <div class="status-label">Pre-Market ID Rate</div>
+      <div class="status-val">30 / 30</div>
+      <div class="status-sub">Correct classifications</div>
+    </div>
+  </div>
 </div>
 
-<main>
+<div class="content">
 
-  <div class="section-label">Case Studies — June 2026</div>
-
-  <div class="grid">
-
-    <a class="card long mixed" href="2026-06-16_C7_Avalanche-Flip.html">
-      <div class="card-date">2026-06-16 · Monday</div>
-      <span class="card-condition mixed">C7 · Avalanche Flip</span>
-      <div class="card-title">C7 Avalanche Flip</div>
-      <div class="card-arrow">Open case study →</div>
-    </a>
-
-    <a class="card short" href="2026-06-17_C1B_Stratospheric-Slow-Grind.html">
-      <div class="card-date">2026-06-17 · Tuesday</div>
-      <span class="card-condition short">C1B · Stratospheric</span>
-      <div class="card-title">Stratospheric Slow Grind</div>
-      <div class="card-arrow">Open case study →</div>
-    </a>
-
-    <a class="card short" href="2026-06-18_C1_Stratospheric Dislocation Breakout Mutation.html">
-      <div class="card-date">2026-06-18 · Wednesday</div>
-      <span class="card-condition short">C1 · Stratospheric</span>
-      <div class="card-title">Stratospheric Dislocation Breakout Mutation</div>
-      <div class="card-arrow">Open case study →</div>
-    </a>
-
-    <a class="card neutral" href="2026-06-22_C6_Multi-Variable-Dislocation.html">
-      <div class="card-date">2026-06-22 · Monday</div>
-      <span class="card-condition neutral">C6 · Dislocation</span>
-      <div class="card-title">Multi-Variable Dislocation</div>
-      <div class="card-arrow">Open case study →</div>
-    </a>
-
-    <a class="card mixed" href="2026-06-23_C3-C7_Mutation-Snapback.html">
-      <div class="card-date">2026-06-23 · Tuesday</div>
-      <span class="card-condition mixed">C3→C7 · Mutation</span>
-      <div class="card-title">Mutation Snapback</div>
-      <div class="card-arrow">Open case study →</div>
-    </a>
-
-    <a class="card long" href="2026-06-24_C7_Violent-Sweep-Launchpad.html">
-      <div class="card-date">2026-06-24 · Wednesday</div>
-      <span class="card-condition long">C7 · Launchpad</span>
-      <div class="card-title">Violent Sweep Launchpad</div>
-      <div class="card-arrow">Open case study →</div>
-    </a>
-
-    <a class="card short" href="2026-06-25_C1B_Stratospheric-Slow-Grind.html">
-      <div class="card-date">2026-06-25 · Thursday</div>
-      <span class="card-condition short">C1B · Stratospheric</span>
-      <div class="card-title">Stratospheric Slow Grind</div>
-      <div class="card-arrow">Open case study →</div>
-    </a>
-
-    <a class="card mixed" href="2026-06-26_C3_ mutation vxn outside range.html">
-      <div class="card-date">2026-06-26 · Friday</div>
-      <span class="card-condition mixed">C3 · Mutation</span>
-      <div class="card-title">C3 Mutation — VXN Outside Range</div>
-      <div class="card-arrow">Open case study →</div>
-    </a>
-
-    <a class="card neutral" href="2026-06-29-c6-multi variable dislocation.html">
-      <div class="card-date">2026-06-29 · Monday</div>
-      <span class="card-condition neutral">C6 · Dislocation</span>
-      <div class="card-title">Multi-Variable Dislocation</div>
-      <div class="card-arrow">Open case study →</div>
-    </a>
-
+  <div class="section-hdr">01&nbsp;&nbsp;Methodology</div>
+  <div class="meth-grid">
+    <div class="meth-item"><div class="meth-icon">📐</div><div class="meth-title">Coarse-to-Fine</div><div class="meth-desc">Macro structural gravity first. Micro execution levels second.</div></div>
+    <div class="meth-item"><div class="meth-icon">🧲</div><div class="meth-title">Max Pain Mechanics</div><div class="meth-desc">Max Pain attracts price. Walls reject price. Both identified pre-market.</div></div>
+    <div class="meth-item"><div class="meth-icon">🏷️</div><div class="meth-title">8-Regime Classification</div><div class="meth-desc">Sequential decision tree. ZG distance eliminates most conditions immediately.</div></div>
+    <div class="meth-item"><div class="meth-icon">🧱</div><div class="meth-title">Steel Wall ID</div><div class="meth-desc">Max Pain + 1DTE Matrix convergence. Invisible on live GEX. Only visible pre-market.</div></div>
+    <div class="meth-item"><div class="meth-icon">⏱️</div><div class="meth-title">2-Hour Window</div><div class="meth-desc">Skew-adjusted walls lose force after 11:30 AM NY. Strict validity window.</div></div>
+    <div class="meth-item"><div class="meth-icon">📊</div><div class="meth-title">NDX IV Variance</div><div class="meth-desc">Blended term structure IV calculates intraday 1-SD and 2-SD boundaries.</div></div>
   </div>
 
-</main>
+  <div class="section-hdr">02&nbsp;&nbsp;Case Studies</div>
+
+  <!-- JUN 29 2026 -->
+  <a class="case-card" href="2026-06-29-c6-multi variable dislocation.html">
+    <div class="case-top">
+      <div class="case-date">Monday June 29, 2026 · RTH 9:30 AM – 11:30 AM NY</div>
+      <div class="case-badges">
+        <span class="badge ba">Condition 6</span>
+        <span class="badge bg">+2σ Exact 32.03 ✅</span>
+        <span class="badge bg">ZG 29,360 Approach ✅</span>
+        <span class="badge bd">Monday · Independence Day Week</span>
+      </div>
+    </div>
+    <div class="case-title">C6 Multi-Variable Dislocation — VXN +2σ Exhaustion Confirmed</div>
+    <div class="case-desc">
+      RTH opened at 29,773 with VXN neutral at 30.73 (below anchor). VXN session high reached exactly 32.03 — the pre-calculated +2σ upper level — confirming Jump Diffusion exhaustion. NQ session high 29,837 rejected Asian 1-SD upper 29,713. Session low 29,276 approached ZG 29,360 simultaneously with VXN spike. 7DTE input used Jul 07 (8DTE) — Jul 06 σ:0.00 Independence Day.
+    </div>
+    <div class="case-levels">
+      <div class="case-level"><span class="lbl">RTH Open</span><span style="color:var(--amber);">29,773</span></div>
+      <div class="case-level"><span class="lbl">VXN +2σ Hit</span><span style="color:var(--green);">32.03 ✅</span></div>
+      <div class="case-level"><span class="lbl">Session High</span><span style="color:var(--red);">29,837</span></div>
+      <div class="case-level"><span class="lbl">Session Low</span><span style="color:var(--green);">29,276</span></div>
+    </div>
+    <div class="case-arrow">Open case study →</div>
+  </a>
+
+  <!-- JUN 26 2026 -->
+  <a class="case-card" href="2026-06-26_C3_ mutation vxn outside range.html">
+    <div class="case-top">
+      <div class="case-date">Friday June 26, 2026 · RTH 9:30 AM – 11:30 AM NY</div>
+      <div class="case-badges">
+        <span class="badge bg">C3 → C7 Mutation</span>
+        <span class="badge bg">VXN Outside Range 33.40+ ✅</span>
+        <span class="badge bg">1-SD Lower 29,182 Exact ✅</span>
+        <span class="badge ba">Two-Model Architecture</span>
+        <span class="badge bd">Friday · Max Pain Gravity</span>
+      </div>
+    </div>
+    <div class="case-title">C3 Mutation — VXN Outside Statistical Range · Microsecond Convergence</div>
+    <div class="case-desc">
+      RTH opened at 29,442 — pinned at ZG 29,440 — with VXN already elevated at approximately 32.29 (inside the +2σ zone) at the bell. At 9:34 AM, VXN spiked to 33.40+, exceeding the Jump Diffusion +2σ ceiling of 32.23 and sweeping the prior session NY AM high. Simultaneously, NQ touched the pre-calculated Asian 1-SD lower at 29,182. 406-point recovery in one candle. Friday Max Pain gravity confirmed as session target.
+    </div>
+    <div class="case-levels">
+      <div class="case-level"><span class="lbl">RTH Open</span><span style="color:var(--amber);">29,442</span></div>
+      <div class="case-level"><span class="lbl">VXN Spike</span><span style="color:var(--red);">33.40+</span></div>
+      <div class="case-level"><span class="lbl">1-SD Floor</span><span style="color:var(--green);">29,182 ✅</span></div>
+      <div class="case-level"><span class="lbl">Recovery</span><span style="color:var(--green);">406 pts ✅</span></div>
+      <div class="case-level"><span class="lbl">Max Pain</span><span style="color:var(--green);">29,460 ✅</span></div>
+    </div>
+    <div class="case-arrow">Open case study →</div>
+  </a>
+
+  <!-- JUN 25 2026 -->
+  <a class="case-card" href="2026-06-25_C1B_Stratospheric-Slow-Grind.html">
+    <div class="case-top">
+      <div class="case-date">Thursday June 25, 2026 · RTH 9:30 AM – 11:30 AM NY</div>
+      <div class="case-badges">
+        <span class="badge br">Condition 1B</span>
+        <span class="badge bg">VXN +2σ 32.86 Exact ✅</span>
+        <span class="badge bg">Session Low 29,312 Exact ✅</span>
+        <span class="badge ba">Two-Model Architecture</span>
+      </div>
+    </div>
+    <div class="case-title">Stratospheric Slow Grind — C1B Flush · VXN Two-Model Validated</div>
+    <div class="case-desc">
+      RTH opened at 30,152 (+2.59% above ZG 29,390) with VXN simultaneously at its −1σ level (29.39) — the inverse mirror confirmed NQ was at its session high the moment the bell rang. One violent candle flushed 840 pts to 29,312, where VXN hit exactly 32.86 (+2σ Panic Ceiling). Session low matched the Asian 1-SD lower and the exact Jun 24 NY PM low simultaneously.
+    </div>
+    <div class="case-levels">
+      <div class="case-level"><span class="lbl">RTH Open</span><span style="color:var(--red);">30,152</span></div>
+      <div class="case-level"><span class="lbl">Session Low</span><span style="color:var(--green);">29,312 ✅</span></div>
+      <div class="case-level"><span class="lbl">VXN +2σ Hit</span><span style="color:var(--green);">32.86 ✅</span></div>
+      <div class="case-level"><span class="lbl">VXN −1σ at Open</span><span style="color:var(--blue);">29.39</span></div>
+    </div>
+    <div class="case-arrow">Open case study →</div>
+  </a>
+
+  <!-- JUN 24 2026 -->
+  <a class="case-card" href="2026-06-24_C7_Violent-Sweep-Launchpad.html">
+    <div class="case-top">
+      <div class="case-date">Wednesday June 24, 2026 · RTH 9:30 AM – 11:30 AM NY</div>
+      <div class="case-badges">
+        <span class="badge bp">Condition 7 · Type 2</span>
+        <span class="badge bg">Stack Max Pain</span>
+        <span class="badge bg">Morning High 29,907</span>
+        <span class="badge ba">VIX Dual Exhaustion</span>
+      </div>
+    </div>
+    <div class="case-title">Condition 7 Version A Type 2 — Violent Single-Candle Sweep · Stack Max Pain Launchpad</div>
+    <div class="case-desc">
+      RTH opened at 29,712 (+0.58% above ZG 29,540) with 0DTE + 1DTE + Weekly Max Pain all converging at 29,613–29,703 directly below. One 15-min candle swept ZG + 1-SD + Max Pain box simultaneously as wicks. Morning high 29,907.50 — within 6.50 pts of pre-market σB calculation (29,901).
+    </div>
+    <div class="case-levels">
+      <div class="case-level"><span class="lbl">RTH Open</span><span style="color:var(--red);">29,712</span></div>
+      <div class="case-level"><span class="lbl">ZG Sweep</span><span style="color:var(--green);">29,540 ✅</span></div>
+      <div class="case-level"><span class="lbl">Morning High</span><span style="color:var(--green);">29,907.50</span></div>
+      <div class="case-level"><span class="lbl">VIX Floor</span><span style="color:var(--green);">18.10 ✅</span></div>
+    </div>
+    <div class="case-arrow">Open case study →</div>
+  </a>
+
+  <!-- JUN 23 2026 -->
+  <a class="case-card" href="2026-06-23_C3-C7_Mutation-Snapback.html">
+    <div class="case-top">
+      <div class="case-date">Monday June 23, 2026 · RTH 9:30 AM – 11:30 AM NY</div>
+      <div class="case-badges">
+        <span class="badge br">Condition 3 ──► 7</span>
+        <span class="badge bg">1-SD Floor Held</span>
+        <span class="badge bg">VIX Sweep Confirmed</span>
+        <span class="badge bd">News 9:45 AM</span>
+      </div>
+    </div>
+    <div class="case-title">Condition 3 ──► Condition 7 Intraday Mutation — Short-Squeeze Reflex Snapback</div>
+    <div class="case-desc">
+      RTH opened at 29,659 — −0.81% below ZG 29,900 — inside an unhedged downside vacuum. Price dropped to 29,616 (1-SD floor) and VIX swept 20.50 to 20.53 in the same candle. Avalanche exhausted. Mechanical short-squeeze reflex fired instantly. News at 9:45 AM acted as accelerant.
+    </div>
+    <div class="case-levels">
+      <div class="case-level"><span class="lbl">RTH Open</span><span style="color:var(--red);">29,659</span></div>
+      <div class="case-level"><span class="lbl">1-SD Floor</span><span style="color:var(--green);">29,616 ✅</span></div>
+      <div class="case-level"><span class="lbl">VIX Sweep</span><span style="color:var(--green);">20.53 ✅</span></div>
+      <div class="case-level"><span class="lbl">Max Pain</span><span style="color:var(--green);">30,050 ✅</span></div>
+    </div>
+    <div class="case-arrow">Open case study →</div>
+  </a>
+
+  <!-- JUN 22 2026 -->
+  <a class="case-card" href="2026-06-22_C6_Multi-Variable-Dislocation.html">
+    <div class="case-top">
+      <div class="case-date">Monday June 22, 2026 · RTH 9:30 AM – 11:30 AM NY</div>
+      <div class="case-badges">
+        <span class="badge ba">Condition 6</span>
+        <span class="badge bg">2-SD Extension</span>
+        <span class="badge bg">VIX 16.50 Floor Reversal</span>
+        <span class="badge bd">to 1-SD</span>
+      </div>
+    </div>
+    <div class="case-title">Multi-Variable Dislocation — 2-SD Extension and Reversal</div>
+    <div class="case-desc">
+      RTH opened at 30,822 (+1.06% above ZG) with 0DTE Max Pain at 30,150 and 1DTE at 30,050 deep below. Price broke through Weekly Call Ceiling 30,850 and extended to 30,967 — within the 2-SD RTH variance band. VIX reached the 16.50 IV exhaustion floor at the apex.
+    </div>
+    <div class="case-levels">
+      <div class="case-level"><span class="lbl">RTH Open</span><span style="color:var(--red);">30,822</span></div>
+      <div class="case-level"><span class="lbl">High</span><span style="color:var(--green);">30,967</span></div>
+      <div class="case-level"><span class="lbl">VIX Floor</span><span style="color:var(--green);">16.50 ✅</span></div>
+      <div class="case-level"><span class="lbl">1-SD Reversal</span><span style="color:var(--green);">30,680 ✅</span></div>
+    </div>
+    <div class="case-arrow">Open case study →</div>
+  </a>
+
+  <!-- JUN 18 2026 -->
+  <a class="case-card" href="2026-06-18_C1_Stratospheric Dislocation Breakout Mutation.html">
+    <div class="case-top">
+      <div class="case-date">Thursday June 18, 2026 · RTH 9:30 AM – 11:30 AM NY</div>
+      <div class="case-badges">
+        <span class="badge br">Condition 1</span>
+        <span class="badge bg">Post-FOMC Breakout</span>
+        <span class="badge bg">Cap Line Held</span>
+        <span class="badge bd">London Fix Trade</span>
+      </div>
+    </div>
+    <div class="case-title">Stratospheric Dislocation — Post-FOMC Breakout Mutation</div>
+    <div class="case-desc">
+      June 17 FOMC flushed price to Weekly Max Pain 30,000 and ZG 29,990 — forming the structural floor. June 18 opened at 30,594 (+2.01% above ZG) in a Gamma Desert with zero overhead resistance. London fix at 11:00 AM provided the clean structural entry at Cap Line 30,515.
+    </div>
+    <div class="case-levels">
+      <div class="case-level"><span class="lbl">RTH Open</span><span style="color:var(--red);">30,594</span></div>
+      <div class="case-level"><span class="lbl">Retest</span><span style="color:var(--blue);">30,400</span></div>
+      <div class="case-level"><span class="lbl">Cap Line</span><span style="color:var(--green);">30,515 ✅</span></div>
+      <div class="case-level"><span class="lbl">Session High</span><span style="color:var(--green);">30,692+</span></div>
+    </div>
+    <div class="case-arrow">Open case study →</div>
+  </a>
+
+  <!-- JUN 17 2026 -->
+  <a class="case-card" href="2026-06-17_C1B_Stratospheric-Slow-Grind.html">
+    <div class="case-top">
+      <div class="case-date">Wednesday June 17, 2026 · RTH 9:30 AM – 11:30 AM NY</div>
+      <div class="case-badges">
+        <span class="badge br">Condition 1B</span>
+        <span class="badge bg">Pre-Market ID ✅</span>
+        <span class="badge bd">FOMC Day</span>
+      </div>
+    </div>
+    <div class="case-title">Stratospheric Dislocation — Slow Overnight Grind</div>
+    <div class="case-desc">
+      Overnight price slowly ground up in a tight range until tagging the Skew Adjusted Wall at 30,583. RTH opened just above the 1-SD boundary at 30,510, confirming Condition 1B at +1.72% above ZG. 1DTE Matrix at 30,290 reached. Max Pain 30,100 reached post-FOMC.
+    </div>
+    <div class="case-levels">
+      <div class="case-level"><span class="lbl">Skew Wall</span><span style="color:var(--red);">30,583</span></div>
+      <div class="case-level"><span class="lbl">1-SD Open</span><span style="color:var(--blue);">30,510</span></div>
+      <div class="case-level"><span class="lbl">Matrix T1</span><span style="color:var(--green);">30,290 ✅</span></div>
+      <div class="case-level"><span class="lbl">Max Pain</span><span style="color:var(--green);">30,100 ✅</span></div>
+    </div>
+    <div class="case-arrow">Open case study →</div>
+  </a>
+
+  <!-- JUN 16 2026 -->
+  <a class="case-card" href="2026-06-16_C7_Avalanche-Flip.html">
+    <div class="case-top">
+      <div class="case-date">Tuesday June 16, 2026 · RTH 9:30 AM – 11:30 AM NY</div>
+      <div class="case-badges">
+        <span class="badge ba">Condition 7</span>
+        <span class="badge bg">Pre-Market ID ✅</span>
+        <span class="badge bg">7/7 Levels Correct</span>
+        <span class="badge bg">Steel Wall Held</span>
+      </div>
+    </div>
+    <div class="case-title">Avalanche-to-Flip Sequence — Two-Phase Engineered Flush</div>
+    <div class="case-desc">
+      London session tagged the Cap Line at 30,950 before handing off to New York. NY opened at 30,886 — trapped between the Call Wall and Cap Line. Two-phase flush to Steel Wall at 30,400. All 7 structural levels performed exactly as pre-market framework predicted.
+    </div>
+    <div class="case-levels">
+      <div class="case-level"><span class="lbl">London High</span><span style="color:var(--red);">30,950</span></div>
+      <div class="case-level"><span class="lbl">NY Open</span><span style="color:var(--blue);">30,886</span></div>
+      <div class="case-level"><span class="lbl">Steel Wall</span><span style="color:var(--green);">30,400 ✅</span></div>
+      <div class="case-level"><span class="lbl">Flush</span><span style="color:var(--green);">−486 pts</span></div>
+    </div>
+    <div class="case-arrow">Open case study →</div>
+  </a>
+
+  <div class="section-hdr">03&nbsp;&nbsp;8-Regime Classification Reference</div>
+  <div class="regime-grid">
+    <div class="regime-item"><div class="regime-cond">Condition 1 / 1B</div><div class="regime-name">Stratospheric Dislocation</div><div class="regime-rule">ZG Distance above +1.5%</div></div>
+    <div class="regime-item"><div class="regime-cond">Condition 2</div><div class="regime-name">Zero Gamma Magnet</div><div class="regime-rule">ZG Distance within ±0.2%</div></div>
+    <div class="regime-item"><div class="regime-cond">Condition 3</div><div class="regime-name">Negative Gamma Avalanche</div><div class="regime-rule">Spot BELOW ZG Pivot</div></div>
+    <div class="regime-item"><div class="regime-cond">Condition 4</div><div class="regime-name">Balanced Distribution</div><div class="regime-rule">Comfortably inside positive gamma</div></div>
+    <div class="regime-item"><div class="regime-cond">Condition 5</div><div class="regime-name">Structural Wall Flip</div><div class="regime-rule">High volume wall crossover</div></div>
+    <div class="regime-item"><div class="regime-cond">Condition 6</div><div class="regime-name">Multi-Variable Dislocation</div><div class="regime-rule">+0.8% to +1.2% · Heavy anchors below</div></div>
+    <div class="regime-item"><div class="regime-cond">Condition 7</div><div class="regime-name">Avalanche-to-Flip</div><div class="regime-rule">+0.2% to +1.5% above ZG</div></div>
+    <div class="regime-item"><div class="regime-cond">Condition 8</div><div class="regime-name">Compression Decay</div><div class="regime-rule">Walls converging · volume dying</div></div>
+  </div>
+
+  <div class="section-hdr">04&nbsp;&nbsp;Disclaimer</div>
+  <p style="font-size:12px;color:var(--muted);line-height:1.8;max-width:680px;">
+    All case studies are for educational and analytical purposes only. Not financial advice.
+    All structural levels are derived from options flow and gamma exposure data.
+    The pre-market framework is valid only within the RTH morning window
+    (9:30 AM – 11:30 AM New York Time). Past structural identification accuracy
+    does not guarantee future results. Always manage risk independently.
+  </p>
+
+</div>
 
 <footer>
-  <span>NQ Pre-Market Framework · VXN Two-Model Architecture</span>
-  <span>Educational use only · Not financial advice</span>
-  <span>estherc-ai.github.io/-nq-case-studies</span>
+  <div>Coarse-to-Fine Structural Tokenization · Institutional Quantitative Options Analysis</div>
+  <div style="margin-top:4px;">NQ FUTURES PRE-MARKET STRUCTURAL ANALYSIS · RESEARCH PORTFOLIO</div>
+  <div style="margin-top:4px;">VALID WINDOW: RTH 9:30 AM – 11:30 AM NEW YORK TIME ONLY</div>
+  <div style="margin-top:8px;color:#3a3d48;">For educational purposes only · Not financial advice</div>
 </footer>
 
 </body>
