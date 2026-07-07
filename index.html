@@ -62,7 +62,7 @@ a{color:inherit;text-decoration:none}
 .case-levels{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
 .case-level{background:var(--bg3);border:1px solid var(--border);border-radius:4px;padding:5px 10px;font-size:11px;font-variant-numeric:tabular-nums}
 .case-level .lbl{color:var(--muted);margin-right:6px}
-.case-arrow{font-size:11px;color:var(--muted);font-weight:500} 
+.case-arrow{font-size:11px;color:var(--muted);font-weight:500}
 .case-card:hover .case-arrow{color:var(--text)}
 
 .meth-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:10px}
@@ -109,7 +109,7 @@ footer{border-top:1px solid var(--border);padding:24px 32px;text-align:center;fo
   <div class="status-row">
     <div class="status-item">
       <div class="status-label">Case Studies</div>
-      <div class="status-val">13</div>
+      <div class="status-val">14</div>
       <div class="status-sub">Published · Growing</div>
     </div>
     <div class="status-item">
@@ -133,6 +133,32 @@ footer{border-top:1px solid var(--border);padding:24px 32px;text-align:center;fo
   </div>
 
   <div class="section-hdr">02&nbsp;&nbsp;Case Studies</div>
+
+  <!-- JUL 07 2026 -->
+  <a class="case-card" href="2026-07-07_C3_Negative-Gamma-Skew-Inversion-Reversal.html">
+    <div class="case-top">
+      <div class="case-date">Tuesday July 7, 2026 · RTH 9:30 AM – 11:30 AM NY · SpaceX Nasdaq-100 Inclusion Day</div>
+      <div class="case-badges">
+        <span class="badge br">Condition 3</span>
+        <span class="badge bg">VXN 5/6 Levels Exact ✅</span>
+        <span class="badge bg">Session Low 29,210 Exact ✅</span>
+        <span class="badge bp">30DTE Inverted Skew Engine</span>
+        <span class="badge bd">Two-Signal Session</span>
+      </div>
+    </div>
+    <div class="case-title">C3 Negative Gamma Open — 30DTE Skew-Inversion Engine · VXN Ceiling Exhaustion Reversal</div>
+    <div class="case-desc">
+      RTH opened at 29,591.50 — roughly 200 pts below ZG (29,730) and already through the 1SD-lower band (29,723), a clean negative-gamma open. The 9:15 AM pre-market read was calm on both volatility level and skew; within minutes of the open, 0DTE implied volatility moved above the 30DTE reading (0.34 vs. 0.25) and 0DTE skew spiked from 0.21 to 0.39, triggering the engine's 30DTE inverted branch (SK +0.256, A_live 28.69). Five of six modeled VXN SD levels matched the live chart exactly. With no VXN spike present at the open, no mechanical brake was active — GEX led, and the flush carried price through Put Wall (29,390) into a session low of 29,210. Near 10:42 AM, VXN swept through +1σ (29.03) while price remained below Put Wall, a volatility-side exhaustion signal that preceded any GEX reclaim and produced a tactical reversal without ZG ever being reclaimed.
+    </div>
+    <div class="case-levels">
+      <div class="case-level"><span class="lbl">RTH Open</span><span style="color:var(--amber);">29,591.50</span></div>
+      <div class="case-level"><span class="lbl">Session Low</span><span style="color:var(--green);">29,210 ✅</span></div>
+      <div class="case-level"><span class="lbl">VXN Engine</span><span style="color:var(--blue);">A_live 28.69</span></div>
+      <div class="case-level"><span class="lbl">VXN Levels</span><span style="color:var(--green);">5/6 exact ✅</span></div>
+      <div class="case-level"><span class="lbl">ZG</span><span style="color:var(--red);">29,730 · unreclaimed</span></div>
+    </div>
+    <div class="case-arrow">Open case study →</div>
+  </a>
 
   <!-- JUL 06 2026 -->
   <a class="case-card" href="2026-07-06_C6_Holiday-Monday-VXN-Cascade.html">
