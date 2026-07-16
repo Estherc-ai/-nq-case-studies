@@ -27,9 +27,7 @@
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:14px;line-height:1.6}
 a{color:inherit;text-decoration:none}
-
 .nav{padding:14px 32px;border-bottom:1px solid var(--border);font-size:12px;color:var(--muted)}
-
 .hero{max-width:860px;margin:0 auto;padding:56px 32px 40px}
 .hero h1{font-size:30px;font-weight:700;letter-spacing:-.02em;margin-bottom:8px;line-height:1.2}
 .hero h1 span{color:var(--muted);font-weight:400}
@@ -42,16 +40,13 @@ a{color:inherit;text-decoration:none}
 .bb{color:var(--blue);border-color:var(--blue);background:var(--blue-bg)}
 .bp{color:var(--purple);border-color:var(--purple);background:var(--purple-bg)}
 .bd{color:var(--muted);border-color:var(--border2)}
-
 .status-row{display:flex;gap:20px;flex-wrap:wrap}
 .status-item{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:14px 20px;min-width:120px}
 .status-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:4px}
 .status-val{font-size:22px;font-weight:700;font-variant-numeric:tabular-nums}
 .status-sub{font-size:11px;color:var(--muted);margin-top:2px}
-
 .content{max-width:860px;margin:0 auto;padding:0 32px 64px}
 .section-hdr{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:40px 0 16px;padding-bottom:8px;border-bottom:1px solid var(--border)}
-
 .case-card{display:block;background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:20px 24px;margin-bottom:12px;transition:border-color .15s}
 .case-card:hover{border-color:var(--border2)}
 .case-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:10px;flex-wrap:wrap}
@@ -64,575 +59,588 @@ a{color:inherit;text-decoration:none}
 .case-level .lbl{color:var(--muted);margin-right:6px}
 .case-arrow{font-size:11px;color:var(--muted);font-weight:500}
 .case-card:hover .case-arrow{color:var(--text)}
-
 .meth-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:10px}
 .meth-item{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:14px 16px}
 .meth-icon{font-size:18px;margin-bottom:6px}
 .meth-title{font-size:12px;font-weight:600;margin-bottom:4px}
 .meth-desc{font-size:11px;color:var(--muted);line-height:1.5}
-
 .regime-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
 .regime-item{background:var(--bg2);border:1px solid var(--border);border-radius:5px;padding:12px 14px}
 .regime-cond{font-size:11px;font-weight:700;color:var(--muted);margin-bottom:3px;letter-spacing:.05em}
 .regime-name{font-size:12px;font-weight:600;margin-bottom:3px}
 .regime-rule{font-size:10px;color:var(--muted)}
-
 footer{border-top:1px solid var(--border);padding:24px 32px;text-align:center;font-size:11px;color:var(--muted);line-height:1.7}
-
 @media(max-width:600px){
-  .hero,.nav,.content{padding-left:16px;padding-right:16px}
-  .meth-grid{grid-template-columns:1fr 1fr}
-  .regime-grid{grid-template-columns:1fr 1fr}
-  .status-row{gap:10px}
+.hero,.nav,.content{padding-left:16px;padding-right:16px}
+.meth-grid{grid-template-columns:1fr 1fr}
+.regime-grid{grid-template-columns:1fr 1fr}
+.status-row{gap:10px}
 }
 </style>
 </head>
 <body>
-
 <nav class="nav">Research Portfolio</nav>
-
 <div class="hero">
-  <div class="badge-row">
-    <span class="badge bg">Pre-Market ID</span>
-    <span class="badge bd">GEX Framework</span>
-    <span class="badge bd">Options Mechanics</span>
-    <span class="badge bd">RTH Morning Only</span>
-    <span class="badge bd">NQ / MNQ Futures</span>
-  </div>
-  <h1>NQ Futures <span>Pre-Market Structural Analysis</span></h1>
-  <p class="hero-sub">
-    A systematic study of NQ/MNQ futures opening regimes using options gamma exposure mechanics,
-    Max Pain gravitational analysis, and skew-adjusted wall identification.
-    All setups identified pre-market before price action confirms.
-    Valid window: 9:30 AM – 11:30 AM New York Time.
-  </p>
-  <div class="status-row">
-    <div class="status-item">
-      <div class="status-label">Case Studies</div>
-      <div class="status-val">19</div>
-      <div class="status-sub">Published · Growing</div>
-    </div>
-    <div class="status-item">
-      <div class="status-label">Pre-Market ID Rate</div>
-      <div class="status-val">30 / 30</div>
-      <div class="status-sub">Correct classifications</div>
-    </div>
-  </div>
+<div class="badge-row">
+<span class="badge bg">Pre-Market ID</span>
+<span class="badge bd">GEX Framework</span>
+<span class="badge bd">Options Mechanics</span>
+<span class="badge bd">RTH Morning Only</span>
+<span class="badge bd">NQ / MNQ Futures</span>
 </div>
-
+<h1>NQ Futures <span>Pre-Market Structural Analysis</span></h1>
+<p class="hero-sub">
+A systematic study of NQ/MNQ futures opening regimes using options gamma exposure mechanics,
+Max Pain gravitational analysis, and skew-adjusted wall identification.
+All setups identified pre-market before price action confirms.
+Valid window: 9:30 AM – 11:30 AM New York Time.
+</p>
+<div class="status-row">
+<div class="status-item">
+<div class="status-label">Case Studies</div>
+<div class="status-val">20</div>
+<div class="status-sub">Published · Growing</div>
+</div>
+<div class="status-item">
+<div class="status-label">Pre-Market ID Rate</div>
+<div class="status-val">30 / 30</div>
+<div class="status-sub">Correct classifications</div>
+</div>
+</div>
+</div>
 <div class="content">
-
-  <div class="section-hdr">01&nbsp;&nbsp;Methodology</div>
-  <div class="meth-grid">
-    <div class="meth-item"><div class="meth-icon">📐</div><div class="meth-title">Coarse-to-Fine</div><div class="meth-desc">Macro structural gravity first. Micro execution levels second.</div></div>
-    <div class="meth-item"><div class="meth-icon">🧲</div><div class="meth-title">Max Pain Mechanics</div><div class="meth-desc">Max Pain attracts price. Walls reject price. Both identified pre-market.</div></div>
-    <div class="meth-item"><div class="meth-icon">🏷️</div><div class="meth-title">8-Regime Classification</div><div class="meth-desc">Sequential decision tree. ZG distance eliminates most conditions immediately.</div></div>
-    <div class="meth-item"><div class="meth-icon">🧱</div><div class="meth-title">Steel Wall ID</div><div class="meth-desc">Max Pain + 1DTE Matrix convergence. Invisible on live GEX. Only visible pre-market.</div></div>
-    <div class="meth-item"><div class="meth-icon">⏱️</div><div class="meth-title">2-Hour Window</div><div class="meth-desc">Skew-adjusted walls lose force after 11:30 AM NY. Strict validity window.</div></div>
-    <div class="meth-item"><div class="meth-icon">📊</div><div class="meth-title">NDX IV Variance</div><div class="meth-desc">Blended term structure IV calculates intraday 1-SD and 2-SD boundaries.</div></div>
-  </div>
-
-  <div class="section-hdr">02&nbsp;&nbsp;Case Studies</div>
-
-  <!-- JUL 14 2026 -->
-  <a class="case-card" href="2026-07-14_C1_CPI-Rally-OI-Wall-Discovery.html">
-    <div class="case-top">
-      <div class="case-date">Tuesday July 14, 2026 · RTH 9:30 AM – 11:30 AM NY · CPI Beat + Fed Chair Testimony</div>
-      <div class="case-badges">
-        <span class="badge br">Condition 1/1B Stratospheric</span>
-        <span class="badge bg">VXN Ladder Exact Match ✅</span>
-        <span class="badge bg">Pre-Market OI Wall 2.62 pt Precision ✅</span>
-        <span class="badge bp">Three-Grid Session System</span>
-        <span class="badge by">Tuesday · CPI + Fed Testimony</span>
-      </div>
-    </div>
-    <div class="case-title">CPI-Driven Rally &amp; Pre-Market OI Wall Discovery — VXN Ceiling Reversal, Asian 1SD Upper Rejection</div>
-    <div class="case-desc">
-      A cooler-than-expected June CPI print at 8:30 AM drove a sharp pre-market rally. A separate discovery: an open-interest concentration level (29,808.63) identified 90 minutes before the open matched the actual RTH open (29,811.25) within 2.62 points, then held as a multi-touch pivot through the morning and into the afternoon. Tool 1's live VXN anchor (26.09) again matched exact across every tested level. Within the session, VXN advancing to +3σ coincided exactly with the low of an intraday pullback, after which price reversed and held gains through the close — a live ceiling-exhaustion instance. Price tested above the Asian 1SD upper intraday but was ultimately rejected there by session end, and never once reverted to ZG the entire session.
-    </div>
-    <div class="case-levels">
-      <div class="case-level"><span class="lbl">VXN Anchor</span><span style="color:var(--blue);">26.09</span></div>
-      <div class="case-level"><span class="lbl">Pre-Market OI Wall</span><span style="color:var(--green);">29,808.63 → 2.62pt ✅</span></div>
-      <div class="case-level"><span class="lbl">VXN Ladder</span><span style="color:var(--green);">Exact ✅</span></div>
-      <div class="case-level"><span class="lbl">1SD Upper</span><span style="color:var(--red);">Tested, rejected</span></div>
-    </div>
-    <div class="case-arrow">Open case study →</div>
-  </a>
-
-  <!-- JUL 13 2026 -->
-  <a class="case-card" href="2026-07-13_C2_ZG-Pin-VXN-Exact-Match.html">
-    <div class="case-top">
-      <div class="case-date">Monday July 13, 2026 · RTH 9:30 AM – 11:30 AM NY · ZG-Pinned Session</div>
-      <div class="case-badges">
-        <span class="badge bd">Condition 2/6 ZG Pin</span>
-        <span class="badge bg">VXN Ladder 6/6 Exact ✅</span>
-        <span class="badge bg">Asian 1SD Lower Confirmed ✅</span>
-        <span class="badge bp">Three-Grid Session System</span>
-        <span class="badge by">Monday · Weak Max Pain Gravity</span>
-      </div>
-    </div>
-    <div class="case-title">ZG-Pinned Morning, VXN Anchor Exact Match — Convergence at Asian 1SD Lower / VXN −2σ, Afternoon Breakdown</div>
-    <div class="case-desc">
-      After an overnight pullback from the Asian open, NQ opened inside a tight ZG/Put Wall/Call Wall cluster, tested down toward the Asian Open Grid's 1SD lower in the same moment VXN dipped toward its own −2σ — a clean cross-tool convergence. Both tools' live-anchored levels matched exact against their charts (VXN's anchor carried forward from Friday's confirmed σ/SK, still exact on Monday). Price then pinned between ZG and Call Wall for the entire trading window before breaking down toward the Asian 1SD lower in the afternoon, outside the window. A forward-dated P/C ratio outlier on Tuesday's 1DTE row was also flagged pre-market, tracing to a scheduled CPI release and the new Fed Chair's first congressional testimony.
-    </div>
-    <div class="case-levels">
-      <div class="case-level"><span class="lbl">VXN Anchor</span><span style="color:var(--blue);">26.84</span></div>
-      <div class="case-level"><span class="lbl">VXN Ladder</span><span style="color:var(--green);">6/6 exact ✅</span></div>
-      <div class="case-level"><span class="lbl">Asian 1SD Lower</span><span style="color:var(--green);">29,525 ✅</span></div>
-      <div class="case-level"><span class="lbl">Morning Pin</span><span style="color:var(--amber);">29,620–29,730</span></div>
-    </div>
-    <div class="case-arrow">Open case study →</div>
-  </a>
-
-  <!-- JUL 10 2026 -->
-  <a class="case-card" href="2026-07-10_C6_Theta-Bleed-Gamma-Pin.html">
-    <div class="case-top">
-      <div class="case-date">Friday July 10, 2026 · RTH 9:30 AM – 11:30 AM NY · Theta Bleed Gamma Pin</div>
-      <div class="case-badges">
-        <span class="badge bd">Condition 6/7 Gamma Pin</span>
-        <span class="badge bg">VXN Ladder 6/6 Exact ✅</span>
-        <span class="badge br">Max Pain Gravity Failed</span>
-        <span class="badge bp">Three-Grid Session System</span>
-        <span class="badge by">Friday · Theta Bleed</span>
-      </div>
-    </div>
-    <div class="case-title">Theta Bleed Gamma Pin — Friday Max Pain Gravity Fails, Put-IV Dominance, VXN Never Reclaims Anchor</div>
-    <div class="case-desc">
-      Every pre-market signal pointed toward a reversion — Friday Max Pain gravity, ZG dislocation, an open below Cap Line/Call Wall. None of it materialized. VXN's live open (26.91) anchored Tool 1's Vol % Matrix to an exact six-of-six match, and VXN traded under that anchor for the entire session, never reclaiming it even once — the mechanical precondition for a reversion was absent from the open bell onward. 0DTE SKEW spiked to 0.38 within minutes of the open, put-IV dominant, forcing dealer hedging that mechanically blocked any drop toward Max Pain. By the time skew settled to 0.22 in the afternoon, 0DTE theta had already decayed most of the session's extrinsic value, leaving no incentive to force the reversion late. Price broke above Call Wall (29,850) instead, which flipped from resistance to support and held into the close near 30,069–30,075.
-    </div>
-    <div class="case-levels">
-      <div class="case-level"><span class="lbl">VXN Anchor</span><span style="color:var(--blue);">26.91</span></div>
-      <div class="case-level"><span class="lbl">VXN Ladder</span><span style="color:var(--green);">6/6 exact ✅</span></div>
-      <div class="case-level"><span class="lbl">Max Pain</span><span style="color:var(--red);">29,490 · never tested</span></div>
-      <div class="case-level"><span class="lbl">Session Close</span><span style="color:var(--amber);">≈30,069–30,075</span></div>
-    </div>
-    <div class="case-arrow">Open case study →</div>
-  </a>
-
-  <!-- JUL 09 2026 -->
-  <a class="case-card" href="2026-07-09_C1_Overnight-Rally-Tool1-Exact-Match.html">
-    <div class="case-top">
-      <div class="case-date">Thursday July 9, 2026 · RTH 9:30 AM – 11:30 AM NY · AI Optimism vs. Iran Escalation Divergence</div>
-      <div class="case-badges">
-        <span class="badge br">Condition 1/1B Stratospheric</span>
-        <span class="badge bg">Tool 1 VXN Ladder 6/6 Exact ✅</span>
-        <span class="badge bg">Convergence Reversal ✅</span>
-        <span class="badge bp">Three-Grid Session System</span>
-        <span class="badge bd">No-Brake Melt-Up</span>
-      </div>
-    </div>
-    <div class="case-title">Overnight Stratospheric Rally — Live Tool 1 Exact Match, Convergence Reversal, No-Brake Afternoon Melt-Up</div>
-    <div class="case-desc">
-      Overnight price rallied +377 pts through ZG on an AI-optimism/Iran-escalation divergence, opening the session in full Stratospheric condition. VXN's live 9:31 AM print (27.41) anchored Tool 1's Vol % Matrix to an exact six-of-six match against the live chart. Mid-morning, NQ tagging the Asian Open Grid's 1SD upper (29,890) coincided exactly with VXN sweeping its own −1σ, confirmed by a sharp SKEW collapse (0.309→0.292→0.163) — a three-way convergence that produced a clean reversal. A second test of the same level in the afternoon carried no VXN confirmation and was correctly not re-traded. A later SKEW spike also arrived without VXN or broader-curve confirmation, and price broke through the level instead of reversing — the standing GEX-leads/VXN-confirms hierarchy held, and with no 0DTE Call Wall overhead and VXN sitting flat, no mechanical brake existed to stop the advance.
-    </div>
-    <div class="case-levels">
-      <div class="case-level"><span class="lbl">VXN Live Anchor</span><span style="color:var(--blue);">27.41</span></div>
-      <div class="case-level"><span class="lbl">Tool 1 Match</span><span style="color:var(--green);">6/6 exact ✅</span></div>
-      <div class="case-level"><span class="lbl">Convergence Level</span><span style="color:var(--green);">29,890 / VXN −1σ ✅</span></div>
-      <div class="case-level"><span class="lbl">Afternoon Close</span><span style="color:var(--amber);">29,954.75</span></div>
-    </div>
-    <div class="case-arrow">Open case study →</div>
-  </a>
-
-  <!-- JUL 08 2026 -->
-  <a class="case-card" href="2026-07-08_C3_Three-Grid-System-Iran-Headline.html">
-    <div class="case-top">
-      <div class="case-date">Wednesday July 8, 2026 · RTH 9:30 AM – 11:30 AM NY · Iran Deal Headline / News Catalyst Session</div>
-      <div class="case-badges">
-        <span class="badge br">Condition 3 → Reclaim</span>
-        <span class="badge bg">VXN +2σ Sweep ≈ Exact ✅</span>
-        <span class="badge bg">Asset Space Grid vs Live VXN 0.02–0.10 ✅</span>
-        <span class="badge bp">Three-Grid System</span>
-        <span class="badge bd">Wednesday · News Catalyst</span>
-      </div>
-    </div>
-    <div class="case-title">Negative Gamma Open, Iran Headline &amp; Three-Grid System — VXN +2σ / NQ Low Convergence, ZG Reclaim</div>
-    <div class="case-desc">
-      Overnight price round-tripped roughly 170 pts through ZG (29,330) in the final pre-market stretch, coinciding with reports the Iran interim deal was "over" — oil surged 5%+, VIX rose ~4-5% pre-open. RTH opened at 29,201.75, already below ZG/Max Pain/Call Wall with no support until Put Wall (28,790). First live combined use of the Three-Grid System: the Asset Space Price Grid's compacted levels (spot-anchored, 30DTE σ) tracked live VXN price within 0.02–0.10 across all six SD levels — a second consecutive confirming session after Jul 07. VXN's sweep through +2σ (30.01) coincided almost exactly with NQ's session low, reinforced by extreme post-open skew (SK≈0.327) signaling a fragile, reversal-prone ceiling rather than sustained fear. Price reclaimed ZG around 12:30 PM, invalidating the session's short-only bias per Block 7, and continued recovering toward Call Wall into the afternoon.
-    </div>
-    <div class="case-levels">
-      <div class="case-level"><span class="lbl">RTH Open</span><span style="color:var(--amber);">29,201.75</span></div>
-      <div class="case-level"><span class="lbl">VXN +2σ Sweep</span><span style="color:var(--green);">30.01 ✅</span></div>
-      <div class="case-level"><span class="lbl">Asset Space Grid Fit</span><span style="color:var(--green);">±0.02–0.10 ✅</span></div>
-      <div class="case-level"><span class="lbl">ZG Reclaim</span><span style="color:var(--blue);">~12:30 PM</span></div>
-      <div class="case-level"><span class="lbl">Afternoon</span><span style="color:var(--green);">29,402.25</span></div>
-    </div>
-    <div class="case-arrow">Open case study →</div>
-  </a>
-
-  <!-- JUL 07 2026 -->
-  <a class="case-card" href="2026-07-07_C3_Negative-Gamma-Skew-Inversion-Reversal.html">
-    <div class="case-top">
-      <div class="case-date">Tuesday July 7, 2026 · RTH 9:30 AM – 11:30 AM NY · SpaceX Nasdaq-100 Inclusion Day</div>
-      <div class="case-badges">
-        <span class="badge br">Condition 3</span>
-        <span class="badge bg">VXN 5/6 Levels Exact ✅</span>
-        <span class="badge bg">Session Low 29,210 Exact ✅</span>
-        <span class="badge bp">30DTE Inverted Skew Engine</span>
-        <span class="badge bd">Two-Signal Session</span>
-      </div>
-    </div>
-    <div class="case-title">C3 Negative Gamma Open — 30DTE Skew-Inversion Engine · VXN Ceiling Exhaustion Reversal</div>
-    <div class="case-desc">
-      RTH opened at 29,591.50 — roughly 200 pts below ZG (29,730) and already through the 1SD-lower band (29,723), a clean negative-gamma open. The 9:15 AM pre-market read was calm on both volatility level and skew; within minutes of the open, 0DTE implied volatility moved above the 30DTE reading (0.34 vs. 0.25) and 0DTE skew spiked from 0.21 to 0.39, triggering the engine's 30DTE inverted branch (SK +0.256, A_live 28.69). Five of six modeled VXN SD levels matched the live chart exactly. With no VXN spike present at the open, no mechanical brake was active — GEX led, and the flush carried price through Put Wall (29,390) into a session low of 29,210. Near 10:42 AM, VXN swept through +1σ (29.03) while price remained below Put Wall, a volatility-side exhaustion signal that preceded any GEX reclaim and produced a tactical reversal without ZG ever being reclaimed.
-    </div>
-    <div class="case-levels">
-      <div class="case-level"><span class="lbl">RTH Open</span><span style="color:var(--amber);">29,591.50</span></div>
-      <div class="case-level"><span class="lbl">Session Low</span><span style="color:var(--green);">29,210 ✅</span></div>
-      <div class="case-level"><span class="lbl">VXN Engine</span><span style="color:var(--blue);">A_live 28.69</span></div>
-      <div class="case-level"><span class="lbl">VXN Levels</span><span style="color:var(--green);">5/6 exact ✅</span></div>
-      <div class="case-level"><span class="lbl">ZG</span><span style="color:var(--red);">29,730 · unreclaimed</span></div>
-    </div>
-    <div class="case-arrow">Open case study →</div>
-  </a>
-
-  <!-- JUL 06 2026 -->
-  <a class="case-card" href="2026-07-06_C6_Holiday-Monday-VXN-Cascade.html">
-    <div class="case-top">
-      <div class="case-date">Monday July 6, 2026 · RTH 9:30 AM – 11:30 AM NY · Independence Day Holiday Return</div>
-      <div class="case-badges">
-        <span class="badge ba">Condition 6</span>
-        <span class="badge bg">VXN Full Cascade — All 6 Levels ✅</span>
-        <span class="badge bg">Baseline Parameter A=27.98 ✅</span>
-        <span class="badge bp">Skew-Adjusted Engine</span>
-        <span class="badge bd">318-Pt Range · Both Bands Unfilled</span>
-      </div>
-    </div>
-    <div class="case-title">C6 — Holiday Monday · VXN Full Cascade · Baseline Parameter A=27.98</div>
-    <div class="case-desc">
-      First session after the Independence Day long weekend. Pre-market identified Vacuum Drop regime (SK Extreme +0.226 · HIGH VXN · A=27.98) with 0DTE IV at 0.15 — the lowest in the dataset. VXN cascaded through all six pre-market SD levels: 0σ (27.98) → −1σ (27.61) → −2σ (27.24) → −3σ (26.87), with session VXN low at 26.80 (7 cents below −3σ). NQ price however compressed into an extreme 318-point range (session high 30,093.50 · session low 29,775.50) — neither 1-SD band was reached (high was 128 pts below the upper band · low was 399 pts above the lower band). This documents a new pattern: Vacuum Drop regime on holiday Monday produces VXN cascade without NQ price trend. Vol and price decouple when institutional flow is absent.
-    </div>
-    <div class="case-levels">
-      <div class="case-level"><span class="lbl">RTH Open</span><span style="color:var(--amber);">29,900.50</span></div>
-      <div class="case-level"><span class="lbl">VXN −3σ Low</span><span style="color:var(--green);">26.80 ✅</span></div>
-      <div class="case-level"><span class="lbl">1-SD Upper</span><span style="color:var(--red);">30,222 · not reached</span></div>
-      <div class="case-level"><span class="lbl">Session Range</span><span style="color:var(--amber);">318 pts only</span></div>
-      <div class="case-level"><span class="lbl">VXN Cascade</span><span style="color:var(--green);">All 6 levels ✅</span></div>
-    </div>
-    <div class="case-arrow">Open case study →</div>
-  </a>
-
-  <!-- JUL 02 2026 -->
-  <a class="case-card" href="2026-07-02_C6_NFP-ISM-Dual-Exhaustion.html">
-    <div class="case-top">
-      <div class="case-date">Thursday July 2, 2026 · RTH 9:30 AM – 11:30 AM NY · Short Session 1:00 PM Close</div>
-      <div class="case-badges">
-        <span class="badge ba">Condition 6</span>
-        <span class="badge bg">VXN −3σ Sweep 26.20 ✅</span>
-        <span class="badge bg">Dual Exhaustion VXN +2σ + NQ 1-SD Lower ✅</span>
-        <span class="badge bp">Skew-Adjusted Engine</span>
-        <span class="badge bd">Thursday · NFP Day · Holiday Eve</span>
-      </div>
-    </div>
-    <div class="case-title">C6 — NFP + ISM Dual Catalyst · VXN −3σ Sweep Entry · Dual Exhaustion Convergence</div>
-    <div class="case-desc">
-      Pre-market identified ZG (29,890) and 0DTE Max Pain (29,880) only 10 pts apart — the tightest convergence of the week — on a Thursday holiday eve with SK Elevated (+0.173). The framework thesis: Max Pain is the destination · news is only the mechanism. NFP beat spiked NQ above Call Wall (30,110) pre-market. At RTH open (30,078), VXN gapped below −1σ (27.23), then cascaded through −2σ (26.77) and −3σ (26.30), printing a session low of 26.20 — the −3σ sweep entry signal. ISM miss at 10:00 AM confirmed the reversal. Later in the session: VXN reached exactly +2σ (28.34) simultaneously with NQ touching the Asian 1-SD lower (29,661) — dual exhaustion convergence, the framework's highest confidence signal. Live GEX showed "extremely bullish" at the open — immediately reversed, confirming the volume trap rule.
-    </div>
-    <div class="case-levels">
-      <div class="case-level"><span class="lbl">RTH Open</span><span style="color:var(--amber);">30,078</span></div>
-      <div class="case-level"><span class="lbl">VXN −3σ Sweep</span><span style="color:var(--green);">26.20 ✅</span></div>
-      <div class="case-level"><span class="lbl">VXN +2σ High</span><span style="color:var(--red);">28.34 exact ✅</span></div>
-      <div class="case-level"><span class="lbl">NQ 1-SD Lower</span><span style="color:var(--green);">29,661 ✅</span></div>
-      <div class="case-level"><span class="lbl">Max Pain</span><span style="color:var(--green);">29,880 ✅</span></div>
-    </div>
-    <div class="case-arrow">Open case study →</div>
-  </a>
-
-  <!-- JUL 01 2026 -->
-  <a class="case-card" href="2026-07-01_C6_High-Skew-Call-Wall-Rejection.html">
-    <div class="case-top">
-      <div class="case-date">Wednesday July 1, 2026 · RTH 9:30 AM – 11:30 AM NY</div>
-      <div class="case-badges">
-        <span class="badge ba">Condition 6</span>
-        <span class="badge bg">VXN +2σ Exhaustion 28.66 ✅</span>
-        <span class="badge bg">Live Put Wall 30,216 Defense ✅</span>
-        <span class="badge bp">Skew-Adjusted Engine</span>
-        <span class="badge bd">Skew Repriced at Open</span>
-      </div>
-    </div>
-    <div class="case-title">C6 — Pre-Market Plan Change · Skew Repriced at Open · VXN +2σ Exhaustion · GEX Floor Defense</div>
-    <div class="case-desc">
-      Pre-market analysis indicated elevated volatility with high positive skew. At the RTH open the skew repriced significantly lower into the Baseline/Normal tier (SK +0.040) — the analytical plan was updated immediately. Three structural factors then defined the session: ZG distance +0.51% (C6 moderate, MMs in control), NQ opened 45.5 pts below the Call Wall, and VXN spiked to 28.66 — +0.38 above the +2σ Standard Ceiling (28.28), stopping 0.21 pts short of +3σ. Live GEX migrated a massive Put Wall to 30,216 intraday. NQ pinned in a 64-pt compression range all session.
-    </div>
-    <div class="case-levels">
-      <div class="case-level"><span class="lbl">RTH Open</span><span style="color:var(--amber);">30,234.50</span></div>
-      <div class="case-level"><span class="lbl">SK at Open</span><span style="color:var(--blue);">+0.040 Normal</span></div>
-      <div class="case-level"><span class="lbl">VXN High</span><span style="color:var(--red);">28.66 (+0.38 above +2σ)</span></div>
-      <div class="case-level"><span class="lbl">Live Put Wall</span><span style="color:var(--green);">30,216 ✅</span></div>
-    </div>
-    <div class="case-arrow">Open case study →</div>
-  </a>
-
-  <a class="case-card" href="2026-06-30_C1_Extreme-Positive-Skew-Vacuum-Drop.html">
-    <div class="case-top">
-      <div class="case-date">Tuesday June 30, 2026 · RTH 9:30 AM – 11:30 AM NY</div>
-      <div class="case-badges">
-        <span class="badge br">Condition 1</span>
-        <span class="badge bg">VXN 4-Level Cascade ✅</span>
-        <span class="badge bg">NQ 1-SD Upper Filled ✅</span>
-        <span class="badge bp">Skew-Adjusted Engine</span>
-        <span class="badge bd">Extreme Positive Skew +0.260</span>
-      </div>
-    </div>
-    <div class="case-title">C1 ZG Dislocation — Extreme Positive Skew Vacuum Drop</div>
-    <div class="case-desc">
-      RTH opened at 30,046 — +1.89% above ZG 29,490 — directly above the Call Wall (30,030), confirming Condition 1. Extreme positive 0DTE skew (+0.260) combined with an already-elevated VXN (29.37) flagged a vacuum-drop regime pre-market: calls bid for fear, puts hollowed out, no structural floor beneath VXN. The session confirmed this exactly — VXN cascaded cleanly through −1σ (28.77), −2σ (28.17), and −3σ (27.57) with body closes at each level, extending to 27.23–27.24 by the next session. NQ correspondingly ran unhindered, clearing both the Asian and RTH 1-SD upper bands (30,491 / 30,532) by the afternoon with no reversal.
-    </div>
-    <div class="case-levels">
-      <div class="case-level"><span class="lbl">RTH Open</span><span style="color:var(--red);">30,046</span></div>
-      <div class="case-level"><span class="lbl">SK</span><span style="color:var(--red);">+0.260 Extreme</span></div>
-      <div class="case-level"><span class="lbl">VXN Cascade</span><span style="color:var(--green);">−1σ→−2σ→−3σ ✅</span></div>
-      <div class="case-level"><span class="lbl">NQ High</span><span style="color:var(--green);">30,582</span></div>
-    </div>
-    <div class="case-arrow">Open case study →</div>
-  </a>
-
-  <!-- JUN 29 2026 -->
-  <a class="case-card" href="2026-06-29-c6-multi variable dislocation.html">
-    <div class="case-top">
-      <div class="case-date">Monday June 29, 2026 · RTH 9:30 AM – 11:30 AM NY</div>
-      <div class="case-badges">
-        <span class="badge ba">Condition 6</span>
-        <span class="badge bg">+2σ Exact 32.03 ✅</span>
-        <span class="badge bg">ZG 29,360 Approach ✅</span>
-        <span class="badge bd">Monday · Independence Day Week</span>
-      </div>
-    </div>
-    <div class="case-title">C6 Multi-Variable Dislocation — VXN +2σ Exhaustion Confirmed</div>
-    <div class="case-desc">
-      RTH opened at 29,773 with VXN neutral at 30.73 (below anchor). VXN session high reached exactly 32.03 — the pre-calculated +2σ upper level — confirming Jump Diffusion exhaustion. NQ session high 29,837 rejected Asian 1-SD upper 29,713. Session low 29,276 approached ZG 29,360 simultaneously with VXN spike. 7DTE input used Jul 07 (8DTE) — Jul 06 σ:0.00 Independence Day.
-    </div>
-    <div class="case-levels">
-      <div class="case-level"><span class="lbl">RTH Open</span><span style="color:var(--amber);">29,773</span></div>
-      <div class="case-level"><span class="lbl">VXN +2σ Hit</span><span style="color:var(--green);">32.03 ✅</span></div>
-      <div class="case-level"><span class="lbl">Session High</span><span style="color:var(--red);">29,837</span></div>
-      <div class="case-level"><span class="lbl">Session Low</span><span style="color:var(--green);">29,276</span></div>
-    </div>
-    <div class="case-arrow">Open case study →</div>
-  </a>
-
-  <!-- JUN 26 2026 -->
-  <a class="case-card" href="2026-06-26_C3_ mutation vxn outside range.html">
-    <div class="case-top">
-      <div class="case-date">Friday June 26, 2026 · RTH 9:30 AM – 11:30 AM NY</div>
-      <div class="case-badges">
-        <span class="badge bg">C3 → C7 Mutation</span>
-        <span class="badge bg">VXN Outside Range 33.40+ ✅</span>
-        <span class="badge bg">1-SD Lower 29,182 Exact ✅</span>
-        <span class="badge ba">Two-Model Architecture</span>
-        <span class="badge bd">Friday · Max Pain Gravity</span>
-      </div>
-    </div>
-    <div class="case-title">C3 Mutation — VXN Outside Statistical Range · Microsecond Convergence</div>
-    <div class="case-desc">
-      RTH opened at 29,442 — pinned at ZG 29,440 — with VXN already elevated at approximately 32.29 (inside the +2σ zone) at the bell. At 9:34 AM, VXN spiked to 33.40+, exceeding the Jump Diffusion +2σ ceiling of 32.23 and sweeping the prior session NY AM high. Simultaneously, NQ touched the pre-calculated Asian 1-SD lower at 29,182. 406-point recovery in one candle. Friday Max Pain gravity confirmed as session target.
-    </div>
-    <div class="case-levels">
-      <div class="case-level"><span class="lbl">RTH Open</span><span style="color:var(--amber);">29,442</span></div>
-      <div class="case-level"><span class="lbl">VXN Spike</span><span style="color:var(--red);">33.40+</span></div>
-      <div class="case-level"><span class="lbl">1-SD Floor</span><span style="color:var(--green);">29,182 ✅</span></div>
-      <div class="case-level"><span class="lbl">Recovery</span><span style="color:var(--green);">406 pts ✅</span></div>
-      <div class="case-level"><span class="lbl">Max Pain</span><span style="color:var(--green);">29,460 ✅</span></div>
-    </div>
-    <div class="case-arrow">Open case study →</div>
-  </a>
-
-  <!-- JUN 25 2026 -->
-  <a class="case-card" href="2026-06-25_C1B_Stratospheric-Slow-Grind.html">
-    <div class="case-top">
-      <div class="case-date">Thursday June 25, 2026 · RTH 9:30 AM – 11:30 AM NY</div>
-      <div class="case-badges">
-        <span class="badge br">Condition 1B</span>
-        <span class="badge bg">VXN +2σ 32.86 Exact ✅</span>
-        <span class="badge bg">Session Low 29,312 Exact ✅</span>
-        <span class="badge ba">Two-Model Architecture</span>
-      </div>
-    </div>
-    <div class="case-title">Stratospheric Slow Grind — C1B Flush · VXN Two-Model Validated</div>
-    <div class="case-desc">
-      RTH opened at 30,152 (+2.59% above ZG 29,390) with VXN simultaneously at its −1σ level (29.39) — the inverse mirror confirmed NQ was at its session high the moment the bell rang. One violent candle flushed 840 pts to 29,312, where VXN hit exactly 32.86 (+2σ Panic Ceiling). Session low matched the Asian 1-SD lower and the exact Jun 24 NY PM low simultaneously.
-    </div>
-    <div class="case-levels">
-      <div class="case-level"><span class="lbl">RTH Open</span><span style="color:var(--red);">30,152</span></div>
-      <div class="case-level"><span class="lbl">Session Low</span><span style="color:var(--green);">29,312 ✅</span></div>
-      <div class="case-level"><span class="lbl">VXN +2σ Hit</span><span style="color:var(--green);">32.86 ✅</span></div>
-      <div class="case-level"><span class="lbl">VXN −1σ at Open</span><span style="color:var(--blue);">29.39</span></div>
-    </div>
-    <div class="case-arrow">Open case study →</div>
-  </a>
-
-  <!-- JUN 24 2026 -->
-  <a class="case-card" href="2026-06-24_C7_Violent-Sweep-Launchpad.html">
-    <div class="case-top">
-      <div class="case-date">Wednesday June 24, 2026 · RTH 9:30 AM – 11:30 AM NY</div>
-      <div class="case-badges">
-        <span class="badge bp">Condition 7 · Type 2</span>
-        <span class="badge bg">Stack Max Pain</span>
-        <span class="badge bg">Morning High 29,907</span>
-        <span class="badge ba">VIX Dual Exhaustion</span>
-      </div>
-    </div>
-    <div class="case-title">Condition 7 Version A Type 2 — Violent Single-Candle Sweep · Stack Max Pain Launchpad</div>
-    <div class="case-desc">
-      RTH opened at 29,712 (+0.58% above ZG 29,540) with 0DTE + 1DTE + Weekly Max Pain all converging at 29,613–29,703 directly below. One 15-min candle swept ZG + 1-SD + Max Pain box simultaneously as wicks. Morning high 29,907.50 — within 6.50 pts of pre-market σB calculation (29,901).
-    </div>
-    <div class="case-levels">
-      <div class="case-level"><span class="lbl">RTH Open</span><span style="color:var(--red);">29,712</span></div>
-      <div class="case-level"><span class="lbl">ZG Sweep</span><span style="color:var(--green);">29,540 ✅</span></div>
-      <div class="case-level"><span class="lbl">Morning High</span><span style="color:var(--green);">29,907.50</span></div>
-      <div class="case-level"><span class="lbl">VIX Floor</span><span style="color:var(--green);">18.10 ✅</span></div>
-    </div>
-    <div class="case-arrow">Open case study →</div>
-  </a>
-
-  <!-- JUN 23 2026 -->
-  <a class="case-card" href="2026-06-23_C3-C7_Mutation-Snapback.html">
-    <div class="case-top">
-      <div class="case-date">Monday June 23, 2026 · RTH 9:30 AM – 11:30 AM NY</div>
-      <div class="case-badges">
-        <span class="badge br">Condition 3 ──► 7</span>
-        <span class="badge bg">1-SD Floor Held</span>
-        <span class="badge bg">VIX Sweep Confirmed</span>
-        <span class="badge bd">News 9:45 AM</span>
-      </div>
-    </div>
-    <div class="case-title">Condition 3 ──► Condition 7 Intraday Mutation — Short-Squeeze Reflex Snapback</div>
-    <div class="case-desc">
-      RTH opened at 29,659 — −0.81% below ZG 29,900 — inside an unhedged downside vacuum. Price dropped to 29,616 (1-SD floor) and VIX swept 20.50 to 20.53 in the same candle. Avalanche exhausted. Mechanical short-squeeze reflex fired instantly. News at 9:45 AM acted as accelerant.
-    </div>
-    <div class="case-levels">
-      <div class="case-level"><span class="lbl">RTH Open</span><span style="color:var(--red);">29,659</span></div>
-      <div class="case-level"><span class="lbl">1-SD Floor</span><span style="color:var(--green);">29,616 ✅</span></div>
-      <div class="case-level"><span class="lbl">VIX Sweep</span><span style="color:var(--green);">20.53 ✅</span></div>
-      <div class="case-level"><span class="lbl">Max Pain</span><span style="color:var(--green);">30,050 ✅</span></div>
-    </div>
-    <div class="case-arrow">Open case study →</div>
-  </a>
-
-  <!-- JUN 22 2026 -->
-  <a class="case-card" href="2026-06-22_C6_Multi-Variable-Dislocation.html">
-    <div class="case-top">
-      <div class="case-date">Monday June 22, 2026 · RTH 9:30 AM – 11:30 AM NY</div>
-      <div class="case-badges">
-        <span class="badge ba">Condition 6</span>
-        <span class="badge bg">2-SD Extension</span>
-        <span class="badge bg">VIX 16.50 Floor Reversal</span>
-        <span class="badge bd">to 1-SD</span>
-      </div>
-    </div>
-    <div class="case-title">Multi-Variable Dislocation — 2-SD Extension and Reversal</div>
-    <div class="case-desc">
-      RTH opened at 30,822 (+1.06% above ZG) with 0DTE Max Pain at 30,150 and 1DTE at 30,050 deep below. Price broke through Weekly Call Ceiling 30,850 and extended to 30,967 — within the 2-SD RTH variance band. VIX reached the 16.50 IV exhaustion floor at the apex.
-    </div>
-    <div class="case-levels">
-      <div class="case-level"><span class="lbl">RTH Open</span><span style="color:var(--red);">30,822</span></div>
-      <div class="case-level"><span class="lbl">High</span><span style="color:var(--green);">30,967</span></div>
-      <div class="case-level"><span class="lbl">VIX Floor</span><span style="color:var(--green);">16.50 ✅</span></div>
-      <div class="case-level"><span class="lbl">1-SD Reversal</span><span style="color:var(--green);">30,680 ✅</span></div>
-    </div>
-    <div class="case-arrow">Open case study →</div>
-  </a>
-
-  <!-- JUN 18 2026 -->
-  <a class="case-card" href="2026-06-18_C1_Stratospheric Dislocation Breakout Mutation.html">
-    <div class="case-top">
-      <div class="case-date">Thursday June 18, 2026 · RTH 9:30 AM – 11:30 AM NY</div>
-      <div class="case-badges">
-        <span class="badge br">Condition 1</span>
-        <span class="badge bg">Post-FOMC Breakout</span>
-        <span class="badge bg">Cap Line Held</span>
-        <span class="badge bd">London Fix Trade</span>
-      </div>
-    </div>
-    <div class="case-title">Stratospheric Dislocation — Post-FOMC Breakout Mutation</div>
-    <div class="case-desc">
-      June 17 FOMC flushed price to Weekly Max Pain 30,000 and ZG 29,990 — forming the structural floor. June 18 opened at 30,594 (+2.01% above ZG) in a Gamma Desert with zero overhead resistance. London fix at 11:00 AM provided the clean structural entry at Cap Line 30,515.
-    </div>
-    <div class="case-levels">
-      <div class="case-level"><span class="lbl">RTH Open</span><span style="color:var(--red);">30,594</span></div>
-      <div class="case-level"><span class="lbl">Retest</span><span style="color:var(--blue);">30,400</span></div>
-      <div class="case-level"><span class="lbl">Cap Line</span><span style="color:var(--green);">30,515 ✅</span></div>
-      <div class="case-level"><span class="lbl">Session High</span><span style="color:var(--green);">30,692+</span></div>
-    </div>
-    <div class="case-arrow">Open case study →</div>
-  </a>
-
-  <!-- JUN 17 2026 -->
-  <a class="case-card" href="2026-06-17_C1B_Stratospheric-Slow-Grind.html">
-    <div class="case-top">
-      <div class="case-date">Wednesday June 17, 2026 · RTH 9:30 AM – 11:30 AM NY</div>
-      <div class="case-badges">
-        <span class="badge br">Condition 1B</span>
-        <span class="badge bg">Pre-Market ID ✅</span>
-        <span class="badge bd">FOMC Day</span>
-      </div>
-    </div>
-    <div class="case-title">Stratospheric Dislocation — Slow Overnight Grind</div>
-    <div class="case-desc">
-      Overnight price slowly ground up in a tight range until tagging the Skew Adjusted Wall at 30,583. RTH opened just above the 1-SD boundary at 30,510, confirming Condition 1B at +1.72% above ZG. 1DTE Matrix at 30,290 reached. Max Pain 30,100 reached post-FOMC.
-    </div>
-    <div class="case-levels">
-      <div class="case-level"><span class="lbl">Skew Wall</span><span style="color:var(--red);">30,583</span></div>
-      <div class="case-level"><span class="lbl">1-SD Open</span><span style="color:var(--blue);">30,510</span></div>
-      <div class="case-level"><span class="lbl">Matrix T1</span><span style="color:var(--green);">30,290 ✅</span></div>
-      <div class="case-level"><span class="lbl">Max Pain</span><span style="color:var(--green);">30,100 ✅</span></div>
-    </div>
-    <div class="case-arrow">Open case study →</div>
-  </a>
-
-  <!-- JUN 16 2026 -->
-  <a class="case-card" href="2026-06-16_C7_Avalanche-Flip.html">
-    <div class="case-top">
-      <div class="case-date">Tuesday June 16, 2026 · RTH 9:30 AM – 11:30 AM NY</div>
-      <div class="case-badges">
-        <span class="badge ba">Condition 7</span>
-        <span class="badge bg">Pre-Market ID ✅</span>
-        <span class="badge bg">7/7 Levels Correct</span>
-        <span class="badge bg">Steel Wall Held</span>
-      </div>
-    </div>
-    <div class="case-title">Avalanche-to-Flip Sequence — Two-Phase Engineered Flush</div>
-    <div class="case-desc">
-      London session tagged the Cap Line at 30,950 before handing off to New York. NY opened at 30,886 — trapped between the Call Wall and Cap Line. Two-phase flush to Steel Wall at 30,400. All 7 structural levels performed exactly as pre-market framework predicted.
-    </div>
-    <div class="case-levels">
-      <div class="case-level"><span class="lbl">London High</span><span style="color:var(--red);">30,950</span></div>
-      <div class="case-level"><span class="lbl">NY Open</span><span style="color:var(--blue);">30,886</span></div>
-      <div class="case-level"><span class="lbl">Steel Wall</span><span style="color:var(--green);">30,400 ✅</span></div>
-      <div class="case-level"><span class="lbl">Flush</span><span style="color:var(--green);">−486 pts</span></div>
-    </div>
-    <div class="case-arrow">Open case study →</div>
-  </a>
-
-  <div class="section-hdr">03&nbsp;&nbsp;8-Regime Classification Reference</div>
-  <div class="regime-grid">
-    <div class="regime-item"><div class="regime-cond">Condition 1 / 1B</div><div class="regime-name">Stratospheric Dislocation</div><div class="regime-rule">ZG Distance above +1.5%</div></div>
-    <div class="regime-item"><div class="regime-cond">Condition 2</div><div class="regime-name">Zero Gamma Magnet</div><div class="regime-rule">ZG Distance within ±0.2%</div></div>
-    <div class="regime-item"><div class="regime-cond">Condition 3</div><div class="regime-name">Negative Gamma Avalanche</div><div class="regime-rule">Spot BELOW ZG Pivot</div></div>
-    <div class="regime-item"><div class="regime-cond">Condition 4</div><div class="regime-name">Balanced Distribution</div><div class="regime-rule">Comfortably inside positive gamma</div></div>
-    <div class="regime-item"><div class="regime-cond">Condition 5</div><div class="regime-name">Structural Wall Flip</div><div class="regime-rule">High volume wall crossover</div></div>
-    <div class="regime-item"><div class="regime-cond">Condition 6</div><div class="regime-name">Multi-Variable Dislocation</div><div class="regime-rule">+0.8% to +1.2% · Heavy anchors below</div></div>
-    <div class="regime-item"><div class="regime-cond">Condition 7</div><div class="regime-name">Avalanche-to-Flip</div><div class="regime-rule">+0.2% to +1.5% above ZG</div></div>
-    <div class="regime-item"><div class="regime-cond">Condition 8</div><div class="regime-name">Compression Decay</div><div class="regime-rule">Walls converging · volume dying</div></div>
-  </div>
-
-  <div class="section-hdr">04&nbsp;&nbsp;Disclaimer</div>
-  <p style="font-size:12px;color:var(--muted);line-height:1.8;max-width:680px;">
-    All case studies are for educational and analytical purposes only. Not financial advice.
-    All structural levels are derived from options flow and gamma exposure data.
-    The pre-market framework is valid only within the RTH morning window
-    (9:30 AM – 11:30 AM New York Time). Past structural identification accuracy
-    does not guarantee future results. Always manage risk independently.
-  </p>
-
+<div class="section-hdr">01&nbsp;&nbsp;Methodology</div>
+<div class="meth-grid">
+<div class="meth-item"><div class="meth-icon">📐</div><div class="meth-title">Coarse-to-Fine</div><div class="meth-desc">Macro structural gravity first. Micro execution levels second.</div></div>
+<div class="meth-item"><div class="meth-icon">🧲</div><div class="meth-title">Max Pain Mechanics</div><div class="meth-desc">Max Pain attracts price. Walls reject price. Both identified pre-market.</div></div>
+<div class="meth-item"><div class="meth-icon">🏷️</div><div class="meth-title">8-Regime Classification</div><div class="meth-desc">Sequential decision tree. ZG distance eliminates most conditions immediately.</div></div>
+<div class="meth-item"><div class="meth-icon">🧱</div><div class="meth-title">Steel Wall ID</div><div class="meth-desc">Max Pain + 1DTE Matrix convergence. Invisible on live GEX. Only visible pre-market.</div></div>
+<div class="meth-item"><div class="meth-icon">⏱️</div><div class="meth-title">2-Hour Window</div><div class="meth-desc">Skew-adjusted walls lose force after 11:30 AM NY. Strict validity window.</div></div>
+<div class="meth-item"><div class="meth-icon">📊</div><div class="meth-title">NDX IV Variance</div><div class="meth-desc">Blended term structure IV calculates intraday 1-SD and 2-SD boundaries.</div></div>
 </div>
+<div class="section-hdr">02&nbsp;&nbsp;Case Studies</div>
 
+<!-- JUL 15 2026 -->
+<a class="case-card" href="2026-07-15_C4_Overnight-Reversion.html">
+<div class="case-top">
+<div class="case-date">Wednesday July 15, 2026 · RTH 9:30 AM – 11:30 AM NY</div>
+<div class="case-badges">
+<span class="badge ba">Condition 4</span>
+<span class="badge bg">1SD Lower Exact Match 29,402 ✅</span>
+<span class="badge bg">VXN Session Bracket ✅</span>
+<span class="badge bp">30DTE Symmetric Engine</span>
+<span class="badge bd">Overnight Futures Premium Unwind</span>
+</div>
+</div>
+<div class="case-title">C4 Balanced Distribution — Overnight Futures Premium Unwind at Cash Open</div>
+<div class="case-desc">
+NDX cash was closed overnight while NQ futures continued trading; with no live index to arbitrage against, futures swept up into the 1DTE/weekly/longer-expiry call wall convergence at 30,000 unchecked. RTH opened at 29,954 (+1.23% above ZG 29,590 — sub-threshold for Condition 1), already above the entire Asian 1SD baseline (29,800–29,951). At the open, NDX cash gapped directly into that multi-expiry wall and rejected hard: price flushed through Call Wall (29,600), ZG (29,590), and Put Wall (29,550) in sequence, printing a session low of 29,402 — an exact match to the pre-calculated 1SD lower zone boundary — before recovering to 29,639.50. Net GEX (+2.39B) and Net DEX (+31.89M) confirmed a positive-gamma regime throughout; the reversal was driven entirely by the deeper multi-expiry structure, not local 0DTE positioning. Same-day VXN SD bands (30DTE symmetric, A=25.90) bracketed both extremes of the session: VXN topped near +3σ (27.03) during New York AM exactly as NQ bottomed at its 1SD lower zone, then collapsed to −1σ (25.52) during New York PM as NQ recovered.
+</div>
+<div class="case-levels">
+<div class="case-level"><span class="lbl">RTH Open</span><span style="color:var(--amber);">29,954</span></div>
+<div class="case-level"><span class="lbl">Session Low</span><span style="color:var(--green);">29,402 ✅</span></div>
+<div class="case-level"><span class="lbl">Multi-Expiry Wall</span><span style="color:var(--red);">30,000</span></div>
+<div class="case-level"><span class="lbl">Net GEX</span><span style="color:var(--blue);">+2.39B</span></div>
+<div class="case-level"><span class="lbl">VXN Bracket</span><span style="color:var(--green);">+3σ 27.03 → −1σ 25.52 ✅</span></div>
+</div>
+<div class="case-arrow">Open case study →</div>
+</a>
+
+<!-- JUL 14 2026 -->
+<a class="case-card" href="2026-07-14_C1_CPI-Rally-OI-Wall-Discovery.html">
+<div class="case-top">
+<div class="case-date">Tuesday July 14, 2026 · RTH 9:30 AM – 11:30 AM NY · CPI Beat + Fed Chair Testimony</div>
+<div class="case-badges">
+<span class="badge br">Condition 1/1B Stratospheric</span>
+<span class="badge bg">VXN Ladder Exact Match ✅</span>
+<span class="badge bg">Pre-Market OI Wall 2.62 pt Precision ✅</span>
+<span class="badge bp">Three-Grid Session System</span>
+<span class="badge by">Tuesday · CPI + Fed Testimony</span>
+</div>
+</div>
+<div class="case-title">CPI-Driven Rally &amp; Pre-Market OI Wall Discovery — VXN Ceiling Reversal, Asian 1SD Upper Rejection</div>
+<div class="case-desc">
+A cooler-than-expected June CPI print at 8:30 AM drove a sharp pre-market rally. A separate discovery: an open-interest concentration level (29,808.63) identified 90 minutes before the open matched the actual RTH open (29,811.25) within 2.62 points, then held as a multi-touch pivot through the morning and into the afternoon. Tool 1's live VXN anchor (26.09) again matched exact across every tested level. Within the session, VXN advancing to +3σ coincided exactly with the low of an intraday pullback, after which price reversed and held gains through the close — a live ceiling-exhaustion instance. Price tested above the Asian 1SD upper intraday but was ultimately rejected there by session end, and never once reverted to ZG the entire session.
+</div>
+<div class="case-levels">
+<div class="case-level"><span class="lbl">VXN Anchor</span><span style="color:var(--blue);">26.09</span></div>
+<div class="case-level"><span class="lbl">Pre-Market OI Wall</span><span style="color:var(--green);">29,808.63 → 2.62pt ✅</span></div>
+<div class="case-level"><span class="lbl">VXN Ladder</span><span style="color:var(--green);">Exact ✅</span></div>
+<div class="case-level"><span class="lbl">1SD Upper</span><span style="color:var(--red);">Tested, rejected</span></div>
+</div>
+<div class="case-arrow">Open case study →</div>
+</a>
+
+<!-- JUL 13 2026 -->
+<a class="case-card" href="2026-07-13_C2_ZG-Pin-VXN-Exact-Match.html">
+<div class="case-top">
+<div class="case-date">Monday July 13, 2026 · RTH 9:30 AM – 11:30 AM NY · ZG-Pinned Session</div>
+<div class="case-badges">
+<span class="badge bd">Condition 2/6 ZG Pin</span>
+<span class="badge bg">VXN Ladder 6/6 Exact ✅</span>
+<span class="badge bg">Asian 1SD Lower Confirmed ✅</span>
+<span class="badge bp">Three-Grid Session System</span>
+<span class="badge by">Monday · Weak Max Pain Gravity</span>
+</div>
+</div>
+<div class="case-title">ZG-Pinned Morning, VXN Anchor Exact Match — Convergence at Asian 1SD Lower / VXN −2σ, Afternoon Breakdown</div>
+<div class="case-desc">
+After an overnight pullback from the Asian open, NQ opened inside a tight ZG/Put Wall/Call Wall cluster, tested down toward the Asian Open Grid's 1SD lower in the same moment VXN dipped toward its own −2σ — a clean cross-tool convergence. Both tools' live-anchored levels matched exact against their charts (VXN's anchor carried forward from Friday's confirmed σ/SK, still exact on Monday). Price then pinned between ZG and Call Wall for the entire trading window before breaking down toward the Asian 1SD lower in the afternoon, outside the window. A forward-dated P/C ratio outlier on Tuesday's 1DTE row was also flagged pre-market, tracing to a scheduled CPI release and the new Fed Chair's first congressional testimony.
+</div>
+<div class="case-levels">
+<div class="case-level"><span class="lbl">VXN Anchor</span><span style="color:var(--blue);">26.84</span></div>
+<div class="case-level"><span class="lbl">VXN Ladder</span><span style="color:var(--green);">6/6 exact ✅</span></div>
+<div class="case-level"><span class="lbl">Asian 1SD Lower</span><span style="color:var(--green);">29,525 ✅</span></div>
+<div class="case-level"><span class="lbl">Morning Pin</span><span style="color:var(--amber);">29,620–29,730</span></div>
+</div>
+<div class="case-arrow">Open case study →</div>
+</a>
+
+<!-- JUL 10 2026 -->
+<a class="case-card" href="2026-07-10_C6_Theta-Bleed-Gamma-Pin.html">
+<div class="case-top">
+<div class="case-date">Friday July 10, 2026 · RTH 9:30 AM – 11:30 AM NY · Theta Bleed Gamma Pin</div>
+<div class="case-badges">
+<span class="badge bd">Condition 6/7 Gamma Pin</span>
+<span class="badge bg">VXN Ladder 6/6 Exact ✅</span>
+<span class="badge br">Max Pain Gravity Failed</span>
+<span class="badge bp">Three-Grid Session System</span>
+<span class="badge by">Friday · Theta Bleed</span>
+</div>
+</div>
+<div class="case-title">Theta Bleed Gamma Pin — Friday Max Pain Gravity Fails, Put-IV Dominance, VXN Never Reclaims Anchor</div>
+<div class="case-desc">
+Every pre-market signal pointed toward a reversion — Friday Max Pain gravity, ZG dislocation, an open below Cap Line/Call Wall. None of it materialized. VXN's live open (26.91) anchored Tool 1's Vol % Matrix to an exact six-of-six match, and VXN traded under that anchor for the entire session, never reclaiming it even once — the mechanical precondition for a reversion was absent from the open bell onward. 0DTE SKEW spiked to 0.38 within minutes of the open, put-IV dominant, forcing dealer hedging that mechanically blocked any drop toward Max Pain. By the time skew settled to 0.22 in the afternoon, 0DTE theta had already decayed most of the session's extrinsic value, leaving no incentive to force the reversion late. Price broke above Call Wall (29,850) instead, which flipped from resistance to support and held into the close near 30,069–30,075.
+</div>
+<div class="case-levels">
+<div class="case-level"><span class="lbl">VXN Anchor</span><span style="color:var(--blue);">26.91</span></div>
+<div class="case-level"><span class="lbl">VXN Ladder</span><span style="color:var(--green);">6/6 exact ✅</span></div>
+<div class="case-level"><span class="lbl">Max Pain</span><span style="color:var(--red);">29,490 · never tested</span></div>
+<div class="case-level"><span class="lbl">Session Close</span><span style="color:var(--amber);">≈30,069–30,075</span></div>
+</div>
+<div class="case-arrow">Open case study →</div>
+</a>
+
+<!-- JUL 09 2026 -->
+<a class="case-card" href="2026-07-09_C1_Overnight-Rally-Tool1-Exact-Match.html">
+<div class="case-top">
+<div class="case-date">Thursday July 9, 2026 · RTH 9:30 AM – 11:30 AM NY · AI Optimism vs. Iran Escalation Divergence</div>
+<div class="case-badges">
+<span class="badge br">Condition 1/1B Stratospheric</span>
+<span class="badge bg">Tool 1 VXN Ladder 6/6 Exact ✅</span>
+<span class="badge bg">Convergence Reversal ✅</span>
+<span class="badge bp">Three-Grid Session System</span>
+<span class="badge bd">No-Brake Melt-Up</span>
+</div>
+</div>
+<div class="case-title">Overnight Stratospheric Rally — Live Tool 1 Exact Match, Convergence Reversal, No-Brake Afternoon Melt-Up</div>
+<div class="case-desc">
+Overnight price rallied +377 pts through ZG on an AI-optimism/Iran-escalation divergence, opening the session in full Stratospheric condition. VXN's live 9:31 AM print (27.41) anchored Tool 1's Vol % Matrix to an exact six-of-six match against the live chart. Mid-morning, NQ tagging the Asian Open Grid's 1SD upper (29,890) coincided exactly with VXN sweeping its own −1σ, confirmed by a sharp SKEW collapse (0.309→0.292→0.163) — a three-way convergence that produced a clean reversal. A second test of the same level in the afternoon carried no VXN confirmation and was correctly not re-traded. A later SKEW spike also arrived without VXN or broader-curve confirmation, and price broke through the level instead of reversing — the standing GEX-leads/VXN-confirms hierarchy held, and with no 0DTE Call Wall overhead and VXN sitting flat, no mechanical brake existed to stop the advance.
+</div>
+<div class="case-levels">
+<div class="case-level"><span class="lbl">VXN Live Anchor</span><span style="color:var(--blue);">27.41</span></div>
+<div class="case-level"><span class="lbl">Tool 1 Match</span><span style="color:var(--green);">6/6 exact ✅</span></div>
+<div class="case-level"><span class="lbl">Convergence Level</span><span style="color:var(--green);">29,890 / VXN −1σ ✅</span></div>
+<div class="case-level"><span class="lbl">Afternoon Close</span><span style="color:var(--amber);">29,954.75</span></div>
+</div>
+<div class="case-arrow">Open case study →</div>
+</a>
+
+<!-- JUL 08 2026 -->
+<a class="case-card" href="2026-07-08_C3_Three-Grid-System-Iran-Headline.html">
+<div class="case-top">
+<div class="case-date">Wednesday July 8, 2026 · RTH 9:30 AM – 11:30 AM NY · Iran Deal Headline / News Catalyst Session</div>
+<div class="case-badges">
+<span class="badge br">Condition 3 → Reclaim</span>
+<span class="badge bg">VXN +2σ Sweep ≈ Exact ✅</span>
+<span class="badge bg">Asset Space Grid vs Live VXN 0.02–0.10 ✅</span>
+<span class="badge bp">Three-Grid System</span>
+<span class="badge bd">Wednesday · News Catalyst</span>
+</div>
+</div>
+<div class="case-title">Negative Gamma Open, Iran Headline &amp; Three-Grid System — VXN +2σ / NQ Low Convergence, ZG Reclaim</div>
+<div class="case-desc">
+Overnight price round-tripped roughly 170 pts through ZG (29,330) in the final pre-market stretch, coinciding with reports the Iran interim deal was "over" — oil surged 5%+, VIX rose ~4-5% pre-open. RTH opened at 29,201.75, already below ZG/Max Pain/Call Wall with no support until Put Wall (28,790). First live combined use of the Three-Grid System: the Asset Space Price Grid's compacted levels (spot-anchored, 30DTE σ) tracked live VXN price within 0.02–0.10 across all six SD levels — a second consecutive confirming session after Jul 07. VXN's sweep through +2σ (30.01) coincided almost exactly with NQ's session low, reinforced by extreme post-open skew (SK≈0.327) signaling a fragile, reversal-prone ceiling rather than sustained fear. Price reclaimed ZG around 12:30 PM, invalidating the session's short-only bias per Block 7, and continued recovering toward Call Wall into the afternoon.
+</div>
+<div class="case-levels">
+<div class="case-level"><span class="lbl">RTH Open</span><span style="color:var(--amber);">29,201.75</span></div>
+<div class="case-level"><span class="lbl">VXN +2σ Sweep</span><span style="color:var(--green);">30.01 ✅</span></div>
+<div class="case-level"><span class="lbl">Asset Space Grid Fit</span><span style="color:var(--green);">±0.02–0.10 ✅</span></div>
+<div class="case-level"><span class="lbl">ZG Reclaim</span><span style="color:var(--blue);">~12:30 PM</span></div>
+<div class="case-level"><span class="lbl">Afternoon</span><span style="color:var(--green);">29,402.25</span></div>
+</div>
+<div class="case-arrow">Open case study →</div>
+</a>
+
+<!-- JUL 07 2026 -->
+<a class="case-card" href="2026-07-07_C3_Negative-Gamma-Skew-Inversion-Reversal.html">
+<div class="case-top">
+<div class="case-date">Tuesday July 7, 2026 · RTH 9:30 AM – 11:30 AM NY · SpaceX Nasdaq-100 Inclusion Day</div>
+<div class="case-badges">
+<span class="badge br">Condition 3</span>
+<span class="badge bg">VXN 5/6 Levels Exact ✅</span>
+<span class="badge bg">Session Low 29,210 Exact ✅</span>
+<span class="badge bp">30DTE Inverted Skew Engine</span>
+<span class="badge bd">Two-Signal Session</span>
+</div>
+</div>
+<div class="case-title">C3 Negative Gamma Open — 30DTE Skew-Inversion Engine · VXN Ceiling Exhaustion Reversal</div>
+<div class="case-desc">
+RTH opened at 29,591.50 — roughly 200 pts below ZG (29,730) and already through the 1SD-lower band (29,723), a clean negative-gamma open. The 9:15 AM pre-market read was calm on both volatility level and skew; within minutes of the open, 0DTE implied volatility moved above the 30DTE reading (0.34 vs. 0.25) and 0DTE skew spiked from 0.21 to 0.39, triggering the engine's 30DTE inverted branch (SK +0.256, A_live 28.69). Five of six modeled VXN SD levels matched the live chart exactly. With no VXN spike present at the open, no mechanical brake was active — GEX led, and the flush carried price through Put Wall (29,390) into a session low of 29,210. Near 10:42 AM, VXN swept through +1σ (29.03) while price remained below Put Wall, a volatility-side exhaustion signal that preceded any GEX reclaim and produced a tactical reversal without ZG ever being reclaimed.
+</div>
+<div class="case-levels">
+<div class="case-level"><span class="lbl">RTH Open</span><span style="color:var(--amber);">29,591.50</span></div>
+<div class="case-level"><span class="lbl">Session Low</span><span style="color:var(--green);">29,210 ✅</span></div>
+<div class="case-level"><span class="lbl">VXN Engine</span><span style="color:var(--blue);">A_live 28.69</span></div>
+<div class="case-level"><span class="lbl">VXN Levels</span><span style="color:var(--green);">5/6 exact ✅</span></div>
+<div class="case-level"><span class="lbl">ZG</span><span style="color:var(--red);">29,730 · unreclaimed</span></div>
+</div>
+<div class="case-arrow">Open case study →</div>
+</a>
+
+<!-- JUL 06 2026 -->
+<a class="case-card" href="2026-07-06_C6_Holiday-Monday-VXN-Cascade.html">
+<div class="case-top">
+<div class="case-date">Monday July 6, 2026 · RTH 9:30 AM – 11:30 AM NY · Independence Day Holiday Return</div>
+<div class="case-badges">
+<span class="badge ba">Condition 6</span>
+<span class="badge bg">VXN Full Cascade — All 6 Levels ✅</span>
+<span class="badge bg">Baseline Parameter A=27.98 ✅</span>
+<span class="badge bp">Skew-Adjusted Engine</span>
+<span class="badge bd">318-Pt Range · Both Bands Unfilled</span>
+</div>
+</div>
+<div class="case-title">C6 — Holiday Monday · VXN Full Cascade · Baseline Parameter A=27.98</div>
+<div class="case-desc">
+First session after the Independence Day long weekend. Pre-market identified Vacuum Drop regime (SK Extreme +0.226 · HIGH VXN · A=27.98) with 0DTE IV at 0.15 — the lowest in the dataset. VXN cascaded through all six pre-market SD levels: 0σ (27.98) → −1σ (27.61) → −2σ (27.24) → −3σ (26.87), with session VXN low at 26.80 (7 cents below −3σ). NQ price however compressed into an extreme 318-point range (session high 30,093.50 · session low 29,775.50) — neither 1-SD band was reached (high was 128 pts below the upper band · low was 399 pts above the lower band). This documents a new pattern: Vacuum Drop regime on holiday Monday produces VXN cascade without NQ price trend. Vol and price decouple when institutional flow is absent.
+</div>
+<div class="case-levels">
+<div class="case-level"><span class="lbl">RTH Open</span><span style="color:var(--amber);">29,900.50</span></div>
+<div class="case-level"><span class="lbl">VXN −3σ Low</span><span style="color:var(--green);">26.80 ✅</span></div>
+<div class="case-level"><span class="lbl">1-SD Upper</span><span style="color:var(--red);">30,222 · not reached</span></div>
+<div class="case-level"><span class="lbl">Session Range</span><span style="color:var(--amber);">318 pts only</span></div>
+<div class="case-level"><span class="lbl">VXN Cascade</span><span style="color:var(--green);">All 6 levels ✅</span></div>
+</div>
+<div class="case-arrow">Open case study →</div>
+</a>
+
+<!-- JUL 02 2026 -->
+<a class="case-card" href="2026-07-02_C6_NFP-ISM-Dual-Exhaustion.html">
+<div class="case-top">
+<div class="case-date">Thursday July 2, 2026 · RTH 9:30 AM – 11:30 AM NY · Short Session 1:00 PM Close</div>
+<div class="case-badges">
+<span class="badge ba">Condition 6</span>
+<span class="badge bg">VXN −3σ Sweep 26.20 ✅</span>
+<span class="badge bg">Dual Exhaustion VXN +2σ + NQ 1-SD Lower ✅</span>
+<span class="badge bp">Skew-Adjusted Engine</span>
+<span class="badge bd">Thursday · NFP Day · Holiday Eve</span>
+</div>
+</div>
+<div class="case-title">C6 — NFP + ISM Dual Catalyst · VXN −3σ Sweep Entry · Dual Exhaustion Convergence</div>
+<div class="case-desc">
+Pre-market identified ZG (29,890) and 0DTE Max Pain (29,880) only 10 pts apart — the tightest convergence of the week — on a Thursday holiday eve with SK Elevated (+0.173). The framework thesis: Max Pain is the destination · news is only the mechanism. NFP beat spiked NQ above Call Wall (30,110) pre-market. At RTH open (30,078), VXN gapped below −1σ (27.23), then cascaded through −2σ (26.77) and −3σ (26.30), printing a session low of 26.20 — the −3σ sweep entry signal. ISM miss at 10:00 AM confirmed the reversal. Later in the session: VXN reached exactly +2σ (28.34) simultaneously with NQ touching the Asian 1-SD lower (29,661) — dual exhaustion convergence, the framework's highest confidence signal. Live GEX showed "extremely bullish" at the open — immediately reversed, confirming the volume trap rule.
+</div>
+<div class="case-levels">
+<div class="case-level"><span class="lbl">RTH Open</span><span style="color:var(--amber);">30,078</span></div>
+<div class="case-level"><span class="lbl">VXN −3σ Sweep</span><span style="color:var(--green);">26.20 ✅</span></div>
+<div class="case-level"><span class="lbl">VXN +2σ High</span><span style="color:var(--red);">28.34 exact ✅</span></div>
+<div class="case-level"><span class="lbl">NQ 1-SD Lower</span><span style="color:var(--green);">29,661 ✅</span></div>
+<div class="case-level"><span class="lbl">Max Pain</span><span style="color:var(--green);">29,880 ✅</span></div>
+</div>
+<div class="case-arrow">Open case study →</div>
+</a>
+
+<!-- JUL 01 2026 -->
+<a class="case-card" href="2026-07-01_C6_High-Skew-Call-Wall-Rejection.html">
+<div class="case-top">
+<div class="case-date">Wednesday July 1, 2026 · RTH 9:30 AM – 11:30 AM NY</div>
+<div class="case-badges">
+<span class="badge ba">Condition 6</span>
+<span class="badge bg">VXN +2σ Exhaustion 28.66 ✅</span>
+<span class="badge bg">Live Put Wall 30,216 Defense ✅</span>
+<span class="badge bp">Skew-Adjusted Engine</span>
+<span class="badge bd">Skew Repriced at Open</span>
+</div>
+</div>
+<div class="case-title">C6 — Pre-Market Plan Change · Skew Repriced at Open · VXN +2σ Exhaustion · GEX Floor Defense</div>
+<div class="case-desc">
+Pre-market analysis indicated elevated volatility with high positive skew. At the RTH open the skew repriced significantly lower into the Baseline/Normal tier (SK +0.040) — the analytical plan was updated immediately. Three structural factors then defined the session: ZG distance +0.51% (C6 moderate, MMs in control), NQ opened 45.5 pts below the Call Wall, and VXN spiked to 28.66 — +0.38 above the +2σ Standard Ceiling (28.28), stopping 0.21 pts short of +3σ. Live GEX migrated a massive Put Wall to 30,216 intraday. NQ pinned in a 64-pt compression range all session.
+</div>
+<div class="case-levels">
+<div class="case-level"><span class="lbl">RTH Open</span><span style="color:var(--amber);">30,234.50</span></div>
+<div class="case-level"><span class="lbl">SK at Open</span><span style="color:var(--blue);">+0.040 Normal</span></div>
+<div class="case-level"><span class="lbl">VXN High</span><span style="color:var(--red);">28.66 (+0.38 above +2σ)</span></div>
+<div class="case-level"><span class="lbl">Live Put Wall</span><span style="color:var(--green);">30,216 ✅</span></div>
+</div>
+<div class="case-arrow">Open case study →</div>
+</a>
+
+<a class="case-card" href="2026-06-30_C1_Extreme-Positive-Skew-Vacuum-Drop.html">
+<div class="case-top">
+<div class="case-date">Tuesday June 30, 2026 · RTH 9:30 AM – 11:30 AM NY</div>
+<div class="case-badges">
+<span class="badge br">Condition 1</span>
+<span class="badge bg">VXN 4-Level Cascade ✅</span>
+<span class="badge bg">NQ 1-SD Upper Filled ✅</span>
+<span class="badge bp">Skew-Adjusted Engine</span>
+<span class="badge bd">Extreme Positive Skew +0.260</span>
+</div>
+</div>
+<div class="case-title">C1 ZG Dislocation — Extreme Positive Skew Vacuum Drop</div>
+<div class="case-desc">
+RTH opened at 30,046 — +1.89% above ZG 29,490 — directly above the Call Wall (30,030), confirming Condition 1. Extreme positive 0DTE skew (+0.260) combined with an already-elevated VXN (29.37) flagged a vacuum-drop regime pre-market: calls bid for fear, puts hollowed out, no structural floor beneath VXN. The session confirmed this exactly — VXN cascaded cleanly through −1σ (28.77), −2σ (28.17), and −3σ (27.57) with body closes at each level, extending to 27.23–27.24 by the next session. NQ correspondingly ran unhindered, clearing both the Asian and RTH 1-SD upper bands (30,491 / 30,532) by the afternoon with no reversal.
+</div>
+<div class="case-levels">
+<div class="case-level"><span class="lbl">RTH Open</span><span style="color:var(--red);">30,046</span></div>
+<div class="case-level"><span class="lbl">SK</span><span style="color:var(--red);">+0.260 Extreme</span></div>
+<div class="case-level"><span class="lbl">VXN Cascade</span><span style="color:var(--green);">−1σ→−2σ→−3σ ✅</span></div>
+<div class="case-level"><span class="lbl">NQ High</span><span style="color:var(--green);">30,582</span></div>
+</div>
+<div class="case-arrow">Open case study →</div>
+</a>
+
+<!-- JUN 29 2026 -->
+<a class="case-card" href="2026-06-29-c6-multi variable dislocation.html">
+<div class="case-top">
+<div class="case-date">Monday June 29, 2026 · RTH 9:30 AM – 11:30 AM NY</div>
+<div class="case-badges">
+<span class="badge ba">Condition 6</span>
+<span class="badge bg">+2σ Exact 32.03 ✅</span>
+<span class="badge bg">ZG 29,360 Approach ✅</span>
+<span class="badge bd">Monday · Independence Day Week</span>
+</div>
+</div>
+<div class="case-title">C6 Multi-Variable Dislocation — VXN +2σ Exhaustion Confirmed</div>
+<div class="case-desc">
+RTH opened at 29,773 with VXN neutral at 30.73 (below anchor). VXN session high reached exactly 32.03 — the pre-calculated +2σ upper level — confirming Jump Diffusion exhaustion. NQ session high 29,837 rejected Asian 1-SD upper 29,713. Session low 29,276 approached ZG 29,360 simultaneously with VXN spike. 7DTE input used Jul 07 (8DTE) — Jul 06 σ:0.00 Independence Day.
+</div>
+<div class="case-levels">
+<div class="case-level"><span class="lbl">RTH Open</span><span style="color:var(--amber);">29,773</span></div>
+<div class="case-level"><span class="lbl">VXN +2σ Hit</span><span style="color:var(--green);">32.03 ✅</span></div>
+<div class="case-level"><span class="lbl">Session High</span><span style="color:var(--red);">29,837</span></div>
+<div class="case-level"><span class="lbl">Session Low</span><span style="color:var(--green);">29,276</span></div>
+</div>
+<div class="case-arrow">Open case study →</div>
+</a>
+
+<!-- JUN 26 2026 -->
+<a class="case-card" href="2026-06-26_C3_ mutation vxn outside range.html">
+<div class="case-top">
+<div class="case-date">Friday June 26, 2026 · RTH 9:30 AM – 11:30 AM NY</div>
+<div class="case-badges">
+<span class="badge bg">C3 → C7 Mutation</span>
+<span class="badge bg">VXN Outside Range 33.40+ ✅</span>
+<span class="badge bg">1-SD Lower 29,182 Exact ✅</span>
+<span class="badge ba">Two-Model Architecture</span>
+<span class="badge bd">Friday · Max Pain Gravity</span>
+</div>
+</div>
+<div class="case-title">C3 Mutation — VXN Outside Statistical Range · Microsecond Convergence</div>
+<div class="case-desc">
+RTH opened at 29,442 — pinned at ZG 29,440 — with VXN already elevated at approximately 32.29 (inside the +2σ zone) at the bell. At 9:34 AM, VXN spiked to 33.40+, exceeding the Jump Diffusion +2σ ceiling of 32.23 and sweeping the prior session NY AM high. Simultaneously, NQ touched the pre-calculated Asian 1-SD lower at 29,182. 406-point recovery in one candle. Friday Max Pain gravity confirmed as session target.
+</div>
+<div class="case-levels">
+<div class="case-level"><span class="lbl">RTH Open</span><span style="color:var(--amber);">29,442</span></div>
+<div class="case-level"><span class="lbl">VXN Spike</span><span style="color:var(--red);">33.40+</span></div>
+<div class="case-level"><span class="lbl">1-SD Floor</span><span style="color:var(--green);">29,182 ✅</span></div>
+<div class="case-level"><span class="lbl">Recovery</span><span style="color:var(--green);">406 pts ✅</span></div>
+<div class="case-level"><span class="lbl">Max Pain</span><span style="color:var(--green);">29,460 ✅</span></div>
+</div>
+<div class="case-arrow">Open case study →</div>
+</a>
+
+<!-- JUN 25 2026 -->
+<a class="case-card" href="2026-06-25_C1B_Stratospheric-Slow-Grind.html">
+<div class="case-top">
+<div class="case-date">Thursday June 25, 2026 · RTH 9:30 AM – 11:30 AM NY</div>
+<div class="case-badges">
+<span class="badge br">Condition 1B</span>
+<span class="badge bg">VXN +2σ 32.86 Exact ✅</span>
+<span class="badge bg">Session Low 29,312 Exact ✅</span>
+<span class="badge ba">Two-Model Architecture</span>
+</div>
+</div>
+<div class="case-title">Stratospheric Slow Grind — C1B Flush · VXN Two-Model Validated</div>
+<div class="case-desc">
+RTH opened at 30,152 (+2.59% above ZG 29,390) with VXN simultaneously at its −1σ level (29.39) — the inverse mirror confirmed NQ was at its session high the moment the bell rang. One violent candle flushed 840 pts to 29,312, where VXN hit exactly 32.86 (+2σ Panic Ceiling). Session low matched the Asian 1-SD lower and the exact Jun 24 NY PM low simultaneously.
+</div>
+<div class="case-levels">
+<div class="case-level"><span class="lbl">RTH Open</span><span style="color:var(--red);">30,152</span></div>
+<div class="case-level"><span class="lbl">Session Low</span><span style="color:var(--green);">29,312 ✅</span></div>
+<div class="case-level"><span class="lbl">VXN +2σ Hit</span><span style="color:var(--green);">32.86 ✅</span></div>
+<div class="case-level"><span class="lbl">VXN −1σ at Open</span><span style="color:var(--blue);">29.39</span></div>
+</div>
+<div class="case-arrow">Open case study →</div>
+</a>
+
+<!-- JUN 24 2026 -->
+<a class="case-card" href="2026-06-24_C7_Violent-Sweep-Launchpad.html">
+<div class="case-top">
+<div class="case-date">Wednesday June 24, 2026 · RTH 9:30 AM – 11:30 AM NY</div>
+<div class="case-badges">
+<span class="badge bp">Condition 7 · Type 2</span>
+<span class="badge bg">Stack Max Pain</span>
+<span class="badge bg">Morning High 29,907</span>
+<span class="badge ba">VIX Dual Exhaustion</span>
+</div>
+</div>
+<div class="case-title">Condition 7 Version A Type 2 — Violent Single-Candle Sweep · Stack Max Pain Launchpad</div>
+<div class="case-desc">
+RTH opened at 29,712 (+0.58% above ZG 29,540) with 0DTE + 1DTE + Weekly Max Pain all converging at 29,613–29,703 directly below. One 15-min candle swept ZG + 1-SD + Max Pain box simultaneously as wicks. Morning high 29,907.50 — within 6.50 pts of pre-market σB calculation (29,901).
+</div>
+<div class="case-levels">
+<div class="case-level"><span class="lbl">RTH Open</span><span style="color:var(--red);">29,712</span></div>
+<div class="case-level"><span class="lbl">ZG Sweep</span><span style="color:var(--green);">29,540 ✅</span></div>
+<div class="case-level"><span class="lbl">Morning High</span><span style="color:var(--green);">29,907.50</span></div>
+<div class="case-level"><span class="lbl">VIX Floor</span><span style="color:var(--green);">18.10 ✅</span></div>
+</div>
+<div class="case-arrow">Open case study →</div>
+</a>
+
+<!-- JUN 23 2026 -->
+<a class="case-card" href="2026-06-23_C3-C7_Mutation-Snapback.html">
+<div class="case-top">
+<div class="case-date">Monday June 23, 2026 · RTH 9:30 AM – 11:30 AM NY</div>
+<div class="case-badges">
+<span class="badge br">Condition 3 ──► 7</span>
+<span class="badge bg">1-SD Floor Held</span>
+<span class="badge bg">VIX Sweep Confirmed</span>
+<span class="badge bd">News 9:45 AM</span>
+</div>
+</div>
+<div class="case-title">Condition 3 ──► Condition 7 Intraday Mutation — Short-Squeeze Reflex Snapback</div>
+<div class="case-desc">
+RTH opened at 29,659 — −0.81% below ZG 29,900 — inside an unhedged downside vacuum. Price dropped to 29,616 (1-SD floor) and VIX swept 20.50 to 20.53 in the same candle. Avalanche exhausted. Mechanical short-squeeze reflex fired instantly. News at 9:45 AM acted as accelerant.
+</div>
+<div class="case-levels">
+<div class="case-level"><span class="lbl">RTH Open</span><span style="color:var(--red);">29,659</span></div>
+<div class="case-level"><span class="lbl">1-SD Floor</span><span style="color:var(--green);">29,616 ✅</span></div>
+<div class="case-level"><span class="lbl">VIX Sweep</span><span style="color:var(--green);">20.53 ✅</span></div>
+<div class="case-level"><span class="lbl">Max Pain</span><span style="color:var(--green);">30,050 ✅</span></div>
+</div>
+<div class="case-arrow">Open case study →</div>
+</a>
+
+<!-- JUN 22 2026 -->
+<a class="case-card" href="2026-06-22_C6_Multi-Variable-Dislocation.html">
+<div class="case-top">
+<div class="case-date">Monday June 22, 2026 · RTH 9:30 AM – 11:30 AM NY</div>
+<div class="case-badges">
+<span class="badge ba">Condition 6</span>
+<span class="badge bg">2-SD Extension</span>
+<span class="badge bg">VIX 16.50 Floor Reversal</span>
+<span class="badge bd">to 1-SD</span>
+</div>
+</div>
+<div class="case-title">Multi-Variable Dislocation — 2-SD Extension and Reversal</div>
+<div class="case-desc">
+RTH opened at 30,822 (+1.06% above ZG) with 0DTE Max Pain at 30,150 and 1DTE at 30,050 deep below. Price broke through Weekly Call Ceiling 30,850 and extended to 30,967 — within the 2-SD RTH variance band. VIX reached the 16.50 IV exhaustion floor at the apex.
+</div>
+<div class="case-levels">
+<div class="case-level"><span class="lbl">RTH Open</span><span style="color:var(--red);">30,822</span></div>
+<div class="case-level"><span class="lbl">High</span><span style="color:var(--green);">30,967</span></div>
+<div class="case-level"><span class="lbl">VIX Floor</span><span style="color:var(--green);">16.50 ✅</span></div>
+<div class="case-level"><span class="lbl">1-SD Reversal</span><span style="color:var(--green);">30,680 ✅</span></div>
+</div>
+<div class="case-arrow">Open case study →</div>
+</a>
+
+<!-- JUN 18 2026 -->
+<a class="case-card" href="2026-06-18_C1_Stratospheric Dislocation Breakout Mutation.html">
+<div class="case-top">
+<div class="case-date">Thursday June 18, 2026 · RTH 9:30 AM – 11:30 AM NY</div>
+<div class="case-badges">
+<span class="badge br">Condition 1</span>
+<span class="badge bg">Post-FOMC Breakout</span>
+<span class="badge bg">Cap Line Held</span>
+<span class="badge bd">London Fix Trade</span>
+</div>
+</div>
+<div class="case-title">Stratospheric Dislocation — Post-FOMC Breakout Mutation</div>
+<div class="case-desc">
+June 17 FOMC flushed price to Weekly Max Pain 30,000 and ZG 29,990 — forming the structural floor. June 18 opened at 30,594 (+2.01% above ZG) in a Gamma Desert with zero overhead resistance. London fix at 11:00 AM provided the clean structural entry at Cap Line 30,515.
+</div>
+<div class="case-levels">
+<div class="case-level"><span class="lbl">RTH Open</span><span style="color:var(--red);">30,594</span></div>
+<div class="case-level"><span class="lbl">Retest</span><span style="color:var(--blue);">30,400</span></div>
+<div class="case-level"><span class="lbl">Cap Line</span><span style="color:var(--green);">30,515 ✅</span></div>
+<div class="case-level"><span class="lbl">Session High</span><span style="color:var(--green);">30,692+</span></div>
+</div>
+<div class="case-arrow">Open case study →</div>
+</a>
+
+<!-- JUN 17 2026 -->
+<a class="case-card" href="2026-06-17_C1B_Stratospheric-Slow-Grind.html">
+<div class="case-top">
+<div class="case-date">Wednesday June 17, 2026 · RTH 9:30 AM – 11:30 AM NY</div>
+<div class="case-badges">
+<span class="badge br">Condition 1B</span>
+<span class="badge bg">Pre-Market ID ✅</span>
+<span class="badge bd">FOMC Day</span>
+</div>
+</div>
+<div class="case-title">Stratospheric Dislocation — Slow Overnight Grind</div>
+<div class="case-desc">
+Overnight price slowly ground up in a tight range until tagging the Skew Adjusted Wall at 30,583. RTH opened just above the 1-SD boundary at 30,510, confirming Condition 1B at +1.72% above ZG. 1DTE Matrix at 30,290 reached. Max Pain 30,100 reached post-FOMC.
+</div>
+<div class="case-levels">
+<div class="case-level"><span class="lbl">Skew Wall</span><span style="color:var(--red);">30,583</span></div>
+<div class="case-level"><span class="lbl">1-SD Open</span><span style="color:var(--blue);">30,510</span></div>
+<div class="case-level"><span class="lbl">Matrix T1</span><span style="color:var(--green);">30,290 ✅</span></div>
+<div class="case-level"><span class="lbl">Max Pain</span><span style="color:var(--green);">30,100 ✅</span></div>
+</div>
+<div class="case-arrow">Open case study →</div>
+</a>
+
+<!-- JUN 16 2026 -->
+<a class="case-card" href="2026-06-16_C7_Avalanche-Flip.html">
+<div class="case-top">
+<div class="case-date">Tuesday June 16, 2026 · RTH 9:30 AM – 11:30 AM NY</div>
+<div class="case-badges">
+<span class="badge ba">Condition 7</span>
+<span class="badge bg">Pre-Market ID ✅</span>
+<span class="badge bg">7/7 Levels Correct</span>
+<span class="badge bg">Steel Wall Held</span>
+</div>
+</div>
+<div class="case-title">Avalanche-to-Flip Sequence — Two-Phase Engineered Flush</div>
+<div class="case-desc">
+London session tagged the Cap Line at 30,950 before handing off to New York. NY opened at 30,886 — trapped between the Call Wall and Cap Line. Two-phase flush to Steel Wall at 30,400. All 7 structural levels performed exactly as pre-market framework predicted.
+</div>
+<div class="case-levels">
+<div class="case-level"><span class="lbl">London High</span><span style="color:var(--red);">30,950</span></div>
+<div class="case-level"><span class="lbl">NY Open</span><span style="color:var(--blue);">30,886</span></div>
+<div class="case-level"><span class="lbl">Steel Wall</span><span style="color:var(--green);">30,400 ✅</span></div>
+<div class="case-level"><span class="lbl">Flush</span><span style="color:var(--green);">−486 pts</span></div>
+</div>
+<div class="case-arrow">Open case study →</div>
+</a>
+
+<div class="section-hdr">03&nbsp;&nbsp;8-Regime Classification Reference</div>
+<div class="regime-grid">
+<div class="regime-item"><div class="regime-cond">Condition 1 / 1B</div><div class="regime-name">Stratospheric Dislocation</div><div class="regime-rule">ZG Distance above +1.5%</div></div>
+<div class="regime-item"><div class="regime-cond">Condition 2</div><div class="regime-name">Zero Gamma Magnet</div><div class="regime-rule">ZG Distance within ±0.2%</div></div>
+<div class="regime-item"><div class="regime-cond">Condition 3</div><div class="regime-name">Negative Gamma Avalanche</div><div class="regime-rule">Spot BELOW ZG Pivot</div></div>
+<div class="regime-item"><div class="regime-cond">Condition 4</div><div class="regime-name">Balanced Distribution</div><div class="regime-rule">Comfortably inside positive gamma</div></div>
+<div class="regime-item"><div class="regime-cond">Condition 5</div><div class="regime-name">Structural Wall Flip</div><div class="regime-rule">High volume wall crossover</div></div>
+<div class="regime-item"><div class="regime-cond">Condition 6</div><div class="regime-name">Multi-Variable Dislocation</div><div class="regime-rule">+0.8% to +1.2% · Heavy anchors below</div></div>
+<div class="regime-item"><div class="regime-cond">Condition 7</div><div class="regime-name">Avalanche-to-Flip</div><div class="regime-rule">+0.2% to +1.5% above ZG</div></div>
+<div class="regime-item"><div class="regime-cond">Condition 8</div><div class="regime-name">Compression Decay</div><div class="regime-rule">Walls converging · volume dying</div></div>
+</div>
+<div class="section-hdr">04&nbsp;&nbsp;Disclaimer</div>
+<p style="font-size:12px;color:var(--muted);line-height:1.8;max-width:680px;">
+All case studies are for educational and analytical purposes only. Not financial advice.
+All structural levels are derived from options flow and gamma exposure data.
+The pre-market framework is valid only within the RTH morning window
+(9:30 AM – 11:30 AM New York Time). Past structural identification accuracy
+does not guarantee future results. Always manage risk independently.
+</p>
+</div>
 <footer>
-  <div>Coarse-to-Fine Structural Tokenization · Institutional Quantitative Options Analysis</div>
-  <div style="margin-top:4px;">NQ FUTURES PRE-MARKET STRUCTURAL ANALYSIS · RESEARCH PORTFOLIO</div>
-  <div style="margin-top:4px;">VALID WINDOW: RTH 9:30 AM – 11:30 AM NEW YORK TIME ONLY</div>
-  <div style="margin-top:8px;color:#3a3d48;">For educational purposes only · Not financial advice</div>
+<div>Coarse-to-Fine Structural Tokenization · Institutional Quantitative Options Analysis</div>
+<div style="margin-top:4px;">NQ FUTURES PRE-MARKET STRUCTURAL ANALYSIS · RESEARCH PORTFOLIO</div>
+<div style="margin-top:4px;">VALID WINDOW: RTH 9:30 AM – 11:30 AM NEW YORK TIME ONLY</div>
+<div style="margin-top:8px;color:#3a3d48;">For educational purposes only · Not financial advice</div>
 </footer>
-
 </body>
 </html>
