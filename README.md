@@ -1,240 +1,331 @@
-[README (1).md](https://github.com/user-attachments/files/29560999/README.1.md)
-# NQ Futures — Pre-Market Structural Analysis
-### Institutional GEX / Options-Flow Research Portfolio · VXN Skew-Adjusted Multi-SD Engine
-
-[![Cases](https://img.shields.io/badge/Case%20Studies-11%20Published-brightgreen)](https://estherc-ai.github.io/-nq-case-studies/)
-[![Instrument](https://img.shields.io/badge/Instrument-NQ%20%2F%20MNQ%20Futures-blue)](https://estherc-ai.github.io/-nq-case-studies/)
-[![Window](https://img.shields.io/badge/Valid%20Window-9%3A30--11%3A30%20AM%20NY-orange)](https://estherc-ai.github.io/-nq-case-studies/)
-[![Engine](https://img.shields.io/badge/Engine-VXN%20Skew--Adjusted%20Multi--SD-purple)](https://estherc-ai.github.io/-nq-case-studies/)
-
-> **Live portfolio:** [estherc-ai.github.io/-nq-case-studies](https://estherc-ai.github.io/-nq-case-studies/)
-
----
-
-## Overview
-
-This repository documents a systematic pre-market analytical framework applied to NQ/MNQ futures during the RTH morning session (9:30–11:30 AM New York Time). Every structural level, volatility boundary, and regime classification is derived from options market data collected before the open — prior to any RTH price action.
-
-The framework integrates three analytical layers:
-
-- **Options Gamma Exposure (GEX):** Vol Trigger (ZG), Call Wall, Put Wall, and Max Pain gravitational levels derived from NDX option open interest
-- **NDX Implied Volatility Term Structure:** Blended 0DTE/1DTE/7DTE IV inputs producing daily standard deviation bands anchored to three structural reference points
-- **VXN Skew-Adjusted Multi-SD Engine:** CBOE NASDAQ 100 Volatility Index modeled with signed 0DTE skew to produce asymmetric upside and downside volatility boundaries
-
-All case studies are produced exclusively from pre-market data. Afternoon skew, wall levels, and Max Pain may differ materially due to intraday time decay and options flow.
-
----
-
-## Instruments
-
-| Instrument | Ticker | Role |
-|---|---|---|
-| NASDAQ 100 Volatility Index | CBOE:VXN | All volatility calculations · skew-adjusted multi-SD engine |
-| Micro NQ Futures | CME:MNQ | Price levels · SD bands · condition classification |
-| NDX Options Chain | CBOE:NDX | GEX levels · Max Pain · skew inputs |
-
-> **Note:** VIX (S&P 500 volatility) is explicitly excluded. VXN is the correct volatility instrument for NQ/NDX analysis — it derives from the same option chain as the underlying index.
-
----
-
-## Core Methodology
-
-### Step 1 — IV Blend and Daily Scaler
-
-Three implied volatility inputs are collected from the NDX options smile chart at 9:00–9:15 AM NY, selecting PM-settled contracts only:
-
-```
-σ_blend = (σ_0DTE × 0.50) + (σ_1DTE × 0.30) + (σ_7DTE × 0.20)
-σ_daily = σ_blend ÷ √252
-```
-
-The blended volatility weights the front-end of the term structure (0DTE at 50%) to capture intraday realized volatility expectations while incorporating the 1DTE and 7DTE inputs to stabilize against single-expiry distortions.
-
-### Step 2 — VXN Base Step
-
-```
-base_step = A × σ_daily
-```
-
-Where `A` is the VXN previous day official close (4:00 PM ET). On elevated-risk sessions the 9:15 AM spot may be substituted. The base step represents one standard deviation of expected VXN movement expressed in VXN index points.
-
-### Step 3 — Asymmetric Skew Multipliers
-
-The 0DTE skew is collected as a **signed** value from the NDX options smile chart:
-
-```
-upside_mult   = 1 − SK
-downside_mult = 1 + SK
-```
-
-**Positive SK** (calls expensive, puts hollowed out) compresses the upside multiplier and stretches the downside — reflecting structurally unsupported VXN downside and NQ upside runaway risk.
-
-**Negative SK** (standard equity skew — puts expensive) stretches the upside multiplier and compresses the downside — consistent with the traditional "fear is unbounded" VXN behavior.
-
-### Step 4 — Six Daily Volatility Boundaries
-
-```
-+3σ = A + (base_step × 3 × upside_mult)    ← Extreme Panic Peak
-+2σ = A + (base_step × 2 × upside_mult)    ← Standard Volatility Ceiling
-+1σ = A + (base_step × 1 × upside_mult)    ← Normal Resistance
- 0σ = A                                     ← Baseline Anchor
-−1σ = A − (base_step × 1 × downside_mult)  ← Normal Support
-−2σ = A − (base_step × 2 × downside_mult)  ← Skew-Adjusted Floor
-−3σ = A − (base_step × 3 × downside_mult)  ← Extreme Vacuum Floor
-```
-
----
-
-## SK Tier Classification
-
-| Tier | \|SK\| Range | Structural Meaning |
-|---|---|---|
-| Baseline / Normal | 0.01 – 0.09 | Low distortion · multipliers near 1.0 · symmetric behavior |
-| Elevated | 0.10 – 0.19 | Meaningful asymmetry · early floor/ceiling fragility |
-| Extreme / Vacuum State | 0.20 – 0.30+ | Severe asymmetry · structurally unsupported side |
-
----
-
-## Regime Matrix
-
-VXN absolute level and SK tier combine to determine the operative regime each session:
-
-| | Normal SK | Elevated SK | Extreme SK (+) |
-|---|---|---|---|
-| **VXN HIGH (≥ 20)** | Standard symmetric behavior | Floor softening · monitor | **VACUUM DROP RISK** — fragile floor, NQ runs unhindered |
-| **VXN LOW (< 20)** | Calm · low edge | Floor testing | **MM DEFENDS FLOOR** — pinned, no vacuum |
-
-**HIGH VXN + Extreme positive SK:** elevated fear baseline already priced, but put-side support is hollowed out. If a directional trigger fires (NQ gaps above Call Wall, gamma desert opens), VXN vacuum-drops with no structural floor defense and NQ advances unhindered.
-
-**LOW VXN + Extreme positive SK:** market makers are near minimum premium and need protection against a volatility expansion surprise. They defend the low VXN floor aggressively — expect pinning and chop rather than a clean directional move.
-
----
-
-## NQ Standard Deviation Bands
-
-Three independent SD band sets are calculated daily, each anchored to a different structural reference:
-
-```
-SD move        = anchor × σ_daily
-1-SD upper     = anchor + SD move
-1-SD lower     = anchor − SD move
-```
-
-| Anchor | Base | Purpose |
-|---|---|---|
-| ZG pivot | GEX Vol Trigger level | Options structure reference · WHY price stops |
-| Asian NQ open ★ | First candle 18:00 NY | Session origin · draw bands on chart |
-| RTH open | 9:30 AM first candle | Direction confirmation after open |
-
-**Convergence rule:** when Asian 1-SD lower + ZG pivot + previous session low all fall within 100 points, this constitutes structural inevitability — the highest confidence floor of the session.
-
-**1-SD completion rule (empirical):** the 1-SD band tends to be fully traveled within the session. If the relevant band has not been reached by RTH open, the day's statistical work is not done — expect continued travel toward the unfilled level before assuming exhaustion or reversal.
-
----
-
-## Condition Classification
-
-| ZG Distance | Condition | Bias |
-|---|---|---|
-| > +1.5% above ZG | C1 / C1B — Stratospheric | Short |
-| +0.5% to +1.5% | C6 / C7 — Moderate gap | Context-dependent |
-| ±0.2% | C2 — Pinned at ZG | Neutral |
-| Below ZG | C3 — Negative gamma | Watch for C7 mutation |
-
-The ZG distance is the **primary** condition classifier. It determines whether market makers retain gamma control near spot (low ZG distance) or whether price has moved into a gamma desert with no structural overhead resistance (high ZG distance). This distinction is more important than any single wall level.
-
----
-
-## Triple Confirmation Signal
-
-The highest-confidence entry requires all three simultaneously:
-
-1. NQ body close held at GEX floor (ZG / Max Pain cluster)
-2. NQ at Asian 1-SD lower (ideally matching previous session low)
-3. VXN body close held inside +2σ zone (for C1B short sessions)
-
-**Signal hierarchy:** GEX leads. NQ body close at GEX floor is the primary entry signal. VXN confirmation follows. Never reverse this order.
-
----
-
-## Worked Example — June 30, 2026 (C1 Vacuum Drop)
-
-```
-Inputs:
-  A = 29.37 · σ_0DTE = 0.26 · σ_1DTE = 0.27 · σ_7DTE = 0.23 · SK = +0.260
-
-Calculation:
-  σ_blend   = (0.26×0.50) + (0.27×0.30) + (0.23×0.20) = 0.2570
-  σ_daily   = 0.2570 ÷ √252                             = 0.016189
-  base_step = 29.37 × 0.016189                          = 0.4755
-  upside_mult   = 1 − 0.260 = 0.740
-  downside_mult = 1 + 0.260 = 1.260
-
-VXN Boundaries:
-  +3σ : 29.37 + (0.4755 × 3 × 0.740) = 30.43
-  +2σ : 29.37 + (0.4755 × 2 × 0.740) = 30.07
-  +1σ : 29.37 + (0.4755 × 1 × 0.740) = 29.72
-   0σ : 29.37
-  −1σ : 29.37 − (0.4755 × 1 × 1.260) = 28.77
-  −2σ : 29.37 − (0.4755 × 2 × 1.260) = 28.17
-  −3σ : 29.37 − (0.4755 × 3 × 1.260) = 27.57
-
-Classification:
-  VXN level : HIGH (29.37 ≥ 20)
-  SK tier   : Extreme / Vacuum State (+0.260)
-  Regime    : VACUUM DROP RISK
-
-Session result:
-  RTH open      : 30,029.50 — at Call Wall (30,030), +1.89% above ZG
-  VXN cascade   : −1σ (28.77) → −2σ (28.17) → −3σ (27.57) all cleared
-  NQ behavior   : advanced to 30,582 — Asian 1-SD upper (30,491) cleared
-  Live tail     : VXN extended to 27.23–27.24 past modeled −3σ (27.57)
-  Validation    : all four modeled levels confirmed on live chart ✅
-```
-
----
-
-## Case Study Index
-
-| Date | Condition | Key Feature | Result |
-|---|---|---|---|
-| Jun 16, 2026 | C7 Avalanche Flip | Two-phase engineered flush | Steel Wall 30,400 ✅ |
-| Jun 17, 2026 | C1B Stratospheric | FOMC day · slow grind | Max Pain 30,100 ✅ |
-| Jun 18, 2026 | C1 Breakout Mutation | Post-FOMC gamma desert | Cap Line 30,515 ✅ |
-| Jun 22, 2026 | C6 Multi-Variable | 2-SD extension and reversal | VIX floor 16.50 ✅ |
-| Jun 23, 2026 | C3→C7 Mutation | Short-squeeze snapback | Max Pain 30,050 ✅ |
-| Jun 24, 2026 | C7 Violent Sweep | Stack Max Pain launchpad | Morning high 29,907 ✅ |
-| Jun 25, 2026 | C1B Stratospheric | VXN −1σ = session high | Session low 29,312 exact ✅ |
-| Jun 26, 2026 | C3 VXN Outside Range | Microsecond convergence | 406-pt recovery ✅ |
-| Jun 29, 2026 | C6 Multi-Variable | +2σ exhaustion exact | Asian 1-SD rejected ✅ |
-| Jun 30, 2026 | C1 Vacuum Drop | Extreme positive skew +0.260 | VXN cascade all 4 levels ✅ |
-| Jul 01, 2026 | C6 Pinned | ZG +0.51% · +3σ overshoot | Live Put Wall defense ✅ |
-
----
-
-## Valid Trading Window
-
-```
-Entry signals valid : 9:30 AM – 11:30 AM New York Time ONLY
-Hard close          : 11:30 AM · no exceptions
-All pre-market levels are calculated from 9:00–9:15 AM NY data only
-Afternoon skew, GEX walls, and Max Pain may differ due to time decay
-Do not apply pre-market levels to afternoon sessions without recalculating
-```
-
----
-
-## Risk Disclaimer
-
-> **This repository is for educational and research purposes only. Nothing contained herein constitutes financial advice, investment advice, trading advice, or any other form of advice. All case studies, analytical frameworks, calculations, and structural level identifications are presented solely for the purpose of documenting a systematic analytical methodology applied to publicly available market data.**
->
-> **Past structural identification accuracy does not guarantee future results. NQ/MNQ futures trading involves substantial risk of loss and is not appropriate for all investors. Options-derived GEX levels, Max Pain calculations, and implied volatility bands are probabilistic reference levels — not guaranteed price targets or entry/exit signals.**
->
-> **The author makes no representations or warranties regarding the accuracy, completeness, or fitness for purpose of any information in this repository. All trading decisions are the sole responsibility of the individual trader. Always manage risk independently and in accordance with your own financial situation and risk tolerance.**
->
-> **This framework is valid only within the stated RTH morning window (9:30 AM – 11:30 AM New York Time). Application of these levels outside this window, to other instruments, or in other market conditions is explicitly outside the documented scope of this research.**
-
----
+[NQ_Framework_Master_Reference.md](https://github.com/user-attachments/files/31832705/NQ_Framework_Master_Reference.md)
+# NQ/MNQ Pre-Market Structural Analysis — Master Framework Reference
 
 *VXN Skew-Adjusted Multi-SD Engine · NDX IV Variance Framework*
-*CBOE:VXN · CME:NQ/MNQ · Educational use only*
+*Built from 55+ documented RTH sessions — June 2026 to September 2026*
+*Valid window: RTH 9:30 AM – 11:30 AM New York Time*
+
+---
+
+## The Four-Step Decision Tree
+
+Every session follows this sequence — in order, without skipping steps.
+
+---
+
+### Step 1 — Regime Identification (Pre-Market)
+
+**The first question before anything else:**
+
+```
+Price above Total Gamma Flip (98DTE aggregate) + 0DTE DEX positive
+→ Potential Gamma Squeeze / Bullish regime
+→ VXN dips = buy entries, rising VXN = absorption noise
+
+Price below Total Gamma Flip + 0DTE DEX negative
+→ Potential Bearish / Negative Gamma regime
+→ VXN spikes = sell entries, declining VXN = calm/no action
+
+Price at Total Gamma Flip (within 0.2%) + DEX mixed
+→ Potential Range / Neutral regime
+→ Both sides possible, wait for open confirmation
+```
+
+**Why Total Gamma Flip is the primary dividing line:**
+
+Above TGF: dealers are long gamma — they buy dips and sell rallies, dampening moves. Their hedging supports the regime direction.
+Below TGF: dealers are short gamma — they sell dips and buy rallies, amplifying moves. Their hedging works against any bounce.
+
+This is a mechanical force, not a prediction. The regime tells you which direction dealer hedging amplifies — not which direction price will go.
+
+---
+
+### Step 2 — DEX Comparison (Pre-Market vs Post-Open)
+
+**Pre-market DEX = dealer starting position**
+**Post-open DEX change = real flow hitting the tape**
+**The comparison = who is winning**
+
+```
+DEX expanding in regime direction = attack or fuel
+DEX compressing gradually while price holds = absorption (wall winning slowly)
+DEX collapsing suddenly to near-zero = exhaustion (wall won decisively)
+DEX expanding against the regime = fuel has become attack
+```
+
+**The three DEX patterns documented:**
+
+**Attack (Sep 2):**
+Pre-market −175M → 9:45 AM −896M (5x expansion)
+Price at Put Wall, unable to break → DEX is attacking the wall
+Watch for: sudden DEX collapse to near-zero = exhaustion = wall wins = entry
+
+**Fuel (Sep 2, 10:15 AM):**
+Same −618M DEX re-expansion but price already above the wall
+Same flow, completely different effect — dealers now buy to hedge
+DEX expansion above the wall = fuel for the upside move
+
+**Absorption (Sep 3):**
+Pre-market +318M → 10:00 AM +849M peak → +502M at 10:30 AM
+Price held 29,248 throughout — barely moved despite peak DEX
+DEX compressing while price holds = wall winning slowly = breakout imminent
+
+**Critical rule — DEX is not about magnitude, it is about absorption:**
+
+High DEX + price moves significantly = conviction, directional
+High DEX + price barely moves = absorption, opposing wall is defending
+Low DEX + price moves significantly = thin air, fragile move
+Low DEX + price barely moves = compression, neither side committed
+
+**DEX cannot be spoofed:**
+DEX is calculated from real cleared open interest — actual contracts on the books.
+Not quotes, not orders that can be pulled. Real capital, real positioning, persists until closed.
+This is why DEX is ground truth. VXN can move from spread widening. Price can be pushed in thin markets. DEX requires real money in real contracts.
+
+**DEX sign-flip rule:**
+When 0DTE DEX and 1DTE/7DTE DEX have opposite signs — the front-end and back-end are pulling in different directions. This is the DEX-weighted blend engine trigger. The sign-flip itself carries directional information: which tenor is dominant determines which direction gets amplified at the open.
+
+**Small wall + strong DEX rule:**
+A small wall normally gets swept. But when DEX is strongly positive (call surge), dealers with long delta mechanically buy every dip — that automatic buying defends even a small floor independently of its OI size. DEX is the real support; the wall is the address.
+
+---
+
+### Step 3 — Nearest Wall (Any Size)
+
+**At the open, price targets the nearest available wall first — not the largest.**
+
+Size determines whether it holds. Not whether it gets tested.
+
+```
+Nearest wall holds (body close above/below) = floor/ceiling confirmed
+Nearest wall swept (wick through, body returns) = absorbed, level upgraded to hard floor
+Nearest wall broken (body closes through) = level flipped, seek next wall
+```
+
+**The body/wick distinction:**
+- Wick through a level = shorts/longs tried, maximum pressure reached
+- Body closes above/below = pressure absorbed, level defended
+- Wick through + body return = the strongest absorption confirmation
+
+**Wall size hierarchy:**
+
+| Size | Behavior | Example |
+|---|---|---|
+| Dominant (largest on chart) | Absorbs significant DEX for extended time | Sep 3: 29,323 absorbed +849M for 75 min |
+| Large | Holds cleanly, provides clear bounce | Sep 2: 29,046 held 30 min against −896M |
+| Moderate | Holds if DEX supports it | Sep 1: 29,055 held morning + afternoon |
+| Small | Holds only with DEX support | Sep 3: 29,248 held with +849M DEX |
+
+**Wall-vs-volume race rule:**
+Wall holds if OI growth rate outpaces incoming volume — even if volume is present.
+Never buy into a disproportionately large call wall or sell into a put wall until the wall loses the race.
+
+**Level flip rule:**
+When price breaks and holds below Total Gamma Flip — it flips from floor to ceiling.
+A bounce back toward TGF from below runs into dealers still hedging in the negative gamma regime — rejection at that line rather than support. Always confirmed on next-session settled OI.
+
+**Stack wall rule:**
+Multiple smaller walls at adjacent strikes are stronger than their individual size suggests — each represents a separate hedging obligation from different participants. Price must absorb them sequentially. A stack of small walls can defend longer than one large wall if the individual participants are diversified.
+
+**Nearest wall first — documented across sessions:**
+- Aug 27: First 3 minutes swept 29,504 cluster, not the deeper Major/Call Wall
+- Aug 28: Open immediately swept small Put Wall (29,622), largest walls held
+- Aug 31: First 3 minutes swept 29,504 call cluster, reversed hard
+- Sep 1: Open swept 29,055 (nearest large put) — not the deeper 28,855
+- Sep 2: Open swept 29,198 Put Wall (nearest), then returned above 29,248
+- Sep 3: Open swept 29,198 Put Wall (nearest), body held 29,248
+
+---
+
+### Step 4 — VXN Exhaustion (Entry Trigger)
+
+**VXN signals exhaustion — magnitude of tension, not direction.**
+
+Direction comes from price structure context. VXN only tells you when the current move is stretched.
+
+**The exhaustion hierarchy:**
+
+```
+±2σ touch alone
+→ Ambiguous — may stall or push to ±2.5σ next
+→ Note it, watch next 1–2 candles, do not act yet
+
+±2.5σ sweep (price moves through the level)
+→ Meaningful exhaustion signal — reached here requires sustained vol expansion
+→ Wait for ±2σ cross-back as confirmation
+
+±2σ cross-back after ±2.5σ sweep
+→ Confirmed exhaustion — act
+
+±3σ breach
+→ Beyond standard exhaustion range
+→ Apply three-leg check before calling exhaustion
+→ Skew behavior is the filter: compressing skew + +3σ = symmetric vol expansion (Sep 1), not panic
+```
+
+**The DEX confirmation hierarchy:**
+
+| VXN signal | DEX confirmation | Strength |
+|---|---|---|
+| ±2.5σ sweep + ±2σ cross-back | DEX compression | Strongest |
+| ±2.5σ sweep alone | DEX compression | Strong |
+| ±2σ approach without sweep | DEX compression to near-zero | Valid — DEX fills the gap (Sep 2) |
+| ±2σ approach without sweep | No DEX compression | Ambiguous — stay out |
+
+**The 2–3 minute signal rule:**
+When the right structural level is the genuine destination, VXN signals it within 2–3 minutes of the price touch. The first ±2.5σ sweep at the wrong level = rejection. The second ±2.5σ sweep at the right level = destination.
+
+**Non-confirmation rule:**
+Same VXN SD level, second occurrence, price NOT at a new extreme = non-confirmation.
+The price location relative to the previous extreme is the filter.
+- Sep 3: +2.5σ at 9:36 AM (session low) = genuine. Near +3σ at 10:00 AM (price 49pts above low) = noise.
+- Aug 26: Same +2SD level marked both the ceiling rejection and the floor rejection in one session.
+
+**Regime-specific VXN reading:**
+
+Bearish/Range regime:
+```
++2.5σ sweep + nearest wall holds → short exhaustion → entry long
+−2.5σ sweep + nearest ceiling holds → call exhaustion → entry short
+VXN declining all session = calm, no urgency (−3σ does not require action)
+```
+
+Gamma Squeeze regime:
+```
++2.5σ sweep + floor holds → short exhaustion → BUY DIP
+Every VXN dip to +2σ/+2.5σ zone = buy entry until dominant call wall breaks
+Post-breakout: revert to normal exhaustion reads
+VXN declining after wall break = squeeze spent, normal session resumes
+```
+
+**Why +2σ/+2.5σ matters more than −2σ/−3σ:**
+Fear has a natural ceiling — you can only price in so much downside before puts become too expensive and vol exhausts on its own weight. That's why +2.5σ sweeps produce clean reversals.
+Calm has no natural floor — VXN can stay below −3σ indefinitely without a mechanical force requiring resolution. −3σ signals calm, not urgency.
+
+---
+
+## Engine Selection Rules
+
+**Standard 30DTE matrix (symmetric or skew-adjusted):**
+Use when:
+- 0DTE σ is close to 30DTE σ (within ~0.05)
+- SKEW is settling or already settled post-open
+- DEX profile is moderate and not sign-flipping
+
+**Blend engine (DEX-weighted or variance-weighted):**
+Use when:
+- 0DTE σ is meaningfully above 30DTE σ (>0.08 divergence)
+- SKEW sign-flips between tenors
+- DEX sign-flips between 0DTE and 1DTE/7DTE
+- Pre-market carries a genuinely extreme read (σ >0.35 or SKEW >0.40)
+
+**Skew settlement rule:**
+Pre-market skew can be extreme and still settle to normal by the open (Aug 25, 27, 28, 31, Sep 1, 2).
+Always check the 9:30–9:45 AM σ and SKEW before committing to the engine.
+A skew sign-flip at the open qualifies as a blend trigger even if the pre-market number was extreme.
+
+**Compressing skew + rising VXN:**
+= Symmetric vol expansion, not directional fear
+= Standard matrix remains valid even through +3σ VXN breach (Sep 1)
+Not a blend trigger — the surface is expanding uniformly, not distorting.
+
+---
+
+## The NDX→NQ Basis Rules
+
+- Confirm the live basis at the 9:30–9:31 AM open — do not reuse pre-market basis
+- Basis can drift meaningfully intraday on high-volatility sessions (Sep 1: 55→46, Sep 3: ~48)
+- Re-check the basis whenever you're marking a level against a live GEX chart
+- The pre-market map correctly identifies structural levels — the live basis tells you exactly where those levels sit in NQ at the moment of interaction
+
+---
+
+## Wall Behavior Rules
+
+**Wall decay on reversal:**
+Walls unwind after price leaves, confirmed persisting into next-day settled OI.
+Pre-market wall sizes must be re-checked post-move and again the following session.
+
+**Wall formation around pre-existing anchor:**
+A tiny pre-existing wall can become the edge of a larger live-built zone (Aug 12).
+Live volume monitoring tells you when a wall is growing into something structural.
+
+**Pre-emptive defense of an oversized wall:**
+When a very large wall sits well below current price, price may stall and reverse before reaching it — the wall's presence alone changes dealer behavior above it.
+
+**Fair-zone midpoint:**
+The midpoint between two independently-confirmed structural boundaries is a reference level for range sessions. Price naturally gravitates toward the midpoint when vol is suppressed.
+
+---
+
+## The Three-Leg Exhaustion Check
+
+Before calling an extreme read as "exhausted, not early":
+
+1. **Rejection at the level** — price touched the extreme and showed a reversal candle
+2. **Real volume still building in the move's direction** — volume not fading at the extreme
+3. **Structure on the opposite side to reverse into** — a real wall or level to target
+
+If all three say "no" → the move is early, not exhausted. Continuation is correct.
+If any one says "yes" → exhaustion possible, apply VXN and DEX confirmation before acting.
+
+---
+
+## Position Sizing Rule
+
+```
+Size = FLOOR(B ÷ (D_total × M))
+
+B = $100–150 hard risk budget (MNQ)
+D_total = structural stop distance + execution lag buffer
+M = $2/point (MNQ)
+
+If result = 0 → skip trade entirely, never default to 1 contract
+```
+
+---
+
+## Key Framework Findings (Chronological)
+
+| Session | Finding |
+|---|---|
+| Aug 5 | VXN tracks price same direction in stable-skew regime (not always inverse) |
+| Aug 6 | Wall decay confirmed post-move on next-day settled OI |
+| Aug 11 | Liquidity-seeking sweep — price targets volume pools, not directional conviction |
+| Aug 12 | VXN exact SD-extreme touch-and-reject = fear spike hit natural ceiling, pullback capped |
+| Aug 13 | Wall-vs-volume race: asymmetric range read from live GEX reveals weak boundary before breakout |
+| Aug 17 | Put volume 5x overwhelming a call wall signals imminent break, not defense |
+| Aug 20 | Immediate 98DTE small-wall stack check — stacked small walls cap the open pullback |
+| Aug 21 | Skew sign-flip leads VXN + price reversal by 5 minutes |
+| Aug 24 | DEX-weighted blend engine: VXN breach of standard +3σ within minutes = engine switch live |
+| Aug 25 | Skew settlement from extreme pre-market to normal at open — standard matrix confirmed |
+| Aug 26 | Same +2SD level marks ceiling AND floor in one session — VXN signals magnitude, not direction |
+| Aug 27 | Nearest wall first: open targets proximity, not size |
+| Aug 28 | Small 0DTE Put Wall swept immediately (confirmed weakest) — call wall stack caps every push |
+| Aug 31 | Live put-volume absorption holds floor above pre-market structural levels — absorption is the floor |
+| Sep 1 | Compressing skew + rising VXN = symmetric expansion, standard matrix valid through +3σ; ±2.5σ exhaustion hierarchy; 2–3 minute VXN signal rule |
+| Sep 2 | DEX attack vs fuel: same flow, opposite effect depending on price location relative to wall; DEX compression = exhaustion confirmation even when VXN doesn't reach ±2.5σ |
+| Sep 3 | Gamma Squeeze regime: every VXN dip = buy entry until dominant call wall breaks; small wall holds with strong DEX support; DEX absorption: high volume + price barely moves = wall winning |
+
+---
+
+## Quick Reference — Session Open Checklist
+
+```
+□ 1. Price vs Total Gamma Flip → regime (bullish/bearish/neutral)
+□ 2. 0DTE DEX sign and magnitude → confirm regime direction
+□ 3. Pre-market DEX vs 9:45 AM DEX → what flow hit the tape at open
+□ 4. NDX→NQ basis confirmed live at 9:31 AM
+□ 5. Nearest wall to current price identified (any size)
+□ 6. Skew settled? → engine selection confirmed
+□ 7. VXN anchor captured at 9:31 AM → matrix calculated
+□ 8. Watch: nearest wall holds or breaks on first test
+□ 9. DEX expanding/compressing → attack, absorption, or exhaustion
+□ 10. VXN ±2.5σ sweep + ±2σ cross-back + structural level = entry
+```
+
+---
+
+*This document is a living reference — updated as new sessions add findings.*
+*For educational and research purposes only. Not financial advice.*
+*CBOE:VXN · CME:NQ/MNQ*
