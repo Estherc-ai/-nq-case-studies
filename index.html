@@ -98,7 +98,7 @@ Valid window: 9:30 AM – 11:30 AM New York Time.
 <div class="status-row">
 <div class="status-item">
 <div class="status-label">Case Studies</div>
-<div class="status-val">62</div>
+<div class="status-val">63</div>
 <div class="status-sub">Published · Growing</div>
 </div>
 </div>
@@ -114,6 +114,34 @@ Valid window: 9:30 AM – 11:30 AM New York Time.
 <div class="meth-item"><div class="meth-icon">📊</div><div class="meth-title">NDX IV Variance</div><div class="meth-desc">Blended term structure IV calculates intraday 1-SD and 2-SD boundaries.</div></div>
 </div>
 <div class="section-hdr">02&nbsp;&nbsp;Case Studies</div>
+
+<!-- SEP 15 2026 -->
+<a class="case-card" href="2026-09-15_C2-3_High-Pre-Market-IV-Delta-Neutral-to-Put-Dominant-Cascade.html">
+<div class="case-top">
+<div class="case-date">Tuesday September 15, 2026 · RTH 9:30 AM NY, One Day Ahead of FOMC</div>
+<div class="case-badges">
+<span class="badge ba">Condition 2 → 3 (Proposed) — Zero Gamma Magnet at Open, Intraday Mutation to Negative Gamma</span>
+<span class="badge bp">Blend Engine — Only Engine to Touch Exactly +3σ at the Low, Others Overshot ✅</span>
+<span class="badge bg">Pre-Market DEX/SKEW Perfectly Flat (50/50, SKEW 0.089) — But 0DTE σ Diverged Sharply, Correctly Flagging a Move Was Coming ✅</span>
+<span class="badge bg">10:00 AM Same-Minute Trigger: DEX −609.19M, SKEW 0.089→0.223, at the Exact Contested Level ✅</span>
+<span class="badge br">Textbook Mechanical Cascade — DEX Escalates to −1.44B While SKEW Falls Monotonically 0.223→0.079 ✅</span>
+<span class="badge bp">Dominant 98DTE Put Wall (Largest Bar on the Board) Broke Fast — A Small Stacked Cluster Held Instead</span>
+</div>
+</div>
+<div class="case-title">High Pre-Market IV, Delta-Neutral Open, Cascade to Put-Dominant — Wall Size Did Not Predict the Outcome</div>
+<div class="case-desc">
+RTH opened at 29,420, sitting roughly 69 points below the 0DTE Gamma Flip — within Zero Gamma Magnet tolerance one day ahead of the scheduled FOMC decision. Pre-market DEX and SKEW showed no directional lean whatsoever (perfectly balanced 50/50 composition, SKEW 0.089), but 0DTE σ diverged sharply from the 30DTE reading — a divergence read correctly as "no direction chosen yet, but a real move should not be ruled out." The pre-market map itself was unusually compressed: the two dominant 98DTE walls sat only 275 NDX points apart, with ZG, Max Pain, Total Gamma Flip, and the independently-calculated Asian Open SD baseline all converging within a 30–40 point band. Shortly after the open, VXN whipped from 21.47 to 22.43 on the blend engine, coinciding with the session high (29,453) in the same minute. At 10:00 AM, DEX flipped decisively to −609.19M with SKEW spiking from 0.089 to 0.223 — a genuine, same-minute conviction trigger arriving exactly at the level that had been contested for the prior half hour. What followed was a textbook Mechanical Cascade: DEX escalated to −1.44B while SKEW fell monotonically the entire way down to 0.079, consistent with gamma-driven dealer hedging rather than fresh conviction. Both a newly-formed wall at 29,419 and the 98DTE Put Wall at 29,319 — the single largest bar on the entire pre-market board — broke with minimal struggle. Price bottomed at 29,216 by 10:45 AM, an event that coincided with VXN touching exactly +3σ on the blend engine while other engines overshot past their own bands. A ~4-hour range followed inside a small, individually unremarkable 98DTE open-interest stack (29,216–29,306), with DEX remaining deeply negative for hours before finally decaying to negative millions in the afternoon. A final wick near 4:00 PM printed the true session low (29,209) before the close at 29,276, back inside the containment zone.
+</div>
+<div class="case-levels">
+<div class="case-level"><span class="lbl">RTH Open</span><span style="color:var(--blue);">29,420 · −0.23% ZG, within C2 tolerance</span></div>
+<div class="case-level"><span class="lbl">Pre-Market Divergence</span><span style="color:var(--green);">DEX/SKEW flat (50/50, 0.089) but 0DTE σ diverged sharply from 30DTE — flagged a move was coming despite the calm ✅</span></div>
+<div class="case-level"><span class="lbl">Compression</span><span style="color:var(--purple);">98DTE Call/Put Walls only 275 pts apart; ZG/Max Pain/TGF/Asian baseline converged within ~30-40 pts</span></div>
+<div class="case-level"><span class="lbl">Mechanical Cascade</span><span style="color:var(--red);">DEX −609M→−1.44B, composition 36/64→13/87, SKEW falls monotonically 0.223→0.079 ✅</span></div>
+<div class="case-level"><span class="lbl">Session High/Low</span><span style="color:var(--amber);">29,453 (9:45-10:00 AM) / 29,209 (~4:00 PM, true low) · first stop 29,216 (10:45 AM)</span></div>
+<div class="case-level"><span class="lbl">Close</span><span style="color:var(--green);">29,276 · inside the 29,216–29,306 small-stack containment zone</span></div>
+</div>
+<div class="case-arrow">Open case study →</div>
+</a>
 
 <!-- SEP 14 2026 -->
 <a class="case-card" href="2026-09-14_C3_Gap-Down-FOMC-Week-Repricing-Recovery-to-Total-Gamma-Flip.html">
