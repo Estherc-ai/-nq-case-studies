@@ -82,17 +82,16 @@ footer{border-top:1px solid var(--border);padding:24px 32px;text-align:center;fo
 <nav class="nav">Research Portfolio</nav>
 <div class="hero">
 <div class="badge-row">
-<span class="badge bg">Pre-Market ID</span>
-<span class="badge bd">GEX Framework</span>
-<span class="badge bd">Options Mechanics</span>
+<span class="badge bg">Pre-Market Map</span>
+<span class="badge bd">0DTE DEX / SKEW</span>
+<span class="badge bd">6 Day Types</span>
 <span class="badge bd">RTH Morning Only</span>
 <span class="badge bd">NQ / MNQ Futures</span>
 </div>
 <h1>NQ Futures <span>Pre-Market Structural Analysis</span></h1>
 <p class="hero-sub">
-A systematic study of NQ/MNQ futures opening regimes using options gamma exposure mechanics,
-Max Pain gravitational analysis, and skew-adjusted wall identification.
-All setups identified pre-market before price action confirms.
+A systematic study of NQ/MNQ futures sessions read from 0DTE NDX dealer positioning (DEX) and put protection (SKEW).
+The pre-market map sets the levels; the open print sets the day type; each 15-minute print confirms or changes it.
 Valid window: 9:30 AM – 11:30 AM New York Time.
 </p>
 <div class="status-row">
@@ -106,12 +105,12 @@ Valid window: 9:30 AM – 11:30 AM New York Time.
 <div class="content">
 <div class="section-hdr">01&nbsp;&nbsp;Methodology</div>
 <div class="meth-grid">
-<div class="meth-item"><div class="meth-icon">📐</div><div class="meth-title">Coarse-to-Fine</div><div class="meth-desc">Macro structural gravity first. Micro execution levels second.</div></div>
-<div class="meth-item"><div class="meth-icon">🧲</div><div class="meth-title">Max Pain Mechanics</div><div class="meth-desc">Max Pain attracts price. Walls reject price. Both identified pre-market.</div></div>
-<div class="meth-item"><div class="meth-icon">🏷️</div><div class="meth-title">8-Regime Classification</div><div class="meth-desc">Sequential decision tree. ZG distance eliminates most conditions immediately.</div></div>
-<div class="meth-item"><div class="meth-icon">🧱</div><div class="meth-title">Steel Wall ID</div><div class="meth-desc">Max Pain + 1DTE Matrix convergence. Invisible on live GEX. Only visible pre-market.</div></div>
-<div class="meth-item"><div class="meth-icon">⏱️</div><div class="meth-title">2-Hour Window</div><div class="meth-desc">Skew-adjusted walls lose force after 11:30 AM NY. Strict validity window.</div></div>
-<div class="meth-item"><div class="meth-icon">📊</div><div class="meth-title">NDX IV Variance</div><div class="meth-desc">Blended term structure IV calculates intraday 1-SD and 2-SD boundaries.</div></div>
+<div class="meth-item"><div class="meth-icon">🗺️</div><div class="meth-title">Pre-Market Map</div><div class="meth-desc">0DTE DEX is the main map; 98DTE and the gamma flips are warnings. After a big overnight gap, the open print leads.</div></div>
+<div class="meth-item"><div class="meth-icon">🧲</div><div class="meth-title">Largest Strike = Destination</div><div class="meth-desc">The largest strike on the print pulls price. It stays the destination until tagged, released or clearly outgrown.</div></div>
+<div class="meth-item"><div class="meth-icon">🏷️</div><div class="meth-title">6 Day Types</div><div class="meth-desc">Call Chase · Put Chase · Fork · Inverted Range · Put Lid · Call Floor — each hedged or unhedged.</div></div>
+<div class="meth-item"><div class="meth-icon">🛡️</div><div class="meth-title">SKEW = Protection</div><div class="meth-desc">Bought = brake. Cashed = fuel. Bought at the destination, then cashed to near zero = the unwind.</div></div>
+<div class="meth-item"><div class="meth-icon">🚪</div><div class="meth-title">Doors &amp; Release</div><div class="meth-desc">A box edge opens when its strike falls to half or less — and holds only with the book on the same side.</div></div>
+<div class="meth-item"><div class="meth-icon">📊</div><div class="meth-title">VXN Bands</div><div class="meth-desc">Anchor-based σ bands (skew-adjusted or blended term structure) — VXN extremes against price extremes.</div></div>
 </div>
 <div class="section-hdr">02&nbsp;&nbsp;Case Studies</div>
 
